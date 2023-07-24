@@ -1,3 +1,9 @@
+//
+// @title LeetLoot is an onchain pixel art collection.
+// It consists of 75 characters for Loot Survivor, an onchain arcade machine game.
+// @author hoanh.eth
+//
+
 use super::long_string::LongString;
 
 // LeetLoot interface.

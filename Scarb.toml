@@ -3,7 +3,12 @@ name = "leetloot"
 version = "0.1.0"
 
 [dependencies]
-starknet = "2.0.0"
+starknet = "2.0.1"
 
 [scripts]
 test = "scarb cairo-test"
+
+[[target.starknet-contract]]
+sierra = true
+allowed-libfuncs-list.name = "experimental"
+allowed-libfuncs = true
