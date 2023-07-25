@@ -13,20 +13,23 @@ use super::long_string::LongString;
 trait ILeetLoot<T> {
     // Ownership
     fn owner(self: @T) -> ContractAddress;
-    fn transfer_ownership(ref self: T, new_owner: ContractAddress);
-    fn renounce_ownership(ref self: T);
+    fn transferOwnership(ref self: T, new_owner: ContractAddress);
+    fn renounceOwnership(ref self: T);
 
     // ERC721
     fn name(self: @T) -> felt252;
     fn symbol(self: @T) -> felt252;
-    fn balance_of(self: @T, account: ContractAddress) -> u256;
-    fn owner_of(self: @T, token_id: u256) -> ContractAddress;
-    fn transfer_from(ref self: T, from: ContractAddress, to: ContractAddress, token_id: u256);
+    fn balanceOf(self: @T, account: ContractAddress) -> u256;
+    fn ownerOf(self: @T, token_id: u256) -> ContractAddress;
+    fn transferFrom(ref self: T, from: ContractAddress, to: ContractAddress, token_id: u256);
     fn approve(ref self: T, to: ContractAddress, token_id: u256);
-    fn set_approval_for_all(ref self: T, operator: ContractAddress, approved: bool);
-    fn get_approved(self: @T, token_id: u256) -> ContractAddress;
-    fn is_approved_for_all(self: @T, owner: ContractAddress, operator: ContractAddress) -> bool;
-    fn token_uri(self: @T, token_id: u256) -> felt252;
+    fn setApprovalForAll(ref self: T, operator: ContractAddress, approved: bool);
+    fn getApproved(self: @T, token_id: u256) -> ContractAddress;
+    fn isApprovedForAll(self: @T, owner: ContractAddress, operator: ContractAddress) -> bool;
+    fn tokenURI(self: @T, token_id: u256) -> felt252;
+
+    // ERC165
+    fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
 
     // Main
     fn artName(self: @T, key: felt252) -> felt252;
@@ -52,8 +55,9 @@ mod LeetLoot {
         _balances: LegacyMap<ContractAddress, u256>,
         _token_approvals: LegacyMap<u256, ContractAddress>,
         _operator_approvals: LegacyMap<(ContractAddress, ContractAddress), bool>,
-        _token_uri: LegacyMap<u256, felt252>,
+        _tokenURI: LegacyMap<u256, felt252>,
         _token_index: u256,
+        _supported_interfaces: LegacyMap<felt252, bool>,
         _artsNames: LegacyMap<felt252, felt252>,
         _arts: LegacyMap<felt252, LongString>,
     }
@@ -97,7 +101,7 @@ mod LeetLoot {
         fn initializer(
             ref self: ContractState, owner: ContractAddress, name: felt252, symbol: felt252
         ) {
-            self._transfer_ownership(owner);
+            self._transferOwnership(owner);
             self._name.write(name);
             self._symbol.write(symbol);
         }
@@ -109,12 +113,12 @@ mod LeetLoot {
             assert(caller == owner, 'Not owner');
         }
 
-        fn _transfer_ownership(ref self: ContractState, new_owner: ContractAddress) {
+        fn _transferOwnership(ref self: ContractState, new_owner: ContractAddress) {
             let previous_owner: ContractAddress = self._owner.read();
             self._owner.write(new_owner);
         }
 
-        fn _owner_of(self: @ContractState, token_id: u256) -> ContractAddress {
+        fn _ownerOf(self: @ContractState, token_id: u256) -> ContractAddress {
             let owner = self._owners.read(token_id);
             match owner.is_zero() {
                 bool::False(()) => owner,
@@ -123,13 +127,13 @@ mod LeetLoot {
         }
 
         fn _approve(ref self: ContractState, to: ContractAddress, token_id: u256) {
-            let owner = self._owner_of(token_id);
+            let owner = self._ownerOf(token_id);
             assert(owner != to, 'ERC721: approval to owner');
 
             self._token_approvals.write(token_id, to);
         }
 
-        fn _set_approval_for_all(
+        fn _setApprovalForAll(
             ref self: ContractState,
             owner: ContractAddress,
             operator: ContractAddress,
@@ -142,11 +146,11 @@ mod LeetLoot {
         fn _is_approved_or_owner(
             self: @ContractState, spender: ContractAddress, token_id: u256
         ) -> bool {
-            let owner = self._owner_of(token_id);
-            let is_approved_for_all = LeetLootImpl::is_approved_for_all(self, owner, spender);
+            let owner = self._ownerOf(token_id);
+            let isApprovedForAll = LeetLootImpl::isApprovedForAll(self, owner, spender);
             owner == spender
-                || is_approved_for_all
-                || spender == LeetLootImpl::get_approved(self, token_id)
+                || isApprovedForAll
+                || spender == LeetLootImpl::getApproved(self, token_id)
         }
 
         fn _exists(self: @ContractState, token_id: u256) -> bool {
@@ -157,7 +161,7 @@ mod LeetLoot {
             ref self: ContractState, from: ContractAddress, to: ContractAddress, token_id: u256
         ) {
             assert(!to.is_zero(), 'ERC721: invalid receiver');
-            let owner = self._owner_of(token_id);
+            let owner = self._ownerOf(token_id);
             assert(from == owner, 'ERC721: wrong sender');
 
             self._token_approvals.write(token_id, Zeroable::zero());
@@ -165,6 +169,25 @@ mod LeetLoot {
             self._balances.write(from, self._balances.read(from) - 1);
             self._balances.write(to, self._balances.read(to) + 1);
             self._owners.write(token_id, to);
+        }
+
+        fn _supportsInterface(self: @ContractState, interface_id: felt252) -> bool {
+            if interface_id == 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055 {
+                return true;
+            }
+            self._supported_interfaces.read(interface_id)
+        }
+
+        fn registerInterface(ref self: ContractState, interface_id: felt252) {
+            self._supported_interfaces.write(interface_id, true);
+        }
+
+        fn deregisterInterface(ref self: ContractState, interface_id: felt252) {
+            assert(
+                interface_id != 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055,
+                'Invalid id'
+            );
+            self._supported_interfaces.write(interface_id, false);
         }
 
         fn _mint(ref self: ContractState, to: ContractAddress) {
@@ -187,15 +210,15 @@ mod LeetLoot {
             self._owner.read()
         }
 
-        fn transfer_ownership(ref self: ContractState, new_owner: ContractAddress) {
+        fn transferOwnership(ref self: ContractState, new_owner: ContractAddress) {
             assert(!new_owner.is_zero(), 'New owner is the zero address');
             self._assert_only_owner();
-            self._transfer_ownership(new_owner);
+            self._transferOwnership(new_owner);
         }
 
-        fn renounce_ownership(ref self: ContractState) {
+        fn renounceOwnership(ref self: ContractState) {
             self._assert_only_owner();
-            self._transfer_ownership(Zeroable::zero());
+            self._transferOwnership(Zeroable::zero());
         }
 
         fn name(self: @ContractState) -> felt252 {
@@ -206,44 +229,42 @@ mod LeetLoot {
             self._symbol.read()
         }
 
-        fn balance_of(self: @ContractState, account: ContractAddress) -> u256 {
+        fn balanceOf(self: @ContractState, account: ContractAddress) -> u256 {
             assert(!account.is_zero(), 'Invalid account');
             self._balances.read(account)
         }
 
-        fn owner_of(self: @ContractState, token_id: u256) -> ContractAddress {
-            self._owner_of(token_id)
+        fn ownerOf(self: @ContractState, token_id: u256) -> ContractAddress {
+            self._ownerOf(token_id)
         }
 
         fn approve(ref self: ContractState, to: ContractAddress, token_id: u256) {
-            let owner = self._owner_of(token_id);
+            let owner = self._ownerOf(token_id);
 
             let caller = get_caller_address();
             assert(
-                owner == caller || LeetLootImpl::is_approved_for_all(@self, owner, caller),
+                owner == caller || LeetLootImpl::isApprovedForAll(@self, owner, caller),
                 'ERC721: unauthorized caller'
             );
             self._approve(to, token_id);
         }
 
-        fn set_approval_for_all(
-            ref self: ContractState, operator: ContractAddress, approved: bool
-        ) {
-            self._set_approval_for_all(get_caller_address(), operator, approved)
+        fn setApprovalForAll(ref self: ContractState, operator: ContractAddress, approved: bool) {
+            self._setApprovalForAll(get_caller_address(), operator, approved)
         }
 
-        fn get_approved(self: @ContractState, token_id: u256) -> ContractAddress {
+        fn getApproved(self: @ContractState, token_id: u256) -> ContractAddress {
             assert(self._exists(token_id), 'ERC721: invalid token ID');
             self._token_approvals.read(token_id)
         }
 
-        fn is_approved_for_all(
+        fn isApprovedForAll(
             self: @ContractState, owner: ContractAddress, operator: ContractAddress
         ) -> bool {
             self._operator_approvals.read((owner, operator))
         }
 
-        fn transfer_from(
+        fn transferFrom(
             ref self: ContractState, from: ContractAddress, to: ContractAddress, token_id: u256
         ) {
             assert(
@@ -252,9 +273,13 @@ mod LeetLoot {
             self._transfer(from, to, token_id);
         }
 
-        fn token_uri(self: @ContractState, token_id: u256) -> felt252 {
+        fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
+            return self._supportsInterface(interfaceId);
+        }
+
+        fn tokenURI(self: @ContractState, token_id: u256) -> felt252 {
             assert(self._exists(token_id), 'Invalid token ID');
-            self._token_uri.read(token_id)
+            self._tokenURI.read(token_id)
         }
 
         fn artName(self: @ContractState, key: felt252) -> felt252 {
@@ -328,7 +353,7 @@ mod tests {
         contract.owner().print();
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
-        assert(contract.balance_of(contract.owner()) == 1_u256, 'Wrong symbol');
+        assert(contract.balanceOf(contract.owner()) == 1_u256, 'Wrong symbol');
 
         let mut content = ArrayTrait::<felt252>::new();
         content.append('<svg id="leetart" width="100%" ');

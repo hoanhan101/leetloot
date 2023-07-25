@@ -69,4 +69,6 @@ if __name__ == "__main__":
     # base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAXdJREFUWIXFVkkOwyAMNFEfnSfwa3opiTPM2BClrSVEwuJlvFHMrNkf6ZUdaPX8Lvt3lGhqtMrnJ8eWalevM66r/xUKEUCr/f8TyFwQaPUcZqfPvxkHhwKtnszLziH1a9n+LBX7pKG3uiuDSGRC7qCzoXCvBGNadi6IrXl3qmA2uxFMPjjV3ShY/X0aA4pU6rF1H8AeWT8vIaCswFRlvPAsyOH5HinBGGdQK7dsCIlKL8wMRiqDovQdChG7gP5EJmwfi5jiaRb42Ez7T0V95gYcEgEFN7OQ3cug7/+HAhnMTMlMeSxazB20HWc1nTHKEFCUvge8AD/jXuSGjgTjcTQjtE4pkVmXKYMGTSPABOB6JBwFd1pWQPUM1c77rBS6NKMMfmbB0FgWERgeJEr4UL2SqujPRHR5kGTCVdp5YmcyGVPdcKYEi3Ybtvvy2Zh6z7E06usqzdhdv38ooC5GTFYE+b2hn6iOx4bqerP7ZNy++MgYSvGv6Q3l4pZkdWJdwgAAAABJRU5ErkJggg=="
     # build_svg_with_felt_array(base64)
 
-    build_encoded_svg()
+    # build_encoded_svg()
+    print(str_to_felt("LeetLoot"))
+    print(str_to_felt("LEETLOOT"))
