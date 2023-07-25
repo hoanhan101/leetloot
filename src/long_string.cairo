@@ -1,3 +1,8 @@
+//
+// LongString is a list of felt252 with defined length.
+// Based on https://gist.github.com/glihm/cc83a37f549f1c4e7b3a25fd8aa193cd
+//
+
 use array::{ArrayTrait, SpanTrait};
 use integer::{U8IntoFelt252, U32IntoFelt252, Felt252TryIntoU32};
 use option::OptionTrait;
@@ -5,8 +10,6 @@ use serde::Serde;
 use starknet::{SyscallResult, StorageAccess, StorageBaseAddress};
 use traits::{Into, TryInto};
 
-// LongString is a list of felt252 with defined length.
-// Based on https://gist.github.com/glihm/cc83a37f549f1c4e7b3a25fd8aa193cd
 #[derive(Copy, Drop)]
 struct LongString {
     len: usize,
