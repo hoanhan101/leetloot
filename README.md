@@ -2,11 +2,6 @@
 
 ## Deploy
 
-Test and build
-```
-scarb test && scarb build
-```
-
 If you have a deployer account, double check its correctness
 ```
 vi ~/.starknet_accounts/starknet_open_zeppelin_accounts.json
@@ -27,6 +22,11 @@ If not, create a new account and fund with Starknet Goerli, e.g. https://faucet.
 ```
 starknet new_account --account pusscode
 starknet deploy_account --account=pusscode
+```
+
+Test and build the contract
+```
+scarb test && scarb build
 ```
 
 Declare contract
