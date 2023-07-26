@@ -32,6 +32,8 @@ trait ILeetLoot<T> {
     fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
 
     // Main
+    fn setWhitelist(ref self: T, to: ContractAddress);
+    fn getWhitelist(self: @T) -> ContractAddress;
     fn artName(self: @T, key: felt252) -> felt252;
     fn artSVG(self: @T, key: felt252) -> Array::<felt252>;
 }
@@ -49,6 +51,7 @@ mod LeetLoot {
     #[storage]
     struct Storage {
         _owner: ContractAddress,
+        _whitelist: ContractAddress,
         _name: felt252,
         _symbol: felt252,
         _owners: LegacyMap<u256, ContractAddress>,
@@ -64,9 +67,13 @@ mod LeetLoot {
 
     #[constructor]
     fn constructor(
-        ref self: ContractState, owner: ContractAddress, name: felt252, symbol: felt252
+        ref self: ContractState,
+        owner: ContractAddress,
+        whitelist: ContractAddress,
+        name: felt252,
+        symbol: felt252
     ) {
-        self.initializer(owner, name, symbol);
+        self.initializer(owner, whitelist, name, symbol);
 
         self._mint(owner);
 
@@ -99,9 +106,15 @@ mod LeetLoot {
     #[generate_trait]
     impl InternalImpl of InternalTrait {
         fn initializer(
-            ref self: ContractState, owner: ContractAddress, name: felt252, symbol: felt252
+            ref self: ContractState,
+            owner: ContractAddress,
+            whitelist: ContractAddress,
+            name: felt252,
+            symbol: felt252
         ) {
             self._transferOwnership(owner);
+            self._whitelist.write(whitelist);
+
             self._name.write(name);
             self._symbol.write(symbol);
         }
@@ -114,7 +127,6 @@ mod LeetLoot {
         }
 
         fn _transferOwnership(ref self: ContractState, new_owner: ContractAddress) {
-            let previous_owner: ContractAddress = self._owner.read();
             self._owner.write(new_owner);
         }
 
@@ -172,9 +184,6 @@ mod LeetLoot {
         }
 
         fn _supportsInterface(self: @ContractState, interface_id: felt252) -> bool {
-            if interface_id == 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055 {
-                return true;
-            }
             self._supported_interfaces.read(interface_id)
         }
 
@@ -183,15 +192,12 @@ mod LeetLoot {
         }
 
         fn deregisterInterface(ref self: ContractState, interface_id: felt252) {
-            assert(
-                interface_id != 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055,
-                'Invalid id'
-            );
             self._supported_interfaces.write(interface_id, false);
         }
 
         fn _mint(ref self: ContractState, to: ContractAddress) {
             assert(!to.is_zero(), 'Invalid receiver');
+            assert(to == self.getWhitelist() || to == self.owner(), 'Not owner or whitelist');
             let current: u256 = self._token_index.read();
             self._balances.write(to, self._balances.read(to) + 1);
             self._owners.write(current, to);
@@ -273,13 +279,22 @@ mod LeetLoot {
             self._transfer(from, to, token_id);
         }
 
+        fn tokenURI(self: @ContractState, token_id: u256) -> felt252 {
+            assert(self._exists(token_id), 'Invalid token ID');
+            self._tokenURI.read(token_id)
+        }
+
         fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
             return self._supportsInterface(interfaceId);
         }
 
-        fn tokenURI(self: @ContractState, token_id: u256) -> felt252 {
-            assert(self._exists(token_id), 'Invalid token ID');
-            self._tokenURI.read(token_id)
+        fn setWhitelist(ref self: ContractState, to: ContractAddress) {
+            self._assert_only_owner();
+            self._whitelist.write(to);
+        }
+
+        fn getWhitelist(self: @ContractState) -> ContractAddress {
+            return self._whitelist.read();
         }
 
         fn artName(self: @ContractState, key: felt252) -> felt252 {
@@ -332,9 +347,13 @@ mod tests {
     use super::{LeetLoot, ILeetLootDispatcher, ILeetLootDispatcherTrait};
     use debug::PrintTrait;
 
+    const DEPLOYER_CONTRACT: felt252 =
+        0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f;
+
     fn deploy() -> ILeetLootDispatcher {
         let mut calldata: Array<felt252> = array::ArrayTrait::new();
-        calldata.append('1');
+        calldata.append(DEPLOYER_CONTRACT);
+        calldata.append(DEPLOYER_CONTRACT);
         calldata.append('LeetLoot');
         calldata.append('LEETLOOT');
 

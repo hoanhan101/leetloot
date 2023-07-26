@@ -7,13 +7,25 @@ Test and build
 scarb test && scarb build
 ```
 
-Create new account
+If you have a deployer account, double check its correctness
 ```
-starknet new_account --account pusscode
+vi ~/.starknet_accounts/starknet_open_zeppelin_accounts.json
+{
+    "alpha-goerli": {
+        "pusscode": {
+            "private_key": "REDACTED",
+            "public_key": "REDACTED",
+            "salt": "REDACTED",
+            "address": "REDACTED",
+            "deployed": true
+        }
+    }
+}
 ```
 
-Fund with Starknet Goerli, e.g. https://faucet.goerli.starknet.io/, then deploy account
+If not, create a new account and fund with Starknet Goerli, e.g. https://faucet.goerli.starknet.io/, then deploy account
 ```
+starknet new_account --account pusscode
 starknet deploy_account --account=pusscode
 ```
 
