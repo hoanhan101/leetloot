@@ -48,6 +48,11 @@ mod LeetLoot {
     use starknet::ContractAddress;
     use zeroable::Zeroable;
 
+    const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
+    const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
+    const IERC721_METADATA_ID: felt252 =
+        0x6069a70848f907fa57668ba1875164eb4dcee693952468581406d131081bbd;
+
     #[storage]
     struct Storage {
         _owner: ContractAddress,
@@ -114,6 +119,10 @@ mod LeetLoot {
         ) {
             self._transferOwnership(owner);
             self._whitelist.write(whitelist);
+
+            self._registerInterface(ISRC5_ID);
+            self._registerInterface(IERC721_ID);
+            self._registerInterface(IERC721_METADATA_ID);
 
             self._name.write(name);
             self._symbol.write(symbol);
@@ -187,11 +196,11 @@ mod LeetLoot {
             self._supported_interfaces.read(interface_id)
         }
 
-        fn registerInterface(ref self: ContractState, interface_id: felt252) {
+        fn _registerInterface(ref self: ContractState, interface_id: felt252) {
             self._supported_interfaces.write(interface_id, true);
         }
 
-        fn deregisterInterface(ref self: ContractState, interface_id: felt252) {
+        fn _deregisterInterface(ref self: ContractState, interface_id: felt252) {
             self._supported_interfaces.write(interface_id, false);
         }
 
