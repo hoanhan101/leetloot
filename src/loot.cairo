@@ -1,12 +1,23 @@
 //
 // LeetLoot is an onchain pixel art collection.
-// It consists of 75 characters for Loot Survivor, an onchain arcade machine game.
-// ERC721 implementation is based on OpenZeppelin's implementation.
-// By hoanh.eth
+// It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game.
+// ERC721 implementation is based on OpenZeppelin's.
+// By hoanh.eth & the 1337 5325.
 //
 
 use starknet::ContractAddress;
 use super::long_string::LongString;
+use super::beast;
+
+// use super::beast::Beast::{
+//     Warlock, Typhon, Jiangshi, Anansi, Basilisk, Gorgon, Kitsune, Lich, Chimera, Wendigo, Rakshasa,
+//     Werewolf, Banshee, Draugr, Vampire, Goblin, Ghoul, Wraith, Sprite, Kappa, Fairy, Leprechaun,
+//     Kelpie, Pixie, Gnome, Griffin, Manticore, Phoenix, Dragon, Minotaur, Qilin, Ammit, Nue,
+//     Skinwalker, Chupacabra, Weretiger, Wyvern, Roc, Harpy, Pegasus, Hippogriff, Fenrir, Jaguar,
+//     Satori, DireWolf, Bear, Wolf, Mantis, Spider, Rat, Kraken, Colossus, Balrog, Leviathan,
+//     Tarrasque, Titan, Nephilim, Behemoth, Hydra, Juggernaut, Oni, Jotunn, Ettin, Cyclops, Giant,
+//     NemeanLion, Berserker, Yeti, Golem, Ent, Troll, Bigfoot, Ogre, Orc, Skeleton,
+// };
 
 // LeetLoot interface.
 #[starknet::interface]
@@ -34,8 +45,8 @@ trait ILeetLoot<T> {
     // Main
     fn setWhitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
-    fn artName(self: @T, key: felt252) -> felt252;
-    fn artSVG(self: @T, key: felt252) -> Array::<felt252>;
+    fn artName(self: @T, key: u8) -> felt252;
+    fn artSVG(self: @T, key: u8) -> Array::<felt252>;
 }
 
 // LeetLoot contract.
@@ -47,6 +58,16 @@ mod LeetLoot {
     use starknet::get_caller_address;
     use starknet::ContractAddress;
     use zeroable::Zeroable;
+    use super::beast::{
+        Warlock, Typhon, Jiangshi, Anansi, Basilisk, Gorgon, Kitsune, Lich, Chimera, Wendigo,
+        Rakshasa, Werewolf, Banshee, Draugr, Vampire, Goblin, Ghoul, Wraith, Sprite, Kappa, Fairy,
+        Leprechaun, Kelpie, Pixie, Gnome, Griffin, Manticore, Phoenix, Dragon, Minotaur, Qilin,
+        Ammit, Nue, Skinwalker, Chupacabra, Weretiger, Wyvern, Roc, Harpy, Pegasus, Hippogriff,
+        Fenrir, Jaguar, Satori, DireWolf, Bear, Wolf, Mantis, Spider, Rat, Kraken, Colossus, Balrog,
+        Leviathan, Tarrasque, Titan, Nephilim, Behemoth, Hydra, Juggernaut, Oni, Jotunn, Ettin,
+        Cyclops, Giant, NemeanLion, Berserker, Yeti, Golem, Ent, Troll, Bigfoot, Ogre, Orc,
+        Skeleton, getBeastName, getBeastPixels
+    };
 
     const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
     const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
@@ -66,8 +87,8 @@ mod LeetLoot {
         _tokenURI: LegacyMap<u256, felt252>,
         _token_index: u256,
         _supported_interfaces: LegacyMap<felt252, bool>,
-        _artsNames: LegacyMap<felt252, felt252>,
-        _arts: LegacyMap<felt252, LongString>,
+        _artsNames: LegacyMap<u8, felt252>,
+        _arts: LegacyMap<u8, LongString>,
     }
 
     #[constructor]
@@ -82,30 +103,7 @@ mod LeetLoot {
 
         self._mint(owner);
 
-        let mut content = ArrayTrait::<felt252>::new();
-        content.append('data:image/png;base64,iVBORw0KG');
-        content.append('goAAAANSUhEUgAAACAAAAAgCAYAAABz');
-        content.append('enr0AAAAAXNSR0IArs4c6QAAAXdJREF');
-        content.append('UWIXFVkkOwyAMNFEfnSfwa3opiTPM2B');
-        content.append('ClrSVEwuJlvFHMrNkf6ZUdaPX8Lvt3l');
-        content.append('GhqtMrnJ8eWalevM66r/xUKEUCr/f8T');
-        content.append('yFwQaPUcZqfPvxkHhwKtnszLziH1a9n');
-        content.append('+LBX7pKG3uiuDSGRC7qCzoXCvBGNadi');
-        content.append('6IrXl3qmA2uxFMPjjV3ShY/X0aA4pU6');
-        content.append('rF1H8AeWT8vIaCswFRlvPAsyOH5HinB');
-        content.append('GGdQK7dsCIlKL8wMRiqDovQdChG7gP5');
-        content.append('EJmwfi5jiaRb42Ez7T0V95gYcEgEFN7');
-        content.append('OQ3cug7/+HAhnMTMlMeSxazB20HWc1n');
-        content.append('THKEFCUvge8AD/jXuSGjgTjcTQjtE4p');
-        content.append('kVmXKYMGTSPABOB6JBwFd1pWQPUM1c7');
-        content.append('7rBS6NKMMfmbB0FgWERgeJEr4UL2Squ');
-        content.append('jPRHR5kGTCVdp5YmcyGVPdcKYEi3Ybt');
-        content.append('vvy2Zh6z7E06usqzdhdv38ooC5GTFYE');
-        content.append('+b2hn6iOx4bqerP7ZNy++MgYSvGv6Q3');
-        content.append('l4pZkdWJdwgAAAABJRU5ErkJggg==');
-
-        let ls: LongString = content.into();
-        self._storeArt(0, 'Chimera', ls);
+        self._storeArt(0, getBeastName(Chimera), getBeastPixels(Chimera));
     }
 
     #[generate_trait]
@@ -213,7 +211,7 @@ mod LeetLoot {
             self._token_index.write(current + 1);
         }
 
-        fn _storeArt(ref self: ContractState, key: felt252, name: felt252, content: LongString) {
+        fn _storeArt(ref self: ContractState, key: u8, name: felt252, content: LongString) {
             self._artsNames.write(key, name);
             self._arts.write(key, content);
         }
@@ -306,11 +304,11 @@ mod LeetLoot {
             return self._whitelist.read();
         }
 
-        fn artName(self: @ContractState, key: felt252) -> felt252 {
+        fn artName(self: @ContractState, key: u8) -> felt252 {
             return self._artsNames.read(key);
         }
 
-        fn artSVG(self: @ContractState, key: felt252) -> Array::<felt252> {
+        fn artSVG(self: @ContractState, key: u8) -> Array::<felt252> {
             let mut content = ArrayTrait::<felt252>::new();
             content.append('<svg id="leetart" width="100%" ');
             content.append('height="100%" viewBox="0 0 2000');
