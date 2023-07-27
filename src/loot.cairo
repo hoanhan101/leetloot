@@ -9,45 +9,34 @@ use starknet::ContractAddress;
 use super::long_string::LongString;
 use super::beast;
 
-// use super::beast::Beast::{
-//     Warlock, Typhon, Jiangshi, Anansi, Basilisk, Gorgon, Kitsune, Lich, Chimera, Wendigo, Rakshasa,
-//     Werewolf, Banshee, Draugr, Vampire, Goblin, Ghoul, Wraith, Sprite, Kappa, Fairy, Leprechaun,
-//     Kelpie, Pixie, Gnome, Griffin, Manticore, Phoenix, Dragon, Minotaur, Qilin, Ammit, Nue,
-//     Skinwalker, Chupacabra, Weretiger, Wyvern, Roc, Harpy, Pegasus, Hippogriff, Fenrir, Jaguar,
-//     Satori, DireWolf, Bear, Wolf, Mantis, Spider, Rat, Kraken, Colossus, Balrog, Leviathan,
-//     Tarrasque, Titan, Nephilim, Behemoth, Hydra, Juggernaut, Oni, Jotunn, Ettin, Cyclops, Giant,
-//     NemeanLion, Berserker, Yeti, Golem, Ent, Troll, Bigfoot, Ogre, Orc, Skeleton,
-// };
-
 // LeetLoot interface.
 #[starknet::interface]
 trait ILeetLoot<T> {
     // Ownership
     fn owner(self: @T) -> ContractAddress;
-    fn transferOwnership(ref self: T, new_owner: ContractAddress);
+    fn transferOwnership(ref self: T, to: ContractAddress);
     fn renounceOwnership(ref self: T);
 
     // ERC721
     fn name(self: @T) -> felt252;
     fn symbol(self: @T) -> felt252;
     fn balanceOf(self: @T, account: ContractAddress) -> u256;
-    fn ownerOf(self: @T, token_id: u256) -> ContractAddress;
-    fn transferFrom(ref self: T, from: ContractAddress, to: ContractAddress, token_id: u256);
-    fn approve(ref self: T, to: ContractAddress, token_id: u256);
+    fn ownerOf(self: @T, tokenID: u256) -> ContractAddress;
+    fn transferFrom(ref self: T, from: ContractAddress, to: ContractAddress, tokenID: u256);
+    fn approve(ref self: T, to: ContractAddress, tokenID: u256);
     fn setApprovalForAll(ref self: T, operator: ContractAddress, approved: bool);
-    fn getApproved(self: @T, token_id: u256) -> ContractAddress;
+    fn getApproved(self: @T, tokenID: u256) -> ContractAddress;
     fn isApprovedForAll(self: @T, owner: ContractAddress, operator: ContractAddress) -> bool;
-    fn tokenURI(self: @T, token_id: u256) -> felt252;
 
     // ERC165
     fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
 
     // Main
-    fn setWhitelist(ref self: T, to: ContractAddress);
+    fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
-    fn artName(self: @T, key: u8) -> felt252;
-    // fn artMetadata(self: @T, key: u8) -> felt252;
-    fn artSVG(self: @T, key: u8) -> Array::<felt252>;
+    fn mint(ref self: T, to: ContractAddress, beast: u8);
+    fn tokenURI(self: @T, tokenID: u256) -> felt252;
+    fn tokenSVG(self: @T, tokenID: u256) -> Array::<felt252>;
 }
 
 // LeetLoot contract.
@@ -74,13 +63,11 @@ mod LeetLoot {
         _symbol: felt252,
         _owners: LegacyMap<u256, ContractAddress>,
         _balances: LegacyMap<ContractAddress, u256>,
-        _token_approvals: LegacyMap<u256, ContractAddress>,
-        _operator_approvals: LegacyMap<(ContractAddress, ContractAddress), bool>,
-        _tokenURI: LegacyMap<u256, felt252>,
-        _token_index: u256,
-        _supported_interfaces: LegacyMap<felt252, bool>,
-        _artsNames: LegacyMap<u8, felt252>,
-        _arts: LegacyMap<u8, LongString>,
+        _tokenApprovals: LegacyMap<u256, ContractAddress>,
+        _operatorApprovals: LegacyMap<(ContractAddress, ContractAddress), bool>,
+        _tokenIndex: u256,
+        _supportedInterfaces: LegacyMap<felt252, bool>,
+        _beasts: LegacyMap<u256, u8>,
     }
 
     #[constructor]
@@ -92,10 +79,6 @@ mod LeetLoot {
         symbol: felt252
     ) {
         self.initializer(owner, whitelist, name, symbol);
-
-        self._mint(owner);
-
-        self._storeArt(0, getBeastName(CHIMERA), getBeastPixel(CHIMERA));
     }
 
     #[generate_trait]
@@ -125,23 +108,23 @@ mod LeetLoot {
             assert(caller == owner, 'Not owner');
         }
 
-        fn _transferOwnership(ref self: ContractState, new_owner: ContractAddress) {
-            self._owner.write(new_owner);
+        fn _transferOwnership(ref self: ContractState, to: ContractAddress) {
+            self._owner.write(to);
         }
 
-        fn _ownerOf(self: @ContractState, token_id: u256) -> ContractAddress {
-            let owner = self._owners.read(token_id);
+        fn _ownerOf(self: @ContractState, tokenID: u256) -> ContractAddress {
+            let owner = self._owners.read(tokenID);
             match owner.is_zero() {
                 bool::False(()) => owner,
                 bool::True(()) => panic_with_felt252('Invalid token ID')
             }
         }
 
-        fn _approve(ref self: ContractState, to: ContractAddress, token_id: u256) {
-            let owner = self._ownerOf(token_id);
+        fn _approve(ref self: ContractState, to: ContractAddress, tokenID: u256) {
+            let owner = self._ownerOf(tokenID);
             assert(owner != to, 'ERC721: approval to owner');
 
-            self._token_approvals.write(token_id, to);
+            self._tokenApprovals.write(tokenID, to);
         }
 
         fn _setApprovalForAll(
@@ -151,61 +134,54 @@ mod LeetLoot {
             approved: bool
         ) {
             assert(owner != operator, 'ERC721: self approval');
-            self._operator_approvals.write((owner, operator), approved);
+            self._operatorApprovals.write((owner, operator), approved);
         }
 
         fn _is_approved_or_owner(
-            self: @ContractState, spender: ContractAddress, token_id: u256
+            self: @ContractState, spender: ContractAddress, tokenID: u256
         ) -> bool {
-            let owner = self._ownerOf(token_id);
+            let owner = self._ownerOf(tokenID);
             let isApprovedForAll = LeetLootImpl::isApprovedForAll(self, owner, spender);
             owner == spender
                 || isApprovedForAll
-                || spender == LeetLootImpl::getApproved(self, token_id)
+                || spender == LeetLootImpl::getApproved(self, tokenID)
         }
 
-        fn _exists(self: @ContractState, token_id: u256) -> bool {
-            !self._owners.read(token_id).is_zero()
+        fn _exists(self: @ContractState, tokenID: u256) -> bool {
+            !self._owners.read(tokenID).is_zero()
         }
 
         fn _transfer(
-            ref self: ContractState, from: ContractAddress, to: ContractAddress, token_id: u256
+            ref self: ContractState, from: ContractAddress, to: ContractAddress, tokenID: u256
         ) {
             assert(!to.is_zero(), 'ERC721: invalid receiver');
-            let owner = self._ownerOf(token_id);
+            let owner = self._ownerOf(tokenID);
             assert(from == owner, 'ERC721: wrong sender');
 
-            self._token_approvals.write(token_id, Zeroable::zero());
+            self._tokenApprovals.write(tokenID, Zeroable::zero());
 
             self._balances.write(from, self._balances.read(from) - 1);
             self._balances.write(to, self._balances.read(to) + 1);
-            self._owners.write(token_id, to);
+            self._owners.write(tokenID, to);
         }
 
         fn _supportsInterface(self: @ContractState, interface_id: felt252) -> bool {
-            self._supported_interfaces.read(interface_id)
+            self._supportedInterfaces.read(interface_id)
         }
 
         fn _registerInterface(ref self: ContractState, interface_id: felt252) {
-            self._supported_interfaces.write(interface_id, true);
+            self._supportedInterfaces.write(interface_id, true);
         }
 
         fn _deregisterInterface(ref self: ContractState, interface_id: felt252) {
-            self._supported_interfaces.write(interface_id, false);
+            self._supportedInterfaces.write(interface_id, false);
         }
 
         fn _mint(ref self: ContractState, to: ContractAddress) {
-            assert(!to.is_zero(), 'Invalid receiver');
-            assert(to == self.getWhitelist() || to == self.owner(), 'Not owner or whitelist');
-            let current: u256 = self._token_index.read();
+            let current: u256 = self._tokenIndex.read();
             self._balances.write(to, self._balances.read(to) + 1);
             self._owners.write(current, to);
-            self._token_index.write(current + 1);
-        }
-
-        fn _storeArt(ref self: ContractState, key: u8, name: felt252, content: LongString) {
-            self._artsNames.write(key, name);
-            self._arts.write(key, content);
+            self._tokenIndex.write(current + 1);
         }
     }
 
@@ -215,10 +191,10 @@ mod LeetLoot {
             self._owner.read()
         }
 
-        fn transferOwnership(ref self: ContractState, new_owner: ContractAddress) {
-            assert(!new_owner.is_zero(), 'New owner is the zero address');
+        fn transferOwnership(ref self: ContractState, to: ContractAddress) {
+            assert(!to.is_zero(), 'New owner is the zero address');
             self._assert_only_owner();
-            self._transferOwnership(new_owner);
+            self._transferOwnership(to);
         }
 
         fn renounceOwnership(ref self: ContractState) {
@@ -239,55 +215,55 @@ mod LeetLoot {
             self._balances.read(account)
         }
 
-        fn ownerOf(self: @ContractState, token_id: u256) -> ContractAddress {
-            self._ownerOf(token_id)
+        fn ownerOf(self: @ContractState, tokenID: u256) -> ContractAddress {
+            self._ownerOf(tokenID)
         }
 
-        fn approve(ref self: ContractState, to: ContractAddress, token_id: u256) {
-            let owner = self._ownerOf(token_id);
+        fn approve(ref self: ContractState, to: ContractAddress, tokenID: u256) {
+            let owner = self._ownerOf(tokenID);
 
             let caller = get_caller_address();
             assert(
                 owner == caller || LeetLootImpl::isApprovedForAll(@self, owner, caller),
                 'ERC721: unauthorized caller'
             );
-            self._approve(to, token_id);
+            self._approve(to, tokenID);
         }
 
         fn setApprovalForAll(ref self: ContractState, operator: ContractAddress, approved: bool) {
             self._setApprovalForAll(get_caller_address(), operator, approved)
         }
 
-        fn getApproved(self: @ContractState, token_id: u256) -> ContractAddress {
-            assert(self._exists(token_id), 'ERC721: invalid token ID');
-            self._token_approvals.read(token_id)
+        fn getApproved(self: @ContractState, tokenID: u256) -> ContractAddress {
+            assert(self._exists(tokenID), 'ERC721: invalid token ID');
+            self._tokenApprovals.read(tokenID)
         }
 
         fn isApprovedForAll(
             self: @ContractState, owner: ContractAddress, operator: ContractAddress
         ) -> bool {
-            self._operator_approvals.read((owner, operator))
+            self._operatorApprovals.read((owner, operator))
         }
 
         fn transferFrom(
-            ref self: ContractState, from: ContractAddress, to: ContractAddress, token_id: u256
+            ref self: ContractState, from: ContractAddress, to: ContractAddress, tokenID: u256
         ) {
             assert(
-                self._is_approved_or_owner(get_caller_address(), token_id), 'Unauthorized caller'
+                self._is_approved_or_owner(get_caller_address(), tokenID), 'Unauthorized caller'
             );
-            self._transfer(from, to, token_id);
+            self._transfer(from, to, tokenID);
         }
 
-        fn tokenURI(self: @ContractState, token_id: u256) -> felt252 {
-            assert(self._exists(token_id), 'Invalid token ID');
-            self._tokenURI.read(token_id)
+        fn tokenURI(self: @ContractState, tokenID: u256) -> felt252 {
+            assert(self._exists(tokenID), 'Invalid token ID');
+            return '1337';
         }
 
         fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
             return self._supportsInterface(interfaceId);
         }
 
-        fn setWhitelist(ref self: ContractState, to: ContractAddress) {
+        fn whitelist(ref self: ContractState, to: ContractAddress) {
             self._assert_only_owner();
             self._whitelist.write(to);
         }
@@ -296,19 +272,24 @@ mod LeetLoot {
             return self._whitelist.read();
         }
 
-        fn artName(self: @ContractState, key: u8) -> felt252 {
-            return self._artsNames.read(key);
+        fn mint(ref self: ContractState, to: ContractAddress, beast: u8) {
+            assert(!to.is_zero(), 'Invalid receiver');
+            assert(to == self.getWhitelist() || to == self.owner(), 'Not owner or whitelist');
+            self._beasts.write(self._tokenIndex.read(), beast);
+            self._mint(to);
         }
 
-        fn artSVG(self: @ContractState, key: u8) -> Array::<felt252> {
+        fn tokenSVG(self: @ContractState, tokenID: u256) -> Array::<felt252> {
+            assert(tokenID <= self._tokenIndex.read(), 'Invalid token ID');
             let mut content = ArrayTrait::<felt252>::new();
             content.append('<svg id="leetart" width="100%" ');
             content.append('height="100%" viewBox="0 0 2000');
             content.append('0 20000" xmlns="http://www.w3.o');
             content.append('rg/2000/svg"><style>#leetart{ba');
-            content.append('ckground-image:url(');
+            content.append('ckground-image:url(data:image/p');
+            content.append('ng;base64,');
 
-            let ls: LongString = self._arts.read(key);
+            let ls: LongString = getBeastPixel(self._beasts.read(tokenID));
             let mut i = 0_usize;
             loop {
                 if i == ls.len {
@@ -371,34 +352,35 @@ mod tests {
         contract.owner().print();
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
-        assert(contract.balanceOf(contract.owner()) == 1_u256, 'Wrong symbol');
+
+        contract.mint(contract.owner(), 9);
 
         let mut content = ArrayTrait::<felt252>::new();
         content.append('<svg id="leetart" width="100%" ');
         content.append('height="100%" viewBox="0 0 2000');
         content.append('0 20000" xmlns="http://www.w3.o');
         content.append('rg/2000/svg"><style>#leetart{ba');
-        content.append('ckground-image:url(');
-        content.append('data:image/png;base64,iVBORw0KG');
-        content.append('goAAAANSUhEUgAAACAAAAAgCAYAAABz');
-        content.append('enr0AAAAAXNSR0IArs4c6QAAAXdJREF');
-        content.append('UWIXFVkkOwyAMNFEfnSfwa3opiTPM2B');
-        content.append('ClrSVEwuJlvFHMrNkf6ZUdaPX8Lvt3l');
-        content.append('GhqtMrnJ8eWalevM66r/xUKEUCr/f8T');
-        content.append('yFwQaPUcZqfPvxkHhwKtnszLziH1a9n');
-        content.append('+LBX7pKG3uiuDSGRC7qCzoXCvBGNadi');
-        content.append('6IrXl3qmA2uxFMPjjV3ShY/X0aA4pU6');
-        content.append('rF1H8AeWT8vIaCswFRlvPAsyOH5HinB');
-        content.append('GGdQK7dsCIlKL8wMRiqDovQdChG7gP5');
-        content.append('EJmwfi5jiaRb42Ez7T0V95gYcEgEFN7');
-        content.append('OQ3cug7/+HAhnMTMlMeSxazB20HWc1n');
-        content.append('THKEFCUvge8AD/jXuSGjgTjcTQjtE4p');
-        content.append('kVmXKYMGTSPABOB6JBwFd1pWQPUM1c7');
-        content.append('7rBS6NKMMfmbB0FgWERgeJEr4UL2Squ');
-        content.append('jPRHR5kGTCVdp5YmcyGVPdcKYEi3Ybt');
-        content.append('vvy2Zh6z7E06usqzdhdv38ooC5GTFYE');
-        content.append('+b2hn6iOx4bqerP7ZNy++MgYSvGv6Q3');
-        content.append('l4pZkdWJdwgAAAABJRU5ErkJggg==');
+        content.append('ckground-image:url(data:image/p');
+        content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
+        content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
+        content.append('AAAXxJREFUWIXFV8kNwzAMU4Iulp0yR');
+        content.append('nbKaO2ndhWGFJ2ihwAj9aWDutwpIu7x');
+        content.append('R7q5A1vs/fcay1eUuKuxxU6/nxyz064');
+        content.append('hkJEYmV+hEgG0Os8/gcwBgS32PiJePv');
+        content.append('9mHHQFttg78zUWCmlec/ujNMUzDbPVT');
+        content.append('RlEwgl5B50ZhWclGNM1FiqIrWV3qmCO');
+        content.append('eCOYcnCqu1Ww5vs0BhSp1GPrOYAzsgy');
+        content.append('tIQSUFZiqjBeeBTk83yslGGMHtXLLjJ');
+        content.append('Co9MLMYKQyqErfUyFiF9CfyITtYxFTP');
+        content.append('AMhcb52Ue/cgEMioOBmFrJ7Dvo2nzPj');
+        content.append('CmampFMeixZzB23HrqYzRg4BRfY9kAX');
+        content.append('kL+5VbmhIMB69GaF1SglnnVMGDRpGgA');
+        content.append('nA9Uo4Cm50WQHVM1Q7b1+l0KEZOfiZB');
+        content.append('Ti/isDpQaKEIyNXFfOZig4PEidcpV0m');
+        content.append('dsbJGOqGIyVYtNuy3U/PjaH3HEujtq7');
+        content.append('SjN3N+10BdbFickVQ3kP3uRfLUNcb3S');
+        content.append('fjd/8D2TiV4l/TA52mfrhX+5pzAAAAA');
+        content.append('ElFTkSuQmCC');
         content.append(');background-repeat:no-repeat;b');
         content.append('ackground-size:contain;backgrou');
         content.append('nd-position:center;image-render');
@@ -408,9 +390,8 @@ mod tests {
         content.append('isp-edges;image-rendering:pixel');
         content.append('ated;}</style></svg>');
 
-        assert(contract.artName(0) == 'Chimera', 'Wrong name');
-        let art: Array<felt252> = contract.artSVG(0);
+        let art: Array<felt252> = contract.tokenSVG(0);
         art.len().print();
-        assert(art.len() == 33_usize, 'Wrong length');
+        assert(art.len() == 34_usize, 'Wrong length');
     }
 }
