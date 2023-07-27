@@ -46,6 +46,7 @@ trait ILeetLoot<T> {
     fn setWhitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
     fn artName(self: @T, key: u8) -> felt252;
+    // fn artMetadata(self: @T, key: u8) -> felt252;
     fn artSVG(self: @T, key: u8) -> Array::<felt252>;
 }
 
@@ -58,16 +59,7 @@ mod LeetLoot {
     use starknet::get_caller_address;
     use starknet::ContractAddress;
     use zeroable::Zeroable;
-    use super::beast::{
-        Warlock, Typhon, Jiangshi, Anansi, Basilisk, Gorgon, Kitsune, Lich, Chimera, Wendigo,
-        Rakshasa, Werewolf, Banshee, Draugr, Vampire, Goblin, Ghoul, Wraith, Sprite, Kappa, Fairy,
-        Leprechaun, Kelpie, Pixie, Gnome, Griffin, Manticore, Phoenix, Dragon, Minotaur, Qilin,
-        Ammit, Nue, Skinwalker, Chupacabra, Weretiger, Wyvern, Roc, Harpy, Pegasus, Hippogriff,
-        Fenrir, Jaguar, Satori, DireWolf, Bear, Wolf, Mantis, Spider, Rat, Kraken, Colossus, Balrog,
-        Leviathan, Tarrasque, Titan, Nephilim, Behemoth, Hydra, Juggernaut, Oni, Jotunn, Ettin,
-        Cyclops, Giant, NemeanLion, Berserker, Yeti, Golem, Ent, Troll, Bigfoot, Ogre, Orc,
-        Skeleton, getBeastName, getBeastPixels
-    };
+    use super::beast::{CHIMERA, getBeastName, getBeastPixel};
 
     const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
     const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
@@ -103,7 +95,7 @@ mod LeetLoot {
 
         self._mint(owner);
 
-        self._storeArt(0, getBeastName(Chimera), getBeastPixels(Chimera));
+        self._storeArt(0, getBeastName(CHIMERA), getBeastPixel(CHIMERA));
     }
 
     #[generate_trait]
