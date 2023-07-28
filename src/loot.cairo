@@ -34,10 +34,8 @@ trait ILeetLoot<T> {
     // Core functions
     fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
-    fn mint(ref self: T, to: ContractAddress, beast: u8);
-    fn tokenURI(self: @T, tokenID: u256) -> felt252;
-    fn tokenImage(self: @T, tokenID: u256) -> Array::<felt252>;
-    fn beastImage(self: @T, beastID: u8) -> Array::<felt252>;
+    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: u8);
+    fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
 }
 
 // LeetLoot contract.
@@ -69,6 +67,9 @@ mod LeetLoot {
         _tokenIndex: u256,
         _supportedInterfaces: LegacyMap<felt252, bool>,
         _beasts: LegacyMap<u256, u8>,
+        _prefixes: LegacyMap<u256, u8>,
+        _suffixes: LegacyMap<u256, u8>,
+        _levels: LegacyMap<u256, u8>,
     }
 
     #[constructor]
@@ -255,43 +256,19 @@ mod LeetLoot {
             self._transfer(from, to, tokenID);
         }
 
-        fn tokenURI(self: @ContractState, tokenID: u256) -> felt252 {
+        fn tokenURI(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(self._exists(tokenID), 'Invalid token ID');
-            return '1337';
-        }
-
-        fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
-            return self._supportsInterface(interfaceId);
-        }
-
-        fn whitelist(ref self: ContractState, to: ContractAddress) {
-            self._assert_only_owner();
-            self._whitelist.write(to);
-        }
-
-        fn getWhitelist(self: @ContractState) -> ContractAddress {
-            return self._whitelist.read();
-        }
-
-        fn mint(ref self: ContractState, to: ContractAddress, beast: u8) {
-            assert(!to.is_zero(), 'Invalid receiver');
-            assert(to == self.owner() || to == self.getWhitelist(), 'Not owner or whitelist');
-            self._beasts.write(self._tokenIndex.read(), beast);
-            self._mint(to);
-        }
-
-        fn tokenImage(self: @ContractState, tokenID: u256) -> Array::<felt252> {
-            assert(tokenID <= self._tokenIndex.read(), 'Invalid token ID');
-            return self.beastImage(self._beasts.read(tokenID));
-        }
-
-        fn beastImage(self: @ContractState, beastID: u8) -> Array::<felt252> {
             let mut content = ArrayTrait::<felt252>::new();
-            content.append('data:image/svg+xml;utf8,<svg wi');
-            content.append('dth="100%" height="100%" xmlns=');
-            content.append('"http://www.w3.org/2000/svg"><s');
-            content.append('tyle>svg{background-image:url(d');
-            content.append('ata:image/png;base64,');
+            let beastID = self._beasts.read(tokenID);
+
+            content.append('data:application/json;utf-8,');
+            content.append('{"image":"');
+            content.append('data:image/svg+xml;utf8,<svg%20');
+            content.append('width="100%"%20height="100%"%20');
+            content.append('viewBox="0%200%2020000%2020000');
+            content.append('"%20xmlns="http://www.w3.org/20');
+            content.append('00/svg"><style>svg{background-i');
+            content.append('mage:url(data:image/png;base64,');
 
             let ls: LongString = getBeastPixel(beastID);
             let mut i = 0_usize;
@@ -311,9 +288,39 @@ mod LeetLoot {
             content.append('ms-interpolation-mode:nearest-n');
             content.append('eighbor;image-rendering:-moz-cr');
             content.append('isp-edges;image-rendering:pixel');
-            content.append('ated;}</style></svg>');
+            content.append('ated;}</style></svg>"}');
 
             return content;
+        }
+
+        fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
+            return self._supportsInterface(interfaceId);
+        }
+
+        fn whitelist(ref self: ContractState, to: ContractAddress) {
+            self._assert_only_owner();
+            self._whitelist.write(to);
+        }
+
+        fn getWhitelist(self: @ContractState) -> ContractAddress {
+            return self._whitelist.read();
+        }
+
+        fn mint(
+            ref self: ContractState,
+            to: ContractAddress,
+            beast: u8,
+            prefix: u8,
+            suffix: u8,
+            level: u8
+        ) {
+            assert(!to.is_zero(), 'Invalid receiver');
+            assert(to == self.owner() || to == self.getWhitelist(), 'Not owner or whitelist');
+            let current: u256 = self._tokenIndex.read();
+            self._beasts.write(current, beast);
+            self._prefixes.write(current, prefix);
+            self._suffixes.write(current, suffix);
+            self._mint(to);
         }
     }
 }
@@ -357,45 +364,16 @@ mod tests {
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
 
-        contract.mint(contract.owner(), 9);
+        contract.mint(contract.owner(), 1, 1, 1, 1);
+        let uri = contract.tokenURI(0);
+        let mut i = 0_usize;
+        loop {
+            if i == uri.len() {
+                break;
+            }
 
-        let mut content = ArrayTrait::<felt252>::new();
-        content.append('data:image/svg+xml;utf8,<svg wi');
-        content.append('dth="100%" height="100%" xmlns=');
-        content.append('"http://www.w3.org/2000/svg"><s');
-        content.append('tyle>svg{background-image:url(d');
-        content.append('ata:image/png;base64,');
-        content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-        content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-        content.append('AAAXxJREFUWIXFV8kNwzAMU4Iulp0yR');
-        content.append('nbKaO2ndhWGFJ2ihwAj9aWDutwpIu7x');
-        content.append('R7q5A1vs/fcay1eUuKuxxU6/nxyz064');
-        content.append('hkJEYmV+hEgG0Os8/gcwBgS32PiJePv');
-        content.append('9mHHQFttg78zUWCmlec/ujNMUzDbPVT');
-        content.append('RlEwgl5B50ZhWclGNM1FiqIrWV3qmCO');
-        content.append('eCOYcnCqu1Ww5vs0BhSp1GPrOYAzsgy');
-        content.append('tIQSUFZiqjBeeBTk83yslGGMHtXLLjJ');
-        content.append('Co9MLMYKQyqErfUyFiF9CfyITtYxFTP');
-        content.append('AMhcb52Ue/cgEMioOBmFrJ7Dvo2nzPj');
-        content.append('CmampFMeixZzB23HrqYzRg4BRfY9kAX');
-        content.append('kL+5VbmhIMB69GaF1SglnnVMGDRpGgA');
-        content.append('nA9Uo4Cm50WQHVM1Q7b1+l0KEZOfiZB');
-        content.append('Ti/isDpQaKEIyNXFfOZig4PEidcpV0m');
-        content.append('dsbJGOqGIyVYtNuy3U/PjaH3HEujtq7');
-        content.append('SjN3N+10BdbFickVQ3kP3uRfLUNcb3S');
-        content.append('fjd/8D2TiV4l/TA52mfrhX+5pzAAAAA');
-        content.append('ElFTkSuQmCC');
-        content.append(');background-repeat:no-repeat;b');
-        content.append('ackground-size:contain;backgrou');
-        content.append('nd-position:center;image-render');
-        content.append('ing:-webkit-optimize-contrast;-');
-        content.append('ms-interpolation-mode:nearest-n');
-        content.append('eighbor;image-rendering:-moz-cr');
-        content.append('isp-edges;image-rendering:pixel');
-        content.append('ated;}</style></svg>');
-
-        let art: Array<felt252> = contract.tokenImage(0);
-        art.len().print();
-        assert(art.len() == 33_usize, 'Wrong length');
+            (*uri[i]).print();
+            i += 1;
+        };
     }
 }

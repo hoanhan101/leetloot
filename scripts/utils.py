@@ -61,3 +61,8 @@ def to_cairo(name, content):
 
 if __name__ == "__main__":
     prep_art()
+    print(
+        str_to_array(
+            'data:image/svg+xml;utf8,<svg%20width="100%"%20height="100%"%20viewBox="0%200%2020000%2020000"%20xmlns="http://www.w3.org/2000/svg"><style>svg{background-image:url(data:image/png;base64,'
+        )
+    )
