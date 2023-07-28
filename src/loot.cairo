@@ -304,12 +304,12 @@ mod LeetLoot {
             // Image
             content.append(',"image":"');
             content.append('data:image/svg+xml;utf8,<svg%20');
-            content.append('width="100%"%20height="100%"%20');
-            content.append('viewBox="0%200%2020000%2020000');
-            content.append('"%20xmlns="http://www.w3.org/20');
-            content.append('00/svg"><style>svg{background-i');
-            content.append('mage:url(data:image/png;base64,');
-
+            content.append('width=\\"100%\\"%20height=\\"100%\\');
+            content.append('"%20viewBox=\\"0%200%2020000%202');
+            content.append('0000\\"%20xmlns=\\"http://www.w3.');
+            content.append('org/2000/svg\\"><style>svg{backg');
+            content.append('round-image:url(');
+            content.append('data:image/png;base64,');
             let ls: LongString = getBeastPixel(beast);
             let mut i = 0_usize;
             loop {
