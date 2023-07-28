@@ -120,6 +120,7 @@ const ORC: u8 = 74;
 const SKELETON: u8 = 75;
 
 fn getBeastName(beast: u8) -> felt252 {
+    assert(beast >= 1 && beast <= 75, 'Invalid beast');
     if beast == WARLOCK {
         return 'Warlock';
     } else if beast == TYPHON {
@@ -277,6 +278,7 @@ fn getBeastName(beast: u8) -> felt252 {
 
 
 fn getBeastTier(beast: u8) -> felt252 {
+    assert(beast >= 1 && beast <= 75, 'Invalid beast');
     if ((beast >= 1 && beast <= 5)
         || (beast >= 26 && beast <= 30)
         || (beast >= 51 && beast <= 55)) {
@@ -303,6 +305,7 @@ fn getBeastTier(beast: u8) -> felt252 {
 }
 
 fn getBeastType(beast: u8) -> felt252 {
+    assert(beast >= 1 && beast <= 75, 'Invalid beast');
     if (beast >= 1 && beast <= 25) {
         return TYPE_MAGICAL;
     } else if (beast >= 26 && beast <= 50) {
@@ -313,6 +316,7 @@ fn getBeastType(beast: u8) -> felt252 {
 }
 
 fn getBeastPixel(beast: u8) -> LongString {
+    assert(beast >= 1 && beast <= 75, 'Invalid beast');
     let mut content = ArrayTrait::<felt252>::new();
     if beast == ENT {
         content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');

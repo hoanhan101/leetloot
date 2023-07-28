@@ -60,5 +60,7 @@ starknet get_transaction --hash <TX_HASH>
 
 Interact with contract
 ```
-starknet call --function getArtSVG --address <CONTRACT_ADDRESS> --account pusscode --input 0
+starknet call --function beastImage --address <CONTRACT_ADDRESS> --account pusscode --input 0
+
+starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 100000000000000000 --input 0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f 0
 ```

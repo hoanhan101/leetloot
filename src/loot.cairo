@@ -31,12 +31,13 @@ trait ILeetLoot<T> {
     // ERC165
     fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
 
-    // Main
+    // Core functions
     fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
     fn mint(ref self: T, to: ContractAddress, beast: u8);
     fn tokenURI(self: @T, tokenID: u256) -> felt252;
-    fn tokenSVG(self: @T, tokenID: u256) -> Array::<felt252>;
+    fn tokenImage(self: @T, tokenID: u256) -> Array::<felt252>;
+    fn beastImage(self: @T, beastID: u8) -> Array::<felt252>;
 }
 
 // LeetLoot contract.
@@ -274,22 +275,25 @@ mod LeetLoot {
 
         fn mint(ref self: ContractState, to: ContractAddress, beast: u8) {
             assert(!to.is_zero(), 'Invalid receiver');
-            assert(to == self.getWhitelist() || to == self.owner(), 'Not owner or whitelist');
+            assert(to == self.owner() || to == self.getWhitelist(), 'Not owner or whitelist');
             self._beasts.write(self._tokenIndex.read(), beast);
             self._mint(to);
         }
 
-        fn tokenSVG(self: @ContractState, tokenID: u256) -> Array::<felt252> {
+        fn tokenImage(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(tokenID <= self._tokenIndex.read(), 'Invalid token ID');
-            let mut content = ArrayTrait::<felt252>::new();
-            content.append('<svg id="leetart" width="100%" ');
-            content.append('height="100%" viewBox="0 0 2000');
-            content.append('0 20000" xmlns="http://www.w3.o');
-            content.append('rg/2000/svg"><style>#leetart{ba');
-            content.append('ckground-image:url(data:image/p');
-            content.append('ng;base64,');
+            return self.beastImage(self._beasts.read(tokenID));
+        }
 
-            let ls: LongString = getBeastPixel(self._beasts.read(tokenID));
+        fn beastImage(self: @ContractState, beastID: u8) -> Array::<felt252> {
+            let mut content = ArrayTrait::<felt252>::new();
+            content.append('data:image/svg+xml;utf8,<svg wi');
+            content.append('dth="100%" height="100%" xmlns=');
+            content.append('"http://www.w3.org/2000/svg"><s');
+            content.append('tyle>svg{background-image:url(d');
+            content.append('ata:image/png;base64,');
+
+            let ls: LongString = getBeastPixel(beastID);
             let mut i = 0_usize;
             loop {
                 if i == ls.len {
@@ -356,11 +360,11 @@ mod tests {
         contract.mint(contract.owner(), 9);
 
         let mut content = ArrayTrait::<felt252>::new();
-        content.append('<svg id="leetart" width="100%" ');
-        content.append('height="100%" viewBox="0 0 2000');
-        content.append('0 20000" xmlns="http://www.w3.o');
-        content.append('rg/2000/svg"><style>#leetart{ba');
-        content.append('ckground-image:url(data:image/p');
+        content.append('data:image/svg+xml;utf8,<svg wi');
+        content.append('dth="100%" height="100%" xmlns=');
+        content.append('"http://www.w3.org/2000/svg"><s');
+        content.append('tyle>svg{background-image:url(d');
+        content.append('ata:image/png;base64,');
         content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
         content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
         content.append('AAAXxJREFUWIXFV8kNwzAMU4Iulp0yR');
@@ -390,8 +394,8 @@ mod tests {
         content.append('isp-edges;image-rendering:pixel');
         content.append('ated;}</style></svg>');
 
-        let art: Array<felt252> = contract.tokenSVG(0);
+        let art: Array<felt252> = contract.tokenImage(0);
         art.len().print();
-        assert(art.len() == 34_usize, 'Wrong length');
+        assert(art.len() == 33_usize, 'Wrong length');
     }
 }
