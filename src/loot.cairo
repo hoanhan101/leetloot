@@ -34,7 +34,7 @@ trait ILeetLoot<T> {
     // Core functions
     fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
-    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: u8);
+    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: felt252);
     fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
 }
 
@@ -47,7 +47,10 @@ mod LeetLoot {
     use starknet::get_caller_address;
     use starknet::ContractAddress;
     use zeroable::Zeroable;
-    use super::beast::{CHIMERA, getBeastName, getBeastPixel};
+    use super::beast::{
+        CHIMERA, getBeastName, getBeastNamePrefix, getBeastNameSuffix, getBeastType, getBeastTier,
+        getBeastPixel
+    };
 
     const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
     const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
@@ -69,7 +72,7 @@ mod LeetLoot {
         _beasts: LegacyMap<u256, u8>,
         _prefixes: LegacyMap<u256, u8>,
         _suffixes: LegacyMap<u256, u8>,
-        _levels: LegacyMap<u256, u8>,
+        _levels: LegacyMap<u256, felt252>,
     }
 
     #[constructor]
@@ -259,10 +262,47 @@ mod LeetLoot {
         fn tokenURI(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(self._exists(tokenID), 'Invalid token ID');
             let mut content = ArrayTrait::<felt252>::new();
-            let beastID = self._beasts.read(tokenID);
+            let beast: u8 = self._beasts.read(tokenID);
+            let name: felt252 = getBeastName(beast);
+            let prefix: felt252 = getBeastNamePrefix(self._prefixes.read(tokenID));
+            let suffix: felt252 = getBeastNameSuffix(self._suffixes.read(tokenID));
+            let btype: felt252 = getBeastType(beast);
+            let tier: felt252 = getBeastTier(beast);
+            let level: felt252 = self._levels.read(tokenID);
 
-            content.append('data:application/json;utf-8,');
-            content.append('{"image":"');
+            // Name & description
+            content.append('data:application/json;utf8,');
+            content.append('{"name":"');
+            content.append(prefix);
+            content.append('%20');
+            content.append(name);
+            content.append('%20');
+            content.append(suffix);
+            content.append('","description":"LEETLOOT"');
+
+            // Metadata
+            content.append(',"attributes":[{"trait_type":');
+            content.append('"prefix","value":"');
+            content.append(prefix);
+            content.append('"},{"trait_type":');
+            content.append('"name","value":"');
+            content.append(name);
+            content.append('"},{"trait_type":');
+            content.append('"suffix","value":"');
+            content.append(suffix);
+            content.append('"},{"trait_type":');
+            content.append('"type","value":"');
+            content.append(btype);
+            content.append('"},{"trait_type":');
+            content.append('"tier","value":"');
+            content.append(tier);
+            content.append('"},{"trait_type":');
+            content.append('"level","value":"');
+            content.append(level);
+            content.append('"}]');
+
+            // Image
+            content.append(',"image":"');
             content.append('data:image/svg+xml;utf8,<svg%20');
             content.append('width="100%"%20height="100%"%20');
             content.append('viewBox="0%200%2020000%2020000');
@@ -270,7 +310,7 @@ mod LeetLoot {
             content.append('00/svg"><style>svg{background-i');
             content.append('mage:url(data:image/png;base64,');
 
-            let ls: LongString = getBeastPixel(beastID);
+            let ls: LongString = getBeastPixel(beast);
             let mut i = 0_usize;
             loop {
                 if i == ls.len {
@@ -312,7 +352,7 @@ mod LeetLoot {
             beast: u8,
             prefix: u8,
             suffix: u8,
-            level: u8
+            level: felt252
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
             assert(to == self.owner() || to == self.getWhitelist(), 'Not owner or whitelist');
@@ -320,6 +360,7 @@ mod LeetLoot {
             self._beasts.write(current, beast);
             self._prefixes.write(current, prefix);
             self._suffixes.write(current, suffix);
+            self._levels.write(current, level);
             self._mint(to);
         }
     }
@@ -364,7 +405,7 @@ mod tests {
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
 
-        contract.mint(contract.owner(), 1, 1, 1, 1);
+        contract.mint(contract.owner(), 1, 1, 1, 13104); // felt252 13104 is string 30
         let uri = contract.tokenURI(0);
         let mut i = 0_usize;
         loop {
