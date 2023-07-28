@@ -119,6 +119,98 @@ const OGRE: u8 = 73;
 const ORC: u8 = 74;
 const SKELETON: u8 = 75;
 
+// Prefixes
+const PREFIX_AGONY: u8 = 1;
+const PREFIX_APOCALYPSE: u8 = 2;
+const PREFIX_ARMAGEDDON: u8 = 3;
+const PREFIX_BEAST: u8 = 4;
+const PREFIX_BEHEMOTH: u8 = 5;
+const PREFIX_BLIGHT: u8 = 6;
+const PREFIX_BLOOD: u8 = 7;
+const PREFIX_BRAMBLE: u8 = 8;
+const PREFIX_BRIMSTONE: u8 = 9;
+const PREFIX_BROOD: u8 = 10;
+const PREFIX_CARRION: u8 = 11;
+const PREFIX_CATACLYSM: u8 = 12;
+const PREFIX_CHIMERIC: u8 = 13;
+const PREFIX_CORPSE: u8 = 14;
+const PREFIX_CORRUPTION: u8 = 15;
+const PREFIX_DAMNATION: u8 = 16;
+const PREFIX_DEATH: u8 = 17;
+const PREFIX_DEMON: u8 = 18;
+const PREFIX_DIRE: u8 = 19;
+const PREFIX_DRAGON: u8 = 20;
+const PREFIX_DREAD: u8 = 21;
+const PREFIX_DOOM: u8 = 22;
+const PREFIX_DUSK: u8 = 23;
+const PREFIX_EAGLE: u8 = 24;
+const PREFIX_EMPYREAN: u8 = 25;
+const PREFIX_FATE: u8 = 26;
+const PREFIX_FOE: u8 = 27;
+const PREFIX_GALE: u8 = 28;
+const PREFIX_GHOUL: u8 = 29;
+const PREFIX_GLOOM: u8 = 30;
+const PREFIX_GLYPH: u8 = 31;
+const PREFIX_GOLEM: u8 = 32;
+const PREFIX_GRIM: u8 = 33;
+const PREFIX_HATE: u8 = 34;
+const PREFIX_HAVOC: u8 = 35;
+const PREFIX_HONOUR: u8 = 36;
+const PREFIX_HORROR: u8 = 37;
+const PREFIX_HYPNOTIC: u8 = 38;
+const PREFIX_KRAKEN: u8 = 39;
+const PREFIX_LOATH: u8 = 40;
+const PREFIX_MAELSTROM: u8 = 41;
+const PREFIX_MIND: u8 = 42;
+const PREFIX_MIRACLE: u8 = 43;
+const PREFIX_MORBID: u8 = 44;
+const PREFIX_OBLIVION: u8 = 45;
+const PREFIX_ONSLAUGHT: u8 = 46;
+const PREFIX_PAIN: u8 = 47;
+const PREFIX_PANDEMONIUM: u8 = 48;
+const PREFIX_PHOENIX: u8 = 49;
+const PREFIX_PLAGUE: u8 = 50;
+const PREFIX_RAGE: u8 = 51;
+const PREFIX_RAPTURE: u8 = 52;
+const PREFIX_RUNE: u8 = 53;
+const PREFIX_SKULL: u8 = 54;
+const PREFIX_SOL: u8 = 55;
+const PREFIX_SOUL: u8 = 56;
+const PREFIX_SORROW: u8 = 57;
+const PREFIX_SPIRIT: u8 = 58;
+const PREFIX_STORM: u8 = 59;
+const PREFIX_TEMPEST: u8 = 60;
+const PREFIX_TORMENT: u8 = 61;
+const PREFIX_VENGEANCE: u8 = 62;
+const PREFIX_VICTORY: u8 = 63;
+const PREFIX_VIPER: u8 = 64;
+const PREFIX_VORTEX: u8 = 65;
+const PREFIX_WOE: u8 = 66;
+const PREFIX_WRATH: u8 = 67;
+const PREFIX_LIGHTS: u8 = 68;
+const PREFIX_SHIMMERING: u8 = 69;
+
+// Suffixes
+const SUFFIX_BANE: u8 = 1;
+const SUFFIX_ROOT: u8 = 2;
+const SUFFIX_BITE: u8 = 3;
+const SUFFIX_SONG: u8 = 4;
+const SUFFIX_ROAR: u8 = 5;
+const SUFFIX_GRASP: u8 = 6;
+const SUFFIX_INSTRUMENT: u8 = 7;
+const SUFFIX_GLOW: u8 = 8;
+const SUFFIX_BENDER: u8 = 9;
+const SUFFIX_SHADOW: u8 = 10;
+const SUFFIX_WHISPER: u8 = 11;
+const SUFFIX_SHOUT: u8 = 12;
+const SUFFIX_GROWL: u8 = 13;
+const SUFFIX_TEAR: u8 = 14;
+const SUFFIX_PEAK: u8 = 15;
+const SUFFIX_FORM: u8 = 16;
+const SUFFIX_SUN: u8 = 17;
+const SUFFIX_MOON: u8 = 18;
+
+
 fn getBeastName(beast: u8) -> felt252 {
     assert(beast >= 1 && beast <= 75, 'Invalid beast');
     if beast == WARLOCK {
@@ -276,6 +368,193 @@ fn getBeastName(beast: u8) -> felt252 {
     }
 }
 
+fn getBeastNamePrefix(prefix: u8) -> felt252 {
+    assert(prefix >= 1 && prefix <= 69, 'Invalid prefix');
+    if prefix == PREFIX_AGONY {
+        return 'Agony';
+    } else if prefix == PREFIX_APOCALYPSE {
+        return 'Apocalypse';
+    } else if prefix == PREFIX_ARMAGEDDON {
+        return 'Armageddon';
+    } else if prefix == PREFIX_BEAST {
+        return 'Beast';
+    } else if prefix == PREFIX_BEHEMOTH {
+        return 'Behemoth';
+    } else if prefix == PREFIX_BLIGHT {
+        return 'Blight';
+    } else if prefix == PREFIX_BLOOD {
+        return 'Blood';
+    } else if prefix == PREFIX_BRAMBLE {
+        return 'Bramble';
+    } else if prefix == PREFIX_BRIMSTONE {
+        return 'Brimstone';
+    } else if prefix == PREFIX_BROOD {
+        return 'Brood';
+    } else if prefix == PREFIX_CARRION {
+        return 'Carrion';
+    } else if prefix == PREFIX_CATACLYSM {
+        return 'Cataclysm';
+    } else if prefix == PREFIX_CHIMERIC {
+        return 'Chimeric';
+    } else if prefix == PREFIX_CORPSE {
+        return 'Corpse';
+    } else if prefix == PREFIX_CORRUPTION {
+        return 'Corruption';
+    } else if prefix == PREFIX_DAMNATION {
+        return 'Damnation';
+    } else if prefix == PREFIX_DEATH {
+        return 'Death';
+    } else if prefix == PREFIX_DEMON {
+        return 'Demon';
+    } else if prefix == PREFIX_DIRE {
+        return 'Dire';
+    } else if prefix == PREFIX_DRAGON {
+        return 'Dragon';
+    } else if prefix == PREFIX_DREAD {
+        return 'Dread';
+    } else if prefix == PREFIX_DOOM {
+        return 'Doom';
+    } else if prefix == PREFIX_DUSK {
+        return 'Dusk';
+    } else if prefix == PREFIX_EAGLE {
+        return 'Eagle';
+    } else if prefix == PREFIX_EMPYREAN {
+        return 'Empyrean';
+    } else if prefix == PREFIX_FATE {
+        return 'Fate';
+    } else if prefix == PREFIX_FOE {
+        return 'Foe';
+    } else if prefix == PREFIX_GALE {
+        return 'Gale';
+    } else if prefix == PREFIX_GHOUL {
+        return 'Ghoul';
+    } else if prefix == PREFIX_GLOOM {
+        return 'Gloom';
+    } else if prefix == PREFIX_GLYPH {
+        return 'Glyph';
+    } else if prefix == PREFIX_GOLEM {
+        return 'Golem';
+    } else if prefix == PREFIX_GRIM {
+        return 'Grim';
+    } else if prefix == PREFIX_HATE {
+        return 'Hate';
+    } else if prefix == PREFIX_HAVOC {
+        return 'Havoc';
+    } else if prefix == PREFIX_HONOUR {
+        return 'Honour';
+    } else if prefix == PREFIX_HORROR {
+        return 'Horror';
+    } else if prefix == PREFIX_HYPNOTIC {
+        return 'Hypnotic';
+    } else if prefix == PREFIX_KRAKEN {
+        return 'Kraken';
+    } else if prefix == PREFIX_LOATH {
+        return 'Loath';
+    } else if prefix == PREFIX_MAELSTROM {
+        return 'Maelstrom';
+    } else if prefix == PREFIX_MIND {
+        return 'Mind';
+    } else if prefix == PREFIX_MIRACLE {
+        return 'Miracle';
+    } else if prefix == PREFIX_MORBID {
+        return 'Morbid';
+    } else if prefix == PREFIX_OBLIVION {
+        return 'Oblivion';
+    } else if prefix == PREFIX_ONSLAUGHT {
+        return 'Onslaught';
+    } else if prefix == PREFIX_PAIN {
+        return 'Pain';
+    } else if prefix == PREFIX_PANDEMONIUM {
+        return 'Pandemonium';
+    } else if prefix == PREFIX_PHOENIX {
+        return 'Phoenix';
+    } else if prefix == PREFIX_PLAGUE {
+        return 'Plague';
+    } else if prefix == PREFIX_RAGE {
+        return 'Rage';
+    } else if prefix == PREFIX_RAPTURE {
+        return 'Rapture';
+    } else if prefix == PREFIX_RUNE {
+        return 'Rune';
+    } else if prefix == PREFIX_SKULL {
+        return 'Skull';
+    } else if prefix == PREFIX_SOL {
+        return 'Sol';
+    } else if prefix == PREFIX_SOUL {
+        return 'Soul';
+    } else if prefix == PREFIX_SORROW {
+        return 'Sorrow';
+    } else if prefix == PREFIX_SPIRIT {
+        return 'Spirit';
+    } else if prefix == PREFIX_STORM {
+        return 'Storm';
+    } else if prefix == PREFIX_TEMPEST {
+        return 'Tempest';
+    } else if prefix == PREFIX_TORMENT {
+        return 'Torment';
+    } else if prefix == PREFIX_VENGEANCE {
+        return 'Vengeance';
+    } else if prefix == PREFIX_VICTORY {
+        return 'Victory';
+    } else if prefix == PREFIX_VIPER {
+        return 'Viper';
+    } else if prefix == PREFIX_VORTEX {
+        return 'Vortex';
+    } else if prefix == PREFIX_WOE {
+        return 'Woe';
+    } else if prefix == PREFIX_WRATH {
+        return 'Wrath';
+    } else if prefix == PREFIX_LIGHTS {
+        return 'Lights';
+    } else if prefix == PREFIX_SHIMMERING {
+        return 'Shimmering';
+    } else {
+        return '1337';
+    }
+}
+
+fn getBeastNameSuffix(suffix: u8) -> felt252 {
+    assert(suffix >= 1 && suffix <= 18, 'Invalid suffix');
+    if suffix == SUFFIX_BANE {
+        return 'Bane';
+    } else if suffix == SUFFIX_ROOT {
+        return 'Root';
+    } else if suffix == SUFFIX_BITE {
+        return 'Bite';
+    } else if suffix == SUFFIX_SONG {
+        return 'Song';
+    } else if suffix == SUFFIX_ROAR {
+        return 'Roar';
+    } else if suffix == SUFFIX_GRASP {
+        return 'Grasp';
+    } else if suffix == SUFFIX_INSTRUMENT {
+        return 'Instrument';
+    } else if suffix == SUFFIX_GLOW {
+        return 'Glow';
+    } else if suffix == SUFFIX_BENDER {
+        return 'Bender';
+    } else if suffix == SUFFIX_SHADOW {
+        return 'Shadow';
+    } else if suffix == SUFFIX_WHISPER {
+        return 'Whisper';
+    } else if suffix == SUFFIX_SHOUT {
+        return 'Shout';
+    } else if suffix == SUFFIX_GROWL {
+        return 'Growl';
+    } else if suffix == SUFFIX_TEAR {
+        return 'Tear';
+    } else if suffix == SUFFIX_PEAK {
+        return 'Peak';
+    } else if suffix == SUFFIX_FORM {
+        return 'Form';
+    } else if suffix == SUFFIX_SUN {
+        return 'Sun';
+    } else if suffix == SUFFIX_MOON {
+        return 'Moon';
+    } else {
+        return '1337';
+    }
+}
 
 fn getBeastTier(beast: u8) -> felt252 {
     assert(beast >= 1 && beast <= 75, 'Invalid beast');
