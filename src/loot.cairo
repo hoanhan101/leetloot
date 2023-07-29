@@ -1,3 +1,4 @@
+use core::debug::PrintTrait;
 //
 // LeetLoot is an onchain pixel art collection.
 // It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game.
@@ -36,6 +37,7 @@ trait ILeetLoot<T> {
     fn getWhitelist(self: @T) -> ContractAddress;
     fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: felt252);
     fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
+    fn tokenSupply(self: @T) -> u256;
 }
 
 // LeetLoot contract.
@@ -355,13 +357,20 @@ mod LeetLoot {
             level: felt252
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
-            assert(to == self.owner() || to == self.getWhitelist(), 'Not owner or whitelist');
+            // let caller: ContractAddress = get_caller_address();
+            // assert(
+            //     caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
+            // );
             let current: u256 = self._tokenIndex.read();
             self._beasts.write(current, beast);
             self._prefixes.write(current, prefix);
             self._suffixes.write(current, suffix);
             self._levels.write(current, level);
             self._mint(to);
+        }
+
+        fn tokenSupply(self: @ContractState) -> u256 {
+            return self._tokenIndex.read();
         }
     }
 }
@@ -401,11 +410,13 @@ mod tests {
     #[available_gas(2000000000)]
     fn mock() {
         let contract = deploy();
-        contract.owner().print();
+        let owner = contract.owner();
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
+        assert(contract.tokenSupply() == 0, 'Wrong supply');
 
-        contract.mint(contract.owner(), 1, 1, 1, 13104); // felt252 13104 is string 30
+        contract.mint(owner, 1, 1, 1, 13104); // felt252 13104 is string 30
+        assert(contract.tokenSupply() == 1, 'Wrong supply');
         let uri = contract.tokenURI(0);
         let mut i = 0_usize;
         loop {
@@ -416,5 +427,8 @@ mod tests {
             (*uri[i]).print();
             i += 1;
         };
+
+        contract.mint(owner, 1, 1, 1, 13104);
+        assert(contract.tokenSupply() == 2, 'Wrong supply');
     }
 }
