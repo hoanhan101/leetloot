@@ -357,10 +357,10 @@ mod LeetLoot {
             level: felt252
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
-            // let caller: ContractAddress = get_caller_address();
-            // assert(
-            //     caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
-            // );
+            let caller: ContractAddress = get_caller_address();
+            assert(
+                caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
+            );
             let current: u256 = self._tokenIndex.read();
             self._beasts.write(current, beast);
             self._prefixes.write(current, prefix);

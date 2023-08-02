@@ -50,7 +50,7 @@ export CAIRO_COMPILER_ARGS=--add-pythonic-hints
 
 Deploy contract
 ```
-starknet deploy --class_hash <CLASS_HASH> --max_fee 100000000000000000 --input 0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f 0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f 5504917669703282548 5495875148635393876 --account pusscode
+starknet deploy --class_hash <CLASS_HASH> --max_fee 100000000000000000 --input <OWNER_ADDR> <WHITELIST_ADDR> 5504917669703282548 5495875148635393876 --account pusscode
 ```
 
 Check transaction
@@ -60,7 +60,7 @@ starknet get_transaction --hash <TX_HASH>
 
 Interact with contract
 ```
-starknet call --function beastImage --address <CONTRACT_ADDRESS> --account pusscode --input 0
+starknet call --function name --address <CONTRACT_ADDRESS> --account pusscode
 
-starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 100000000000000000 --input 0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f 0
+starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 100000000000000000 --input <TO_ADDR> 1 1 1 13104
 ```
