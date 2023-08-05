@@ -285,9 +285,9 @@ mod LeetLoot {
             content.append('{"name":"');
             content.append(prefix);
             content.append('%20');
-            content.append(name);
-            content.append('%20');
             content.append(suffix);
+            content.append('%20');
+            content.append(name);
             content.append('","description":"LEETLOOT"');
 
             // Metadata
