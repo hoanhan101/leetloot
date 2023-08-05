@@ -31,6 +31,7 @@ trait ILeetLoot<T> {
 
     // ERC165
     fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
+    fn registerInterface(ref self: T, interface_id: felt252);
 
     // Core functions
     fn whitelist(ref self: T, to: ContractAddress);
@@ -54,10 +55,15 @@ mod LeetLoot {
         getBeastPixel
     };
 
+    // https://github.com/OpenZeppelin/cairo-contracts/blob/cairo-2/src/token/erc721/interface.cairo
     const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
     const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
     const IERC721_METADATA_ID: felt252 =
         0x6069a70848f907fa57668ba1875164eb4dcee693952468581406d131081bbd;
+
+    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
+    const IERC721_ID_EIP: felt252 = 0x80ac58cd;
+    const IERC721_METADATA_ID_EIP: felt252 = 0x5b5e139f;
 
     #[storage]
     struct Storage {
@@ -103,6 +109,8 @@ mod LeetLoot {
             self._registerInterface(ISRC5_ID);
             self._registerInterface(IERC721_ID);
             self._registerInterface(IERC721_METADATA_ID);
+            self._registerInterface(IERC721_ID_EIP);
+            self._registerInterface(IERC721_METADATA_ID_EIP);
 
             self._name.write(name);
             self._symbol.write(symbol);
@@ -339,6 +347,10 @@ mod LeetLoot {
             return self._supportsInterface(interfaceId);
         }
 
+        fn registerInterface(ref self: ContractState, interface_id: felt252) {
+            self._registerInterface(interface_id);
+        }
+
         fn whitelist(ref self: ContractState, to: ContractAddress) {
             self._assert_only_owner();
             self._whitelist.write(to);
@@ -414,7 +426,10 @@ mod tests {
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
         assert(contract.tokenSupply() == 0, 'Wrong supply');
-
+        assert(contract.supportsInterface(0x80ac58cd) == true, 'No support interface');
+        assert(contract.supportsInterface(0x150b7a02) == false, 'No support interface');
+        contract.registerInterface(0x150b7a02);
+        assert(contract.supportsInterface(0x150b7a02) == true, 'No support interface');
         contract.mint(owner, 1, 1, 1, 13104); // felt252 13104 is string 30
         assert(contract.tokenSupply() == 1, 'Wrong supply');
         let uri = contract.tokenURI(0);
