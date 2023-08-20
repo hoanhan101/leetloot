@@ -83,6 +83,35 @@ mod LeetLoot {
         _levels: LegacyMap<u256, felt252>,
     }
 
+    #[event]
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        Transfer: Transfer,
+        Approval: Approval,
+        ApprovalForAll: ApprovalForAll
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct Transfer {
+        from: ContractAddress,
+        to: ContractAddress,
+        token_id: u256
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct Approval {
+        owner: ContractAddress,
+        approved: ContractAddress,
+        token_id: u256
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct ApprovalForAll {
+        owner: ContractAddress,
+        operator: ContractAddress,
+        approved: bool
+    }
+
     #[constructor]
     fn constructor(
         ref self: ContractState,
@@ -140,6 +169,7 @@ mod LeetLoot {
             assert(owner != to, 'ERC721: approval to owner');
 
             self._tokenApprovals.write(tokenID, to);
+            self.emit(Approval { owner, approved: to, token_id: tokenID });
         }
 
         fn _setApprovalForAll(
@@ -150,6 +180,7 @@ mod LeetLoot {
         ) {
             assert(owner != operator, 'ERC721: self approval');
             self._operatorApprovals.write((owner, operator), approved);
+            self.emit(ApprovalForAll { owner, operator, approved });
         }
 
         fn _is_approved_or_owner(
@@ -178,6 +209,7 @@ mod LeetLoot {
             self._balances.write(from, self._balances.read(from) - 1);
             self._balances.write(to, self._balances.read(to) + 1);
             self._owners.write(tokenID, to);
+            self.emit(Transfer { from, to, token_id: tokenID });
         }
 
         fn _supportsInterface(self: @ContractState, interface_id: felt252) -> bool {
@@ -197,6 +229,7 @@ mod LeetLoot {
             self._balances.write(to, self._balances.read(to) + 1);
             self._owners.write(current, to);
             self._tokenIndex.write(current + 1);
+            self.emit(Transfer { from: Zeroable::zero(), to, token_id: current });
         }
     }
 
