@@ -183,7 +183,7 @@ mod LeetLoot {
             self.emit(ApprovalForAll { owner, operator, approved });
         }
 
-        fn _is_approved_or_owner(
+        fn _isApprovedOrOwner(
             self: @ContractState, spender: ContractAddress, tokenID: u256
         ) -> bool {
             let owner = self._ownerOf(tokenID);
@@ -297,7 +297,7 @@ mod LeetLoot {
             ref self: ContractState, from: ContractAddress, to: ContractAddress, tokenID: u256
         ) {
             assert(
-                self._is_approved_or_owner(get_caller_address(), tokenID), 'Unauthorized caller'
+                self._isApprovedOrOwner(get_caller_address(), tokenID), 'Unauthorized caller'
             );
             self._transfer(from, to, tokenID);
         }
