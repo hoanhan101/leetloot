@@ -1,16 +1,16 @@
 use core::debug::PrintTrait;
 //
-// LeetLoot is an onchain pixel art collection.
-// It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game.
-// ERC721 implementation is based on OpenZeppelin's.
-// By hoanh.eth.
+// LeetLoot is an onchain pixel art collection
+// It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game
+// ERC721 implementation is based on OpenZeppelin's
+// By hoanh.eth
 //
 
 use starknet::ContractAddress;
 use super::long_string::LongString;
 use super::beast;
 
-// LeetLoot interface.
+// LeetLoot interface
 #[starknet::interface]
 trait ILeetLoot<T> {
     // Ownership
@@ -41,7 +41,7 @@ trait ILeetLoot<T> {
     fn tokenSupply(self: @T) -> u256;
 }
 
-// LeetLoot contract.
+// LeetLoot contract
 #[starknet::contract]
 mod LeetLoot {
     use array::{ArrayTrait};
