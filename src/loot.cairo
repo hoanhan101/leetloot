@@ -3,7 +3,7 @@ use core::debug::PrintTrait;
 // LeetLoot is an onchain pixel art collection.
 // It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game.
 // ERC721 implementation is based on OpenZeppelin's.
-// By hoanh.eth & the 1337 5325.
+// By hoanh.eth.
 //
 
 use starknet::ContractAddress;
@@ -296,9 +296,7 @@ mod LeetLoot {
         fn transferFrom(
             ref self: ContractState, from: ContractAddress, to: ContractAddress, tokenID: u256
         ) {
-            assert(
-                self._isApprovedOrOwner(get_caller_address(), tokenID), 'Unauthorized caller'
-            );
+            assert(self._isApprovedOrOwner(get_caller_address(), tokenID), 'Unauthorized caller');
             self._transfer(from, to, tokenID);
         }
 
