@@ -145,7 +145,7 @@ mod LeetLoot {
             self._symbol.write(symbol);
         }
 
-        fn _assert_only_owner(self: @ContractState) {
+        fn _assertOnlyOwner(self: @ContractState) {
             let owner: ContractAddress = self._owner.read();
             let caller: ContractAddress = get_caller_address();
             assert(!caller.is_zero(), 'Zero address');
@@ -241,12 +241,12 @@ mod LeetLoot {
 
         fn transferOwnership(ref self: ContractState, to: ContractAddress) {
             assert(!to.is_zero(), 'New owner is the zero address');
-            self._assert_only_owner();
+            self._assertOnlyOwner();
             self._transferOwnership(to);
         }
 
         fn renounceOwnership(ref self: ContractState) {
-            self._assert_only_owner();
+            self._assertOnlyOwner();
             self._transferOwnership(Zeroable::zero());
         }
 
@@ -383,7 +383,7 @@ mod LeetLoot {
         }
 
         fn whitelist(ref self: ContractState, to: ContractAddress) {
-            self._assert_only_owner();
+            self._assertOnlyOwner();
             self._whitelist.write(to);
         }
 
