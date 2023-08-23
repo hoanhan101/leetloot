@@ -319,7 +319,7 @@ mod LeetLoot {
             content.append(suffix);
             content.append('%20');
             content.append(name);
-            content.append('","description":"LEETLOOT"');
+            content.append('","description":"LEETLOOT_2"');
 
             // Metadata
             content.append(',"attributes":[{"trait_type":');

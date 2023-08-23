@@ -70,7 +70,7 @@ starknet declare --contract target/dev/leetloot_LeetLoot.sierra.json --account p
 
 Deploy contract
 ```
-starknet deploy --class_hash <CLASS_HASH> --max_fee 100000000000000 --input <OWNER_ADDR> <WHITELIST_ADDR> 5504917669703282548 5495875148635393876 --account pusscode
+starknet deploy --class_hash <CLASS_HASH> --max_fee 1000000000000000 --input <OWNER_ADDR> <WHITELIST_ADDR> 5504917669703282548 5495875148635393876 --account pusscode
 ```
 
 Check transaction
@@ -82,6 +82,6 @@ Interact with contract
 ```
 starknet call --function name --address <CONTRACT_ADDRESS> --account pusscode
 
-starknet invoke --function whitelist --address <CONTRACT_ADDRESS> --account pusscode --max_fee 100000000000000 --input <TO_ADDR>
-starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 100000000000000 --input <TO_ADDR> 1 1 1 13104
+starknet invoke --function whitelist --address <CONTRACT_ADDRESS> --account pusscode --max_fee 1000000000000000 --input <TO_ADDR>
+starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 1000000000000000 --input <TO_ADDR> 1 1 1 13104
 ```
