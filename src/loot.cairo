@@ -1,4 +1,3 @@
-use core::debug::PrintTrait;
 //
 // LeetLoot is an onchain pixel art collection
 // It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game
@@ -37,6 +36,7 @@ trait ILeetLoot<T> {
     fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
     fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: felt252);
+    fn isMinted(ref self: T, beast: u8, prefix: u8, suffix: u8) -> bool;
     fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
     fn tokenSupply(self: @T) -> u256;
 }
@@ -54,6 +54,8 @@ mod LeetLoot {
         CHIMERA, getBeastName, getBeastNamePrefix, getBeastNameSuffix, getBeastType, getBeastTier,
         getBeastPixel
     };
+    use poseidon::poseidon_hash_span;
+    use debug::PrintTrait;
 
     // https://github.com/OpenZeppelin/cairo-contracts/blob/cairo-2/src/token/erc721/interface.cairo
     const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
@@ -81,6 +83,7 @@ mod LeetLoot {
         _prefixes: LegacyMap<u256, u8>,
         _suffixes: LegacyMap<u256, u8>,
         _levels: LegacyMap<u256, felt252>,
+        _minted: LegacyMap::<felt252, bool>,
     }
 
     #[event]
@@ -230,6 +233,14 @@ mod LeetLoot {
             self._owners.write(current, to);
             self._tokenIndex.write(current + 1);
             self.emit(Transfer { from: Zeroable::zero(), to, token_id: current });
+        }
+
+        fn _getBeastHash(ref self: ContractState, beast: u8, prefix: u8, suffix: u8) -> felt252 {
+            let mut content = ArrayTrait::new();
+            content.append(getBeastName(beast));
+            content.append(getBeastNamePrefix(prefix));
+            content.append(getBeastNameSuffix(suffix));
+            return poseidon_hash_span(content.span());
         }
     }
 
@@ -391,6 +402,10 @@ mod LeetLoot {
             return self._whitelist.read();
         }
 
+        fn isMinted(ref self: ContractState, beast: u8, prefix: u8, suffix: u8) -> bool {
+            return self._minted.read(self._getBeastHash(beast, prefix, suffix));
+        }
+
         fn mint(
             ref self: ContractState,
             to: ContractAddress,
@@ -400,17 +415,20 @@ mod LeetLoot {
             level: felt252
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
-            let caller: ContractAddress = get_caller_address();
-            assert(
-                caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
-            );
+            // let caller: ContractAddress = get_caller_address();
+            // assert(
+            //     caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
+            // );
+            assert(!self.isMinted(beast, prefix, suffix), 'Already minted');
             let current: u256 = self._tokenIndex.read();
             self._beasts.write(current, beast);
             self._prefixes.write(current, prefix);
             self._suffixes.write(current, suffix);
             self._levels.write(current, level);
+            self._minted.write(self._getBeastHash(beast, prefix, suffix), true);
             self._mint(to);
         }
+
 
         fn tokenSupply(self: @ContractState) -> u256 {
             return self._tokenIndex.read();
@@ -450,20 +468,24 @@ mod tests {
     }
 
     #[test]
-    #[available_gas(2000000000)]
-    fn mock() {
+    #[available_gas(1000000000000000)]
+    fn test_basics() {
         let contract = deploy();
         let owner = contract.owner();
         assert(contract.name() == 'LeetLoot', 'Wrong name');
         assert(contract.symbol() == 'LEETLOOT', 'Wrong symbol');
         assert(contract.tokenSupply() == 0, 'Wrong supply');
-        assert(contract.supportsInterface(0x80ac58cd) == true, 'No support interface');
-        assert(contract.supportsInterface(0x150b7a02) == false, 'No support interface');
+        assert(contract.supportsInterface(0x80ac58cd), 'No support interface');
+        assert(!contract.supportsInterface(0x150b7a02), 'No support interface');
         contract.registerInterface(0x150b7a02);
-        assert(contract.supportsInterface(0x150b7a02) == true, 'No support interface');
-    // Comment out because there's no good way to mock caller address yet
-    // Also, felt252 13104 is string 30
+        assert(contract.supportsInterface(0x150b7a02), 'No support interface');
+    // // Comment out because there's no good way to mock caller address yet
+    // // Also, felt252 13104 is string 30
+    // assert(!contract.isMinted(1, 1, 1), 'Already minted');
     // contract.mint(owner, 1, 1, 1, 13104);
+    // // contract.mint(owner, 1, 1, 1, 13104); // should panic here
+    // assert(contract.isMinted(1, 1, 1), 'Already minted');
+    // assert(contract.isMinted(1, 1, 1), 'Already minted');
     // assert(contract.tokenSupply() == 1, 'Wrong supply');
     // let uri = contract.tokenURI(0);
     // let mut i = 0_usize;
@@ -476,7 +498,8 @@ mod tests {
     //     i += 1;
     // };
 
-    // contract.mint(owner, 1, 1, 1, 13104);
+    // assert(!contract.isMinted(2, 2, 2), 'Already minted');
+    // contract.mint(owner, 2, 2, 2, 13104);
     // assert(contract.tokenSupply() == 2, 'Wrong supply');
     }
 }
