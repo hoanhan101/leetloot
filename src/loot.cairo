@@ -5,48 +5,16 @@
 // By hoanh.eth
 //
 
-use starknet::ContractAddress;
 use super::long_string::LongString;
 use super::beast;
-
-// LeetLoot interface
-#[starknet::interface]
-trait ILeetLoot<T> {
-    // Ownership
-    fn owner(self: @T) -> ContractAddress;
-    fn transferOwnership(ref self: T, to: ContractAddress);
-    fn renounceOwnership(ref self: T);
-
-    // ERC721
-    fn name(self: @T) -> felt252;
-    fn symbol(self: @T) -> felt252;
-    fn balanceOf(self: @T, account: ContractAddress) -> u256;
-    fn ownerOf(self: @T, tokenID: u256) -> ContractAddress;
-    fn transferFrom(ref self: T, from: ContractAddress, to: ContractAddress, tokenID: u256);
-    fn approve(ref self: T, to: ContractAddress, tokenID: u256);
-    fn setApprovalForAll(ref self: T, operator: ContractAddress, approved: bool);
-    fn getApproved(self: @T, tokenID: u256) -> ContractAddress;
-    fn isApprovedForAll(self: @T, owner: ContractAddress, operator: ContractAddress) -> bool;
-
-    // ERC165
-    fn supportsInterface(self: @T, interfaceId: felt252) -> bool;
-    fn registerInterface(ref self: T, interface_id: felt252);
-
-    // Core functions
-    fn whitelist(ref self: T, to: ContractAddress);
-    fn getWhitelist(self: @T) -> ContractAddress;
-    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: felt252);
-    fn isMinted(ref self: T, beast: u8, prefix: u8, suffix: u8) -> bool;
-    fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
-    fn tokenSupply(self: @T) -> u256;
-}
 
 // LeetLoot contract
 #[starknet::contract]
 mod LeetLoot {
     use array::{ArrayTrait};
     use core::traits::{Into};
-    use super::{ILeetLoot, LongString};
+    use super::{LongString};
+    use leetloot::interfaces::{ILeetLoot};
     use starknet::get_caller_address;
     use starknet::ContractAddress;
     use zeroable::Zeroable;
@@ -239,7 +207,7 @@ mod LeetLoot {
             content.append(getBeastName(beast));
             content.append(getBeastNamePrefix(prefix));
             content.append(getBeastNameSuffix(suffix));
-            return poseidon_hash_span(content.span());
+            poseidon_hash_span(content.span())
         }
     }
 
@@ -381,11 +349,11 @@ mod LeetLoot {
             content.append('isp-edges;image-rendering:pixel');
             content.append('ated;}</style></svg>"}');
 
-            return content;
+            content
         }
 
         fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
-            return self._supportsInterface(interfaceId);
+            self._supportsInterface(interfaceId)
         }
 
         fn registerInterface(ref self: ContractState, interface_id: felt252) {
@@ -402,7 +370,7 @@ mod LeetLoot {
         }
 
         fn isMinted(ref self: ContractState, beast: u8, prefix: u8, suffix: u8) -> bool {
-            return self._minted.read(self._getBeastHash(beast, prefix, suffix));
+            self._minted.read(self._getBeastHash(beast, prefix, suffix))
         }
 
         fn mint(
@@ -414,10 +382,10 @@ mod LeetLoot {
             level: felt252
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
-            // let caller: ContractAddress = get_caller_address();
-            // assert(
-            //     caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
-            // );
+            let caller: ContractAddress = get_caller_address();
+            assert(
+                caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
+            );
             assert(!self.isMinted(beast, prefix, suffix), 'Already minted');
             let current: u256 = self._tokenIndex.read();
             self._beasts.write(current, beast);
@@ -430,7 +398,7 @@ mod LeetLoot {
 
 
         fn tokenSupply(self: @ContractState) -> u256 {
-            return self._tokenIndex.read();
+            self._tokenIndex.read()
         }
     }
 }

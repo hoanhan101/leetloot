@@ -7,8 +7,8 @@ mod tests {
     use traits::{TryInto, Into};
     use option::OptionTrait;
     use result::ResultTrait;
-    use leetloot::loot::{LongString};
-    use leetloot::loot::{LeetLoot, ILeetLootDispatcher, ILeetLootDispatcherTrait};
+    use leetloot::loot::{LongString, LeetLoot};
+    use leetloot::interfaces::{ILeetLootDispatcher, ILeetLootDispatcherTrait};
     use debug::PrintTrait;
 
     const DEPLOYER_CONTRACT: felt252 =
