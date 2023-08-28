@@ -2038,6 +2038,6 @@ fn getBeastPixel(beast: u8) -> LongString {
         content.append('AElFTkSuQmCC');
     }
 
-    return content.into();
+    content.into()
 }
 
