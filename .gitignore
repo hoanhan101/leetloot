@@ -2,3 +2,6 @@ tmp.*
 .env
 
 /target
+
+account
+keys

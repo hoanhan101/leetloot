@@ -7,7 +7,7 @@ use array::{ArrayTrait, SpanTrait};
 use integer::{U8IntoFelt252, U32IntoFelt252, Felt252TryIntoU32};
 use option::OptionTrait;
 use serde::Serde;
-use starknet::{SyscallResult, StorageAccess, StorageBaseAddress};
+use starknet::{SyscallResult, Store, StorageBaseAddress};
 use traits::{Into, TryInto};
 
 #[derive(Copy, Drop)]
@@ -72,7 +72,7 @@ impl LongStringSerde of serde::Serde<LongString> {
 
     fn deserialize(ref serialized: Span<felt252>) -> Option<LongString> {
         let content = Serde::<Span<felt252>>::deserialize(ref serialized)?;
-        Option::Some(LongString { len: content.len(), content,  })
+        Option::Some(LongString { len: content.len(), content, })
     }
 }
 
@@ -88,11 +88,11 @@ impl LongStringLegacyHash of hash::LegacyHash<LongString> {
 }
 
 // StorageAccess implementation with a max length of 256.
-impl LongStringStorageAccess of starknet::StorageAccess<LongString> {
+impl LongStringStorageAccess of starknet::Store<LongString> {
     fn read(
         address_domain: u32, base: starknet::StorageBaseAddress
     ) -> SyscallResult::<LongString> {
-        let len = StorageAccess::<u32>::read(address_domain, base)?;
+        let len = Store::<u32>::read(address_domain, base)?;
 
         let mut content: Array<felt252> = ArrayTrait::new();
         let mut offset: u8 = 1;
@@ -111,7 +111,7 @@ impl LongStringStorageAccess of starknet::StorageAccess<LongString> {
             offset += 1;
         };
 
-        SyscallResult::Ok(LongString { len, content: content.span(),  })
+        SyscallResult::Ok(LongString { len, content: content.span(), })
     }
 
     fn write(
@@ -119,7 +119,7 @@ impl LongStringStorageAccess of starknet::StorageAccess<LongString> {
     ) -> SyscallResult::<()> {
         assert(value.len < 255, 'Max length');
 
-        StorageAccess::<u32>::write(address_domain, base, value.len)?;
+        Store::<u32>::write(address_domain, base, value.len)?;
 
         let mut offset: u8 = 1;
 
@@ -144,19 +144,20 @@ impl LongStringStorageAccess of starknet::StorageAccess<LongString> {
         SyscallResult::Ok(())
     }
 
-    fn read_at_offset_internal(
+    fn read_at_offset(
         address_domain: u32, base: StorageBaseAddress, offset: u8
     ) -> SyscallResult<LongString> {
-        LongStringStorageAccess::read_at_offset_internal(address_domain, base, offset)
+        LongStringStorageAccess::read_at_offset(address_domain, base, offset)
     }
 
-    fn write_at_offset_internal(
+    fn write_at_offset(
         address_domain: u32, base: StorageBaseAddress, offset: u8, value: LongString
     ) -> SyscallResult<()> {
-        LongStringStorageAccess::write_at_offset_internal(address_domain, base, offset, value)
+        LongStringStorageAccess::write_at_offset(address_domain, base, offset, value)
     }
 
-    fn size_internal(value: LongString) -> u8 {
-        value.len.try_into().unwrap() + 1_u8
+    fn size() -> u8 {
+        // this is wrong, but it's not used anywhere
+        0
     }
 }

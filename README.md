@@ -85,3 +85,9 @@ starknet call --function name --address <CONTRACT_ADDRESS> --account pusscode
 starknet invoke --function whitelist --address <CONTRACT_ADDRESS> --account pusscode --max_fee 1000000000000000 --input <TO_ADDR>
 starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode --max_fee 1000000000000000 --input <TO_ADDR> 1 1 1 13104
 ```
+
+
+
+## Test
+
+starkli deploy 0x031356a71c184985f63f4766f9c05cb939897bdb088391c11add23fdc80d6b83 0x3481bceb5771419b69cac998eece0cbf6be21699cdfb1a736f3c28796efbd7d 0x0 0x424541535453 0x424541535453 --account ./account
