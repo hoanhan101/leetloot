@@ -90,4 +90,4 @@ starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode 
 
 ## Test
 
-starkli deploy 0x031356a71c184985f63f4766f9c05cb939897bdb088391c11add23fdc80d6b83 0x3481bceb5771419b69cac998eece0cbf6be21699cdfb1a736f3c28796efbd7d 0x0 0x424541535453 0x424541535453 --account ./account
+starkli deploy 0x02cb532fc4a77e28eca87132b5326830aaf5fa87c6fb3cdc4314a4219ce0545f 0x3481bceb5771419b69cac998eece0cbf6be21699cdfb1a736f3c28796efbd7d 0x0 0x424541535453 0x424541535453 --account ./account --keystore ./keys
