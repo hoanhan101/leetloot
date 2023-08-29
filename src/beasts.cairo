@@ -114,8 +114,8 @@ mod Beasts {
         fn _assertOnlyOwner(self: @ContractState) {
             let owner: ContractAddress = self._owner.read();
             let caller: ContractAddress = get_caller_address();
-        // assert(!caller.is_zero(), 'Zero address');
-        // assert(caller == owner, 'Not owner');
+            assert(!caller.is_zero(), 'Zero address');
+            assert(caller == owner, 'Not owner');
         }
 
         fn _transferOwnership(ref self: ContractState, to: ContractAddress) {
