@@ -65,7 +65,7 @@ cargo build --all --release
 Declare again if failed earlier
 ```
 cd /workspaces/leetloot
-starknet declare --contract target/dev/leetloot_LeetLoot.sierra.json --account pusscode
+starknet declare --contract target/dev/LootSurvivorBeasts_Beasts.sierra.json --account pusscode
 ```
 
 Deploy contract
