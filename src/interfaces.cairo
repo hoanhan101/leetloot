@@ -2,7 +2,7 @@ use starknet::ContractAddress;
 
 // LeetLoot interface
 #[starknet::interface]
-trait ILeetLoot<T> {
+trait IBeasts<T> {
     // Ownership
     fn owner(self: @T) -> ContractAddress;
     fn transferOwnership(ref self: T, to: ContractAddress);
@@ -26,8 +26,9 @@ trait ILeetLoot<T> {
     // Core functions
     fn whitelist(ref self: T, to: ContractAddress);
     fn getWhitelist(self: @T) -> ContractAddress;
-    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: felt252);
+    fn mint(ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: u16);
     fn isMinted(ref self: T, beast: u8, prefix: u8, suffix: u8) -> bool;
     fn tokenURI(self: @T, tokenID: u256) -> Array::<felt252>;
     fn tokenSupply(self: @T) -> u256;
+    fn mintGenesis(ref self: T, to: ContractAddress);
 }
