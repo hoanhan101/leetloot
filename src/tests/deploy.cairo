@@ -9,7 +9,6 @@ mod tests {
     use result::ResultTrait;
     use LootSurvivorBeasts::beasts::{LongString, Beasts};
     use LootSurvivorBeasts::interfaces::{IBeastsDispatcher, IBeastsDispatcherTrait};
-    use debug::PrintTrait;
     use starknet::testing::{set_caller_address};
 
     fn DAO() -> ContractAddress {
@@ -29,7 +28,7 @@ mod tests {
         IBeastsDispatcher { contract_address: addr }
     }
     #[test]
-    #[available_gas(1000000000000000)]
+    #[available_gas(715130)]
     fn test_deploy_args() {
         let contract = deploy();
         let owner = contract.owner();
@@ -40,18 +39,17 @@ mod tests {
     }
 
     #[test]
-    #[available_gas(1000000000000000)]
+    #[available_gas(136114530)]
     fn test_mint_genesis() {
         let contract = deploy();
         let owner = contract.owner();
 
         assert(DAO().into() == owner, 'Wrong owner');
         set_caller_address(DAO());
-        contract.mintGenesis(DAO());
+        contract.mintGenesis(owner);
 
         assert(starknet::get_caller_address() == owner, 'Wrong caller');
         assert(contract.tokenSupply() == 75, 'Wrong supply');
-        contract.tokenURI(1).print();
     }
 }
 // assert(contract.supportsInterface(0x80ac58cd), 'No support interface');

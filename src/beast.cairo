@@ -1,6 +1,8 @@
-use super::long_string::LongString;
+use poseidon::poseidon_hash_span;
 use array::{ArrayTrait};
 use core::traits::{Into};
+
+use super::long_string::LongString;
 
 // Tiers
 const TIER_1: felt252 = '1';
@@ -210,392 +212,396 @@ const SUFFIX_FORM: u8 = 16;
 const SUFFIX_SUN: u8 = 17;
 const SUFFIX_MOON: u8 = 18;
 
-
-fn getBeastName(beast: u8) -> felt252 {
-    assert(beast >= 0 && beast <= 75, 'Invalid beast');
+fn get_name(beast: u8) -> felt252 {
     if beast == WARLOCK {
-        return 'Warlock';
+        'Warlock'
     } else if beast == TYPHON {
-        return 'Typhon';
+        'Typhon'
     } else if beast == JIANGSHI {
-        return 'Jiangshi';
+        'Jiangshi'
     } else if beast == ANANSI {
-        return 'Anansi';
+        'Anansi'
     } else if beast == BASILISK {
-        return 'Basilisk';
+        'Basilisk'
     } else if beast == GORGON {
-        return 'Gorgon';
+        'Gorgon'
     } else if beast == KITSUNE {
-        return 'Kitsune';
+        'Kitsune'
     } else if beast == LICH {
-        return 'Lich';
+        'Lich'
     } else if beast == CHIMERA {
-        return 'Chimera';
+        'Chimera'
     } else if beast == WENDIGO {
-        return 'Wendigo';
+        'Wendigo'
     } else if beast == RAKSHASA {
-        return 'Rakshasa';
+        'Rakshasa'
     } else if beast == WEREWOLF {
-        return 'Werewolf';
+        'Werewolf'
     } else if beast == BANSHEE {
-        return 'Banshee';
+        'Banshee'
     } else if beast == DRAUGR {
-        return 'Draugr';
+        'Draugr'
     } else if beast == VAMPIRE {
-        return 'Vampire';
+        'Vampire'
     } else if beast == GOBLIN {
-        return 'Goblin';
+        'Goblin'
     } else if beast == GHOUL {
-        return 'Ghoul';
+        'Ghoul'
     } else if beast == WRAITH {
-        return 'Wraith';
+        'Wraith'
     } else if beast == SPRITE {
-        return 'Sprite';
+        'Sprite'
     } else if beast == KAPPA {
-        return 'Kappa';
+        'Kappa'
     } else if beast == FAIRY {
-        return 'Fairy';
+        'Fairy'
     } else if beast == LEPRECHAUN {
-        return 'Leprechaun';
+        'Leprechaun'
     } else if beast == KELPIE {
-        return 'Kelpie';
+        'Kelpie'
     } else if beast == PIXIE {
-        return 'Pixie';
+        'Pixie'
     } else if beast == GNOME {
-        return 'Gnome';
+        'Gnome'
     } else if beast == GRIFFIN {
-        return 'Griffin';
+        'Griffin'
     } else if beast == MANTICORE {
-        return 'Manticore';
+        'Manticore'
     } else if beast == PHOENIX {
-        return 'Phoenix';
+        'Phoenix'
     } else if beast == DRAGON {
-        return 'Dragon';
+        'Dragon'
     } else if beast == MINOTAUR {
-        return 'Minotaur';
+        'Minotaur'
     } else if beast == QILIN {
-        return 'Qilin';
+        'Qilin'
     } else if beast == AMMIT {
-        return 'Ammit';
+        'Ammit'
     } else if beast == NUE {
-        return 'Nue';
+        'Nue'
     } else if beast == SKINWALKER {
-        return 'Skinwalker';
+        'Skinwalker'
     } else if beast == CHUPACABRA {
-        return 'Chupacabra';
+        'Chupacabra'
     } else if beast == WERETIGER {
-        return 'Weretiger';
+        'Weretiger'
     } else if beast == WYVERN {
-        return 'Wyvern';
+        'Wyvern'
     } else if beast == ROC {
-        return 'Roc';
+        'Roc'
     } else if beast == HARPY {
-        return 'Harpy';
+        'Harpy'
     } else if beast == PEGASUS {
-        return 'Pegasus';
+        'Pegasus'
     } else if beast == HIPPOGRIFF {
-        return 'Hippogriff';
+        'Hippogriff'
     } else if beast == FENRIR {
-        return 'Fenrir';
+        'Fenrir'
     } else if beast == JAGUAR {
-        return 'Jaguar';
+        'Jaguar'
     } else if beast == SATORI {
-        return 'Satori';
+        'Satori'
     } else if beast == DIREWOLF {
-        return 'DireWolf';
+        'DireWolf'
     } else if beast == BEAR {
-        return 'Bear';
+        'Bear'
     } else if beast == WOLF {
-        return 'Wolf';
+        'Wolf'
     } else if beast == MANTIS {
-        return 'Mantis';
+        'Mantis'
     } else if beast == SPIDER {
-        return 'Spider';
+        'Spider'
     } else if beast == RAT {
-        return 'Rat';
+        'Rat'
     } else if beast == KRAKEN {
-        return 'Kraken';
+        'Kraken'
     } else if beast == COLOSSUS {
-        return 'Colossus';
+        'Colossus'
     } else if beast == BALROG {
-        return 'Balrog';
+        'Balrog'
     } else if beast == LEVIATHAN {
-        return 'Leviathan';
+        'Leviathan'
     } else if beast == TARRASQUE {
-        return 'Tarrasque';
+        'Tarrasque'
     } else if beast == TITAN {
-        return 'Titan';
+        'Titan'
     } else if beast == NEPHILIM {
-        return 'Nephilim';
+        'Nephilim'
     } else if beast == BEHEMOTH {
-        return 'Behemoth';
+        'Behemoth'
     } else if beast == HYDRA {
-        return 'Hydra';
+        'Hydra'
     } else if beast == JUGGERNAUT {
-        return 'Juggernaut';
+        'Juggernaut'
     } else if beast == ONI {
-        return 'Oni';
+        'Oni'
     } else if beast == JOTUNN {
-        return 'Jotunn';
+        'Jotunn'
     } else if beast == ETTIN {
-        return 'Ettin';
+        'Ettin'
     } else if beast == CYCLOPS {
-        return 'Cyclops';
+        'Cyclops'
     } else if beast == GIANT {
-        return 'Giant';
+        'Giant'
     } else if beast == NEMEANLION {
-        return 'NemeanLion';
+        'NemeanLion'
     } else if beast == BERSERKER {
-        return 'Berserker';
+        'Berserker'
     } else if beast == YETI {
-        return 'Yeti';
+        'Yeti'
     } else if beast == GOLEM {
-        return 'Golem';
+        'Golem'
     } else if beast == ENT {
-        return 'Ent';
+        'Ent'
     } else if beast == TROLL {
-        return 'Troll';
+        'Troll'
     } else if beast == BIGFOOT {
-        return 'Bigfoot';
+        'Bigfoot'
     } else if beast == OGRE {
-        return 'Ogre';
+        'Ogre'
     } else if beast == ORC {
-        return 'Orc';
+        'Orc'
     } else if beast == SKELETON {
-        return 'Skeleton';
+        'Skeleton'
     } else {
-        return '1337';
+        panic_with_felt252('Invalid beast')
     }
 }
 
-fn getBeastNamePrefix(prefix: u8) -> felt252 {
-    assert(prefix >= 0 && prefix <= 69, 'Invalid prefix');
+fn get_prefix(prefix: u8) -> felt252 {
     if prefix == PREFIX_AGONY {
-        return 'Agony';
+        'Agony'
     } else if prefix == PREFIX_APOCALYPSE {
-        return 'Apocalypse';
+        'Apocalypse'
     } else if prefix == PREFIX_ARMAGEDDON {
-        return 'Armageddon';
+        'Armageddon'
     } else if prefix == PREFIX_BEAST {
-        return 'Beast';
+        'Beast'
     } else if prefix == PREFIX_BEHEMOTH {
-        return 'Behemoth';
+        'Behemoth'
     } else if prefix == PREFIX_BLIGHT {
-        return 'Blight';
+        'Blight'
     } else if prefix == PREFIX_BLOOD {
-        return 'Blood';
+        'Blood'
     } else if prefix == PREFIX_BRAMBLE {
-        return 'Bramble';
+        'Bramble'
     } else if prefix == PREFIX_BRIMSTONE {
-        return 'Brimstone';
+        'Brimstone'
     } else if prefix == PREFIX_BROOD {
-        return 'Brood';
+        'Brood'
     } else if prefix == PREFIX_CARRION {
-        return 'Carrion';
+        'Carrion'
     } else if prefix == PREFIX_CATACLYSM {
-        return 'Cataclysm';
+        'Cataclysm'
     } else if prefix == PREFIX_CHIMERIC {
-        return 'Chimeric';
+        'Chimeric'
     } else if prefix == PREFIX_CORPSE {
-        return 'Corpse';
+        'Corpse'
     } else if prefix == PREFIX_CORRUPTION {
-        return 'Corruption';
+        'Corruption'
     } else if prefix == PREFIX_DAMNATION {
-        return 'Damnation';
+        'Damnation'
     } else if prefix == PREFIX_DEATH {
-        return 'Death';
+        'Death'
     } else if prefix == PREFIX_DEMON {
-        return 'Demon';
+        'Demon'
     } else if prefix == PREFIX_DIRE {
-        return 'Dire';
+        'Dire'
     } else if prefix == PREFIX_DRAGON {
-        return 'Dragon';
+        'Dragon'
     } else if prefix == PREFIX_DREAD {
-        return 'Dread';
+        'Dread'
     } else if prefix == PREFIX_DOOM {
-        return 'Doom';
+        'Doom'
     } else if prefix == PREFIX_DUSK {
-        return 'Dusk';
+        'Dusk'
     } else if prefix == PREFIX_EAGLE {
-        return 'Eagle';
+        'Eagle'
     } else if prefix == PREFIX_EMPYREAN {
-        return 'Empyrean';
+        'Empyrean'
     } else if prefix == PREFIX_FATE {
-        return 'Fate';
+        'Fate'
     } else if prefix == PREFIX_FOE {
-        return 'Foe';
+        'Foe'
     } else if prefix == PREFIX_GALE {
-        return 'Gale';
+        'Gale'
     } else if prefix == PREFIX_GHOUL {
-        return 'Ghoul';
+        'Ghoul'
     } else if prefix == PREFIX_GLOOM {
-        return 'Gloom';
+        'Gloom'
     } else if prefix == PREFIX_GLYPH {
-        return 'Glyph';
+        'Glyph'
     } else if prefix == PREFIX_GOLEM {
-        return 'Golem';
+        'Golem'
     } else if prefix == PREFIX_GRIM {
-        return 'Grim';
+        'Grim'
     } else if prefix == PREFIX_HATE {
-        return 'Hate';
+        'Hate'
     } else if prefix == PREFIX_HAVOC {
-        return 'Havoc';
+        'Havoc'
     } else if prefix == PREFIX_HONOUR {
-        return 'Honour';
+        'Honour'
     } else if prefix == PREFIX_HORROR {
-        return 'Horror';
+        'Horror'
     } else if prefix == PREFIX_HYPNOTIC {
-        return 'Hypnotic';
+        'Hypnotic'
     } else if prefix == PREFIX_KRAKEN {
-        return 'Kraken';
+        'Kraken'
     } else if prefix == PREFIX_LOATH {
-        return 'Loath';
+        'Loath'
     } else if prefix == PREFIX_MAELSTROM {
-        return 'Maelstrom';
+        'Maelstrom'
     } else if prefix == PREFIX_MIND {
-        return 'Mind';
+        'Mind'
     } else if prefix == PREFIX_MIRACLE {
-        return 'Miracle';
+        'Miracle'
     } else if prefix == PREFIX_MORBID {
-        return 'Morbid';
+        'Morbid'
     } else if prefix == PREFIX_OBLIVION {
-        return 'Oblivion';
+        'Oblivion'
     } else if prefix == PREFIX_ONSLAUGHT {
-        return 'Onslaught';
+        'Onslaught'
     } else if prefix == PREFIX_PAIN {
-        return 'Pain';
+        'Pain'
     } else if prefix == PREFIX_PANDEMONIUM {
-        return 'Pandemonium';
+        'Pandemonium'
     } else if prefix == PREFIX_PHOENIX {
-        return 'Phoenix';
+        'Phoenix'
     } else if prefix == PREFIX_PLAGUE {
-        return 'Plague';
+        'Plague'
     } else if prefix == PREFIX_RAGE {
-        return 'Rage';
+        'Rage'
     } else if prefix == PREFIX_RAPTURE {
-        return 'Rapture';
+        'Rapture'
     } else if prefix == PREFIX_RUNE {
-        return 'Rune';
+        'Rune'
     } else if prefix == PREFIX_SKULL {
-        return 'Skull';
+        'Skull'
     } else if prefix == PREFIX_SOL {
-        return 'Sol';
+        'Sol'
     } else if prefix == PREFIX_SOUL {
-        return 'Soul';
+        'Soul'
     } else if prefix == PREFIX_SORROW {
-        return 'Sorrow';
+        'Sorrow'
     } else if prefix == PREFIX_SPIRIT {
-        return 'Spirit';
+        'Spirit'
     } else if prefix == PREFIX_STORM {
-        return 'Storm';
+        'Storm'
     } else if prefix == PREFIX_TEMPEST {
-        return 'Tempest';
+        'Tempest'
     } else if prefix == PREFIX_TORMENT {
-        return 'Torment';
+        'Torment'
     } else if prefix == PREFIX_VENGEANCE {
-        return 'Vengeance';
+        'Vengeance'
     } else if prefix == PREFIX_VICTORY {
-        return 'Victory';
+        'Victory'
     } else if prefix == PREFIX_VIPER {
-        return 'Viper';
+        'Viper'
     } else if prefix == PREFIX_VORTEX {
-        return 'Vortex';
+        'Vortex'
     } else if prefix == PREFIX_WOE {
-        return 'Woe';
+        'Woe'
     } else if prefix == PREFIX_WRATH {
-        return 'Wrath';
+        'Wrath'
     } else if prefix == PREFIX_LIGHTS {
-        return 'Lights';
+        'Lights'
     } else if prefix == PREFIX_SHIMMERING {
-        return 'Shimmering';
+        'Shimmering'
     } else {
-        return '';
+        ''
     }
 }
 
-fn getBeastNameSuffix(suffix: u8) -> felt252 {
-    assert(suffix >= 0 && suffix <= 18, 'Invalid suffix');
+fn get_suffix(suffix: u8) -> felt252 {
     if suffix == SUFFIX_BANE {
-        return 'Bane';
+        'Bane'
     } else if suffix == SUFFIX_ROOT {
-        return 'Root';
+        'Root'
     } else if suffix == SUFFIX_BITE {
-        return 'Bite';
+        'Bite'
     } else if suffix == SUFFIX_SONG {
-        return 'Song';
+        'Song'
     } else if suffix == SUFFIX_ROAR {
-        return 'Roar';
+        'Roar'
     } else if suffix == SUFFIX_GRASP {
-        return 'Grasp';
+        'Grasp'
     } else if suffix == SUFFIX_INSTRUMENT {
-        return 'Instrument';
+        'Instrument'
     } else if suffix == SUFFIX_GLOW {
-        return 'Glow';
+        'Glow'
     } else if suffix == SUFFIX_BENDER {
-        return 'Bender';
+        'Bender'
     } else if suffix == SUFFIX_SHADOW {
-        return 'Shadow';
+        'Shadow'
     } else if suffix == SUFFIX_WHISPER {
-        return 'Whisper';
+        'Whisper'
     } else if suffix == SUFFIX_SHOUT {
-        return 'Shout';
+        'Shout'
     } else if suffix == SUFFIX_GROWL {
-        return 'Growl';
+        'Growl'
     } else if suffix == SUFFIX_TEAR {
-        return 'Tear';
+        'Tear'
     } else if suffix == SUFFIX_PEAK {
-        return 'Peak';
+        'Peak'
     } else if suffix == SUFFIX_FORM {
-        return 'Form';
+        'Form'
     } else if suffix == SUFFIX_SUN {
-        return 'Sun';
+        'Sun'
     } else if suffix == SUFFIX_MOON {
-        return 'Moon';
+        'Moon'
     } else {
-        return '';
+        ''
     }
 }
 
-fn getBeastTier(beast: u8) -> felt252 {
-    assert(beast >= 0 && beast <= 75, 'Invalid beast');
-    if ((beast >= 1 && beast <= 5)
+fn get_tier(beast: u8) -> felt252 {
+    if ((beast != 0 && beast <= 5)
         || (beast >= 26 && beast <= 30)
         || (beast >= 51 && beast <= 55)) {
-        return TIER_1;
+        TIER_1
     } else if ((beast >= 6 && beast <= 10)
         || (beast >= 31 && beast <= 35)
         || (beast >= 56 && beast <= 60)) {
-        return TIER_2;
+        TIER_2
     } else if ((beast >= 11 && beast <= 15)
         || (beast >= 36 && beast <= 40)
         || (beast >= 61 && beast <= 65)) {
-        return TIER_3;
+        TIER_3
     } else if ((beast >= 16 && beast <= 20)
         || (beast >= 41 && beast <= 45)
         || (beast >= 66 && beast <= 70)) {
-        return TIER_4;
+        TIER_4
     } else if ((beast >= 21 && beast <= 25)
         || (beast >= 46 && beast <= 50)
         || (beast >= 71 && beast <= 75)) {
-        return TIER_5;
+        TIER_5
     } else {
-        return '';
+        panic_with_felt252('Invalid beast')
     }
 }
 
-fn getBeastType(beast: u8) -> felt252 {
-    assert(beast >= 0 && beast <= 75, 'Invalid beast');
-    if (beast >= 1 && beast <= 25) {
-        return TYPE_MAGICAL;
-    } else if (beast >= 26 && beast <= 50) {
-        return TYPE_HUNTER;
+fn get_type(beast: u8) -> felt252 {
+    assert(beast != 0, 'Invalid beast');
+    if (beast <= 25) {
+        TYPE_MAGICAL
+    } else if beast <= 50 {
+        TYPE_HUNTER
+    } else if beast <= 75 {
+        TYPE_BRUTE
     } else {
-        return TYPE_BRUTE;
+        panic_with_felt252('Invalid beast')
     }
 }
 
-fn getBeastPixel(beast: u8) -> LongString {
-    assert(beast >= 0 && beast <= 75, 'Invalid beast');
+fn get_hash(id: u8, prefix: u8, suffix: u8) -> felt252 {
+    let mut content = ArrayTrait::new();
+    content.append(id.into());
+    content.append(prefix.into());
+    content.append(suffix.into());
+    poseidon_hash_span(content.span())
+}
+
+fn get_svg(beast: u8) -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     if beast == ENT {
         content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
@@ -2036,8 +2042,619 @@ fn getBeastPixel(beast: u8) -> LongString {
         content.append('C2Wf9jzsC73EACUd/vnAZ77svdMEYiB');
         content.append('VlkrmX7zmUvc6/hCwI5WmV2vSpWAAAA');
         content.append('AElFTkSuQmCC');
+    } else {
+        panic_with_felt252('Invalid beast');
     }
 
     content.into()
 }
 
+// ---------------------------
+// ---------- Tests ----------
+// ---------------------------
+#[cfg(test)]
+mod tests {
+    use core::array::ArrayTrait;
+    use LootSurvivorBeasts::beast::{
+        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, TYPE_MAGICAL,
+        TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN, BEAR, FENRIR, WENDIGO, GHOUL,
+        PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE, DRAGON, GIANT, NEMEANLION, YETI,
+        KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN, BASILISK, KITSUNE, LICH, WEREWOLF,
+        BANSHEE, DRAUGR, VAMPIRE, SPRITE, KAPPA, FAIRY, LEPRECHAUN, KELPIE, GNOME, ANANSI, TYPHON,
+        JIANGSHI, GORGON, HYDRA, QILIN, MANTIS, HARPY, WRAITH, NUE, SKINWALKER, CHUPACABRA,
+        WERETIGER, ROC, HIPPOGRIFF, JAGUAR, SATORI, DIREWOLF, WOLF, SPIDER, RAT, COLOSSUS, BALROG,
+        LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN, ETTIN, CYCLOPS, ENT, TROLL, BIGFOOT,
+        OGRE, ORC, SKELETON
+    };
+
+    #[test]
+    #[available_gas(25360)]
+    fn test_get_type_gas() {
+        get_type(1);
+    }
+
+    #[test]
+    #[should_panic(expected: ('Invalid beast',))]
+    #[available_gas(4310)]
+    fn test_get_type_zero() {
+        get_type(0);
+    }
+
+    #[test]
+    #[should_panic(expected: ('Invalid beast',))]
+    #[available_gas(4310)]
+    fn test_get_type_out_of_bounds() {
+        get_type(76);
+    }
+
+    #[test]
+    #[available_gas(308950)]
+    fn test_get_type() {
+        // Magical T1s
+        assert(get_type(WARLOCK) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(TYPHON) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(JIANGSHI) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(ANANSI) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(BASILISK) == TYPE_MAGICAL, 'should be magic');
+
+        // Magical T2s
+        assert(get_type(GORGON) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(KITSUNE) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(LICH) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(CHIMERA) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(WENDIGO) == TYPE_MAGICAL, 'should be magic');
+
+        // Magical T3s
+        assert(get_type(RAKSHASA) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(WEREWOLF) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(BANSHEE) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(DRAUGR) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(VAMPIRE) == TYPE_MAGICAL, 'should be magic');
+
+        // Magical T4s
+        assert(get_type(GOBLIN) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(GHOUL) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(WRAITH) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(SPRITE) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(KAPPA) == TYPE_MAGICAL, 'should be magic');
+
+        // Magical T5s
+        assert(get_type(FAIRY) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(LEPRECHAUN) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(KELPIE) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(PIXIE) == TYPE_MAGICAL, 'should be magic');
+        assert(get_type(GNOME) == TYPE_MAGICAL, 'should be magic');
+
+        // Hunter T1s
+        assert(get_type(GRIFFIN) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(MANTICORE) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(PHOENIX) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(DRAGON) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(MINOTAUR) == TYPE_HUNTER, 'should be hunter');
+
+        // Hunter T2s
+        assert(get_type(QILIN) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(AMMIT) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(NUE) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(SKINWALKER) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(CHUPACABRA) == TYPE_HUNTER, 'should be hunter');
+
+        // Hunter T3s
+        assert(get_type(WERETIGER) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(WYVERN) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(ROC) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(HARPY) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(PEGASUS) == TYPE_HUNTER, 'should be hunter');
+
+        // Hunter T4s
+        assert(get_type(HIPPOGRIFF) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(FENRIR) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(JAGUAR) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(SATORI) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(DIREWOLF) == TYPE_HUNTER, 'should be hunter');
+
+        // Hunter T5s
+        assert(get_type(BEAR) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(WOLF) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(MANTIS) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(SPIDER) == TYPE_HUNTER, 'should be hunter');
+        assert(get_type(RAT) == TYPE_HUNTER, 'should be hunter');
+
+        // Brute T1s
+        assert(get_type(KRAKEN) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(COLOSSUS) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(BALROG) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(LEVIATHAN) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(TARRASQUE) == TYPE_BRUTE, 'should be beast');
+
+        // Brute T2s
+        assert(get_type(TITAN) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(NEPHILIM) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(BEHEMOTH) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(HYDRA) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(JUGGERNAUT) == TYPE_BRUTE, 'should be beast');
+
+        // Brute T3s
+        assert(get_type(ONI) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(JOTUNN) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(ETTIN) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(CYCLOPS) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(GIANT) == TYPE_BRUTE, 'should be beast');
+
+        // Brute T4s
+        assert(get_type(NEMEANLION) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(BERSERKER) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(YETI) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(GOLEM) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(ENT) == TYPE_BRUTE, 'should be beast');
+
+        // Brute T5s
+        assert(get_type(TROLL) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(BIGFOOT) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(OGRE) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(ORC) == TYPE_BRUTE, 'should be beast');
+        assert(get_type(SKELETON) == TYPE_BRUTE, 'should be beast');
+    }
+
+    #[test]
+    #[available_gas(21430)]
+    fn test_get_tier_gas() {
+        get_tier(1);
+    }
+
+    #[test]
+    #[available_gas(21430)]
+    #[should_panic(expected: ('Invalid beast',))]
+    fn test_get_tier_zero() {
+        get_tier(0);
+    }
+
+    #[test]
+    #[available_gas(21430)]
+    #[should_panic(expected: ('Invalid beast',))]
+    fn test_get_tier_out_of_bounds() {
+        get_tier(76);
+    }
+
+    #[test]
+    #[available_gas(1592950)]
+    fn test_get_tier() {
+        // Test for Magical T1s
+        assert(get_tier(WARLOCK) == '1', 'Warlock should be T1');
+        assert(get_tier(TYPHON) == '1', 'Typhon should be T1');
+        assert(get_tier(JIANGSHI) == '1', 'Jiangshi should be T1');
+        assert(get_tier(ANANSI) == '1', 'Anansi should be T1');
+        assert(get_tier(BASILISK) == '1', 'Basilisk should be T1');
+
+        // Test for Magical T2s
+        assert(get_tier(GORGON) == '2', 'Gorgon should be T2');
+        assert(get_tier(KITSUNE) == '2', 'Kitsune should be T2');
+        assert(get_tier(LICH) == '2', 'Lich should be T2');
+        assert(get_tier(CHIMERA) == '2', 'Chimera should be T2');
+        assert(get_tier(WENDIGO) == '2', 'Wendigo should be T2');
+
+        // Test for Magical T3s
+        assert(get_tier(RAKSHASA) == '3', 'Rakshasa should be T3');
+        assert(get_tier(WEREWOLF) == '3', 'Werewolf should be T3');
+        assert(get_tier(BANSHEE) == '3', 'Banshee should be T3');
+        assert(get_tier(DRAUGR) == '3', 'Draugr should be T3');
+        assert(get_tier(VAMPIRE) == '3', 'Vampire should be T3');
+
+        // Test for Magical T4s
+        assert(get_tier(GOBLIN) == '4', 'Goblin should be T4');
+        assert(get_tier(GHOUL) == '4', 'Ghoul should be T4');
+        assert(get_tier(WRAITH) == '4', 'Wraith should be T4');
+        assert(get_tier(SPRITE) == '4', 'Sprite should be T4');
+        assert(get_tier(KAPPA) == '4', 'Kappa should be T4');
+
+        // Test for Magical T5s
+        assert(get_tier(FAIRY) == '5', 'Fairy should be T5');
+        assert(get_tier(LEPRECHAUN) == '5', 'Leprechaun should be T5');
+        assert(get_tier(KELPIE) == '5', 'Kelpie should be T5');
+        assert(get_tier(PIXIE) == '5', 'Pixie should be T5');
+        assert(get_tier(GNOME) == '5', 'Gnome should be T5');
+
+        // Test for Hunter T1s
+        assert(get_tier(GRIFFIN) == '1', 'Griffin should be T1');
+        assert(get_tier(MANTICORE) == '1', 'Manticore should be T1');
+        assert(get_tier(PHOENIX) == '1', 'Phoenix should be T1');
+        assert(get_tier(DRAGON) == '1', 'Dragon should be T1');
+        assert(get_tier(MINOTAUR) == '1', 'Minotaur should be T1');
+
+        // Test for Hunter T2s
+        assert(get_tier(QILIN) == '2', 'Qilin should be T2');
+        assert(get_tier(AMMIT) == '2', 'Ammit should be T2');
+        assert(get_tier(NUE) == '2', 'Nue should be T2');
+        assert(get_tier(SKINWALKER) == '2', 'Skinwalker should be T2');
+        assert(get_tier(CHUPACABRA) == '2', 'Chupacabra should be T2');
+
+        // Test for Hunter T3s
+        assert(get_tier(WERETIGER) == '3', 'Weretiger should be T3');
+        assert(get_tier(WYVERN) == '3', 'Wyvern should be T3');
+        assert(get_tier(ROC) == '3', 'Roc should be T3');
+        assert(get_tier(HARPY) == '3', 'Harpy should be T3');
+        assert(get_tier(PEGASUS) == '3', 'Pegasus should be T3');
+
+        // Test for Hunter T4s
+        assert(get_tier(HIPPOGRIFF) == '4', 'Hippogriff should be T4');
+        assert(get_tier(FENRIR) == '4', 'Fenrir should be T4');
+        assert(get_tier(JAGUAR) == '4', 'Jaguar should be T4');
+        assert(get_tier(SATORI) == '4', 'Satori should be T4');
+        assert(get_tier(DIREWOLF) == '4', 'Direwolf should be T4');
+
+        // Test for Hunter T5s
+        assert(get_tier(BEAR) == '5', 'Bear should be T5');
+        assert(get_tier(WOLF) == '5', 'Wolf should be T5');
+        assert(get_tier(MANTIS) == '5', 'Mantis should be T5');
+        assert(get_tier(SPIDER) == '5', 'Spider should be T5');
+        assert(get_tier(RAT) == '5', 'Rat should be T5');
+
+        // Test for Brute T1s
+        assert(get_tier(KRAKEN) == '1', 'Kraken should be T1');
+        assert(get_tier(COLOSSUS) == '1', 'Colossus should be T1');
+        assert(get_tier(BALROG) == '1', 'Balrog should be T1');
+        assert(get_tier(LEVIATHAN) == '1', 'Leviathan should be T1');
+        assert(get_tier(TARRASQUE) == '1', 'Tarrasque should be T1');
+
+        // Test for Brute T2s
+        assert(get_tier(TITAN) == '2', 'Titan should be T2');
+        assert(get_tier(NEPHILIM) == '2', 'Nephilim should be T2');
+        assert(get_tier(BEHEMOTH) == '2', 'Behemoth should be T2');
+        assert(get_tier(HYDRA) == '2', 'Hydra should be T2');
+        assert(get_tier(JUGGERNAUT) == '2', 'Juggernaut should be T2');
+
+        // Test for Brute T3s
+        assert(get_tier(ONI) == '3', 'Oni should be T3');
+        assert(get_tier(JOTUNN) == '3', 'Jotunn should be T3');
+        assert(get_tier(ETTIN) == '3', 'Ettin should be T3');
+        assert(get_tier(CYCLOPS) == '3', 'Cyclops should be T3');
+        assert(get_tier(GIANT) == '3', 'Minogon should be T3');
+
+        // Test for Brute T4s
+        assert(get_tier(NEMEANLION) == '4', 'Zombie should be T4');
+        assert(get_tier(BERSERKER) == '4', 'Golem should be T4');
+        assert(get_tier(YETI) == '4', 'Yeti should be T4');
+        assert(get_tier(GOLEM) == '4', 'Mummy should be T4');
+        assert(get_tier(ENT) == '4', 'Doppelganger should be T4');
+
+        // Test for Brute T5s
+        assert(get_tier(TROLL) == '5', 'Troll should be T5');
+        assert(get_tier(BIGFOOT) == '5', 'Bigfoot should be T5');
+        assert(get_tier(OGRE) == '5', 'Ogre should be T5');
+        assert(get_tier(ORC) == '5', 'Orc should be T5');
+        assert(get_tier(SKELETON) == '5', 'Skeleton should be T5');
+    }
+
+    #[test]
+    #[available_gas(30000)]
+    fn test_get_svg_gas() {
+        get_svg(1);
+    }
+
+    #[test]
+    #[available_gas(30000)]
+    #[should_panic(expected: ('Invalid beast',))]
+    fn test_get_svg_zero() {
+        get_svg(0);
+    }
+
+    #[test]
+    #[available_gas(30000)]
+    #[should_panic(expected: ('Invalid beast',))]
+    fn test_get_svg_out_of_bounds() {
+        get_svg(76);
+    }
+
+    #[test]
+    #[available_gas(23710)]
+    fn test_get_name_gas() {
+        get_name(1);
+    }
+
+    #[test]
+    #[available_gas(23710)]
+    #[should_panic(expected: ('Invalid beast',))]
+    fn test_get_name_out_of_bounds() {
+        get_name(76);
+    }
+
+    #[test]
+    #[available_gas(1771350)]
+    fn test_get_name() {
+        assert(get_name(WARLOCK) == 'Warlock', 'should be Warlock');
+        assert(get_name(TYPHON) == 'Typhon', 'should be Typhon');
+        assert(get_name(JIANGSHI) == 'Jiangshi', 'should be Jiangshi');
+        assert(get_name(ANANSI) == 'Anansi', 'should be Anansi');
+        assert(get_name(BASILISK) == 'Basilisk', 'should be Basilisk');
+
+        assert(get_name(GORGON) == 'Gorgon', 'should be Gorgon');
+        assert(get_name(KITSUNE) == 'Kitsune', 'should be Kitsune');
+        assert(get_name(LICH) == 'Lich', 'should be Lich');
+        assert(get_name(CHIMERA) == 'Chimera', 'should be Chimera');
+        assert(get_name(WENDIGO) == 'Wendigo', 'should be Wendigo');
+
+        assert(get_name(RAKSHASA) == 'Rakshasa', 'should be Rakshasa');
+        assert(get_name(WEREWOLF) == 'Werewolf', 'should be Werewolf');
+        assert(get_name(BANSHEE) == 'Banshee', 'should be Banshee');
+        assert(get_name(DRAUGR) == 'Draugr', 'should be Draugr');
+        assert(get_name(VAMPIRE) == 'Vampire', 'should be Vampire');
+
+        assert(get_name(GOBLIN) == 'Goblin', 'should be Goblin');
+        assert(get_name(GHOUL) == 'Ghoul', 'should be Ghoul');
+        assert(get_name(WRAITH) == 'Wraith', 'should be Wraith');
+        assert(get_name(SPRITE) == 'Sprite', 'should be Sprite');
+        assert(get_name(KAPPA) == 'Kappa', 'should be Kappa');
+
+        assert(get_name(FAIRY) == 'Fairy', 'should be Fairy');
+        assert(get_name(LEPRECHAUN) == 'Leprechaun', 'should be Leprechaun');
+        assert(get_name(KELPIE) == 'Kelpie', 'should be Kelpie');
+        assert(get_name(PIXIE) == 'Pixie', 'should be Pixie');
+        assert(get_name(GNOME) == 'Gnome', 'should be Gnome');
+
+        assert(get_name(GRIFFIN) == 'Griffin', 'should be Griffin');
+        assert(get_name(MANTICORE) == 'Manticore', 'should be Manticore');
+        assert(get_name(PHOENIX) == 'Phoenix', 'should be Phoenix');
+        assert(get_name(DRAGON) == 'Dragon', 'should be Dragon');
+        assert(get_name(MINOTAUR) == 'Minotaur', 'should be Minotaur');
+
+        assert(get_name(QILIN) == 'Qilin', 'should be Qilin');
+        assert(get_name(AMMIT) == 'Ammit', 'should be Ammit');
+        assert(get_name(NUE) == 'Nue', 'should be Nue');
+        assert(get_name(SKINWALKER) == 'Skinwalker', 'should be Skinwalker');
+        assert(get_name(CHUPACABRA) == 'Chupacabra', 'should be Chupacabra');
+
+        assert(get_name(WERETIGER) == 'Weretiger', 'should be Weretiger');
+        assert(get_name(WYVERN) == 'Wyvern', 'should be Wyvern');
+        assert(get_name(ROC) == 'Roc', 'should be Roc');
+        assert(get_name(HARPY) == 'Harpy', 'should be Harpy');
+        assert(get_name(PEGASUS) == 'Pegasus', 'should be Pegasus');
+
+        assert(get_name(HIPPOGRIFF) == 'Hippogriff', 'should be Hippogriff');
+        assert(get_name(FENRIR) == 'Fenrir', 'should be Fenrir');
+        assert(get_name(JAGUAR) == 'Jaguar', 'should be Jaguar');
+        assert(get_name(SATORI) == 'Satori', 'should be Satori');
+        assert(get_name(DIREWOLF) == 'DireWolf', 'should be Direwolf');
+
+        assert(get_name(BEAR) == 'Bear', 'should be Bear');
+        assert(get_name(WOLF) == 'Wolf', 'should be Wolf');
+        assert(get_name(MANTIS) == 'Mantis', 'should be Mantis');
+        assert(get_name(SPIDER) == 'Spider', 'should be Spider');
+        assert(get_name(RAT) == 'Rat', 'should be Rat');
+
+        assert(get_name(KRAKEN) == 'Kraken', 'should be Kraken');
+        assert(get_name(COLOSSUS) == 'Colossus', 'should be Colossus');
+        assert(get_name(BALROG) == 'Balrog', 'should be Balrog');
+        assert(get_name(LEVIATHAN) == 'Leviathan', 'should be Leviathan');
+        assert(get_name(TARRASQUE) == 'Tarrasque', 'should be Tarrasque');
+
+        assert(get_name(TITAN) == 'Titan', 'should be Titan');
+        assert(get_name(NEPHILIM) == 'Nephilim', 'should be Nephilim');
+        assert(get_name(BEHEMOTH) == 'Behemoth', 'should be Behemoth');
+        assert(get_name(HYDRA) == 'Hydra', 'should be Hydra');
+        assert(get_name(JUGGERNAUT) == 'Juggernaut', 'should be Juggernaut');
+
+        assert(get_name(ONI) == 'Oni', 'should be Oni');
+        assert(get_name(JOTUNN) == 'Jotunn', 'should be Jotunn');
+        assert(get_name(ETTIN) == 'Ettin', 'should be Ettin');
+        assert(get_name(CYCLOPS) == 'Cyclops', 'should be Cyclops');
+        assert(get_name(GIANT) == 'Giant', 'should be Giant');
+
+        assert(get_name(NEMEANLION) == 'NemeanLion', 'should be Nemean Lion');
+        assert(get_name(BERSERKER) == 'Berserker', 'should be Berserker');
+        assert(get_name(YETI) == 'Yeti', 'should be Yeti');
+        assert(get_name(GOLEM) == 'Golem', 'should be Golem');
+        assert(get_name(ENT) == 'Ent', 'should be Ent');
+
+        assert(get_name(TROLL) == 'Troll', 'should be Troll');
+        assert(get_name(BIGFOOT) == 'Bigfoot', 'should be Bigfoot');
+        assert(get_name(OGRE) == 'Ogre', 'should be Ogre');
+        assert(get_name(ORC) == 'Orc', 'should be Orc');
+        assert(get_name(SKELETON) == 'Skeleton', 'should be Skeleton');
+    }
+
+    #[test]
+    #[available_gas(21910)]
+    fn test_get_prefix_gas() {
+        get_prefix(1);
+    }
+
+    #[test]
+    #[available_gas(1505490)]
+    fn test_get_prefix() {
+        assert(get_prefix(1) == 'Agony', 'should be Agony');
+        assert(get_prefix(2) == 'Apocalypse', 'should be Apocalypse');
+        assert(get_prefix(3) == 'Armageddon', 'should be Armageddon');
+        assert(get_prefix(4) == 'Beast', 'should be Beast');
+        assert(get_prefix(5) == 'Behemoth', 'should be Behemoth');
+        assert(get_prefix(6) == 'Blight', 'should be Blight');
+        assert(get_prefix(7) == 'Blood', 'should be Blood');
+        assert(get_prefix(8) == 'Bramble', 'should be Bramble');
+        assert(get_prefix(9) == 'Brimstone', 'should be Brimstone');
+        assert(get_prefix(10) == 'Brood', 'should be Brood');
+        assert(get_prefix(11) == 'Carrion', 'should be Carrion');
+        assert(get_prefix(12) == 'Cataclysm', 'should be Cataclysm');
+        assert(get_prefix(13) == 'Chimeric', 'should be Chimeric');
+        assert(get_prefix(14) == 'Corpse', 'should be Corpse');
+        assert(get_prefix(15) == 'Corruption', 'should be Corruption');
+        assert(get_prefix(16) == 'Damnation', 'should be Damnation');
+        assert(get_prefix(17) == 'Death', 'should be Death');
+        assert(get_prefix(18) == 'Demon', 'should be Demon');
+        assert(get_prefix(19) == 'Dire', 'should be Dire');
+        assert(get_prefix(20) == 'Dragon', 'should be Dragon');
+        assert(get_prefix(21) == 'Dread', 'should be Dread');
+        assert(get_prefix(22) == 'Doom', 'should be Doom');
+        assert(get_prefix(23) == 'Dusk', 'should be Dusk');
+        assert(get_prefix(24) == 'Eagle', 'should be Eagle');
+        assert(get_prefix(25) == 'Empyrean', 'should be Empyrean');
+        assert(get_prefix(26) == 'Fate', 'should be Fate');
+        assert(get_prefix(27) == 'Foe', 'should be Foe');
+        assert(get_prefix(28) == 'Gale', 'should be Gale');
+        assert(get_prefix(29) == 'Ghoul', 'should be Ghoul');
+        assert(get_prefix(30) == 'Gloom', 'should be Gloom');
+        assert(get_prefix(31) == 'Glyph', 'should be Glyph');
+        assert(get_prefix(32) == 'Golem', 'should be Golem');
+        assert(get_prefix(33) == 'Grim', 'should be Grim');
+        assert(get_prefix(34) == 'Hate', 'should be Hate');
+        assert(get_prefix(35) == 'Havoc', 'should be Havoc');
+        assert(get_prefix(36) == 'Honour', 'should be Honour');
+        assert(get_prefix(37) == 'Horror', 'should be Horror');
+        assert(get_prefix(38) == 'Hypnotic', 'should be Hypnotic');
+        assert(get_prefix(39) == 'Kraken', 'should be Kraken');
+        assert(get_prefix(40) == 'Loath', 'should be Loath');
+        assert(get_prefix(41) == 'Maelstrom', 'should be Maelstrom');
+        assert(get_prefix(42) == 'Mind', 'should be Mind');
+        assert(get_prefix(43) == 'Miracle', 'should be Miracle');
+        assert(get_prefix(44) == 'Morbid', 'should be Morbid');
+        assert(get_prefix(45) == 'Oblivion', 'should be Oblivion');
+        assert(get_prefix(46) == 'Onslaught', 'should be Onslaught');
+        assert(get_prefix(47) == 'Pain', 'should be Pain');
+        assert(get_prefix(48) == 'Pandemonium', 'should be Pandemonium');
+        assert(get_prefix(49) == 'Phoenix', 'should be Phoenix');
+        assert(get_prefix(50) == 'Plague', 'should be Plague');
+        assert(get_prefix(51) == 'Rage', 'should be Rage');
+        assert(get_prefix(52) == 'Rapture', 'should be Rapture');
+        assert(get_prefix(53) == 'Rune', 'should be Rune');
+        assert(get_prefix(54) == 'Skull', 'should be Skull');
+        assert(get_prefix(55) == 'Sol', 'should be Sol');
+        assert(get_prefix(56) == 'Soul', 'should be Soul');
+        assert(get_prefix(57) == 'Sorrow', 'should be Sorrow');
+        assert(get_prefix(58) == 'Spirit', 'should be Spirit');
+        assert(get_prefix(59) == 'Storm', 'should be Storm');
+        assert(get_prefix(60) == 'Tempest', 'should be Tempest');
+        assert(get_prefix(61) == 'Torment', 'should be Torment');
+        assert(get_prefix(62) == 'Vengeance', 'should be Vengeance');
+        assert(get_prefix(63) == 'Victory', 'should be Victory');
+        assert(get_prefix(64) == 'Viper', 'should be Viper');
+        assert(get_prefix(65) == 'Vortex', 'should be Vortex');
+        assert(get_prefix(66) == 'Woe', 'should be Woe');
+        assert(get_prefix(67) == 'Wrath', 'should be Wrath');
+        assert(get_prefix(68) == 'Lights', 'should be Lights');
+        assert(get_prefix(69) == 'Shimmering', 'should be Shimmering');
+    }
+
+    #[test]
+    #[available_gas(6610)]
+    fn test_get_suffix_gas() {
+        get_suffix(1);
+    }
+
+    #[test]
+    #[available_gas(117780)]
+    fn test_get_suffix() {
+        assert(get_suffix(1) == 'Bane', 'should be Bane');
+        assert(get_suffix(2) == 'Root', 'should be Root');
+        assert(get_suffix(3) == 'Bite', 'should be Bite');
+        assert(get_suffix(4) == 'Song', 'should be Song');
+        assert(get_suffix(5) == 'Roar', 'should be Roar');
+        assert(get_suffix(6) == 'Grasp', 'should be Grasp');
+        assert(get_suffix(7) == 'Instrument', 'should be Instrument');
+        assert(get_suffix(8) == 'Glow', 'should be Glow');
+        assert(get_suffix(9) == 'Bender', 'should be Bender');
+        assert(get_suffix(10) == 'Shadow', 'should be Shadow');
+        assert(get_suffix(11) == 'Whisper', 'should be Whisper');
+        assert(get_suffix(12) == 'Shout', 'should be Shout');
+        assert(get_suffix(13) == 'Growl', 'should be Growl');
+        assert(get_suffix(14) == 'Tear', 'should be Tear');
+        assert(get_suffix(15) == 'Peak', 'should be Peak');
+        assert(get_suffix(16) == 'Form', 'should be Form');
+        assert(get_suffix(17) == 'Sun', 'should be Sun');
+        assert(get_suffix(18) == 'Moon', 'should be Moon');
+    }
+
+    #[test]
+    #[available_gas(30000)]
+    fn test_get_hash_gas() {
+        get_hash(1, 1, 1);
+    }
+
+    #[test]
+    #[available_gas(5015320)]
+    fn test_get_hash() {
+        let mut hashes = ArrayTrait::<felt252>::new();
+        hashes.append(get_hash(1, 1, 1));
+        hashes.append(get_hash(1, 1, 2));
+        hashes.append(get_hash(1, 2, 1));
+        hashes.append(get_hash(1, 2, 2));
+        hashes.append(get_hash(2, 1, 1));
+        hashes.append(get_hash(2, 1, 2));
+        hashes.append(get_hash(2, 2, 1));
+        hashes.append(get_hash(2, 2, 2));
+        hashes.append(get_hash(3, 1, 1));
+        hashes.append(get_hash(3, 1, 2));
+        hashes.append(get_hash(3, 2, 1));
+        hashes.append(get_hash(3, 2, 2));
+        hashes.append(get_hash(4, 1, 1));
+        hashes.append(get_hash(4, 1, 2));
+        hashes.append(get_hash(4, 2, 1));
+        hashes.append(get_hash(4, 2, 2));
+        hashes.append(get_hash(5, 1, 1));
+        hashes.append(get_hash(5, 1, 2));
+        hashes.append(get_hash(5, 2, 1));
+        hashes.append(get_hash(2, 1, 5));
+        let mut i = 0;
+        loop {
+            if i == hashes.len() {
+                break;
+            }
+            let hashes_clone = hashes.clone();
+            let mut j = i + 1;
+            loop {
+                if j == hashes_clone.len() {
+                    break;
+                }
+                assert(hashes_clone[i] != hashes_clone[j], 'hashes should be unique');
+                j += 1;
+            };
+            i += 1;
+        };
+    }
+// @dev: the below test could technically verify there are no hash collisions
+//       across our entire hash space but it's impractical to run all 100k hashes
+//       so we're just running all combinations for the first beast
+#[test]
+#[available_gas(300000000000)]
+fn test_get_hash_extended() {
+    let mut hashes = ArrayTrait::<felt252>::new();
+
+    // iterarate over all possible hashes
+    let mut beast = 1;
+    loop {
+        if beast == 1 {
+            break;
+        }
+        let mut prefix = 1;
+        loop {
+            if prefix == 70 {
+                break;
+            }
+            let mut suffix = 1;
+            loop {
+                if suffix == 19 {
+                    break;
+                }
+                hashes.append(get_hash(beast, prefix, suffix));
+                suffix += 1;
+            };
+            prefix += 1;
+        };
+        beast += 1;
+    };
+
+    let mut i = 0;
+    loop {
+        if i == hashes.len() {
+            break;
+        }
+        let hashes_clone = hashes.clone();
+        let mut j = i + 1;
+        loop {
+            if j == hashes_clone.len() {
+                break;
+            }
+            assert(hashes_clone[i] != hashes_clone[j], 'hashes should be unique');
+            j += 1;
+        };
+        i += 1;
+    };
+}
+}
