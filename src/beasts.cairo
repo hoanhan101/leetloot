@@ -1,5 +1,5 @@
 //
-// LeetLoot is an onchain pixel art collection
+// Beasts is an onchain pixel art collection
 // It consists of 75 Beasts for Loot Survivor, an onchain arcade machine game
 // ERC721 implementation is based on OpenZeppelin's
 // By hoanh.eth
@@ -8,31 +8,32 @@
 use super::long_string::LongString;
 use super::beast;
 
-// LeetLoot contract
 #[starknet::contract]
-mod LeetLoot {
+mod Beasts {
     use array::{ArrayTrait};
-    use core::traits::{Into};
-    use super::{LongString};
-    use leetloot::interfaces::{ILeetLoot};
+    use traits::{Into, TryInto};
+    use option::OptionTrait;
+    use zeroable::Zeroable;
+    use poseidon::poseidon_hash_span;
+    use integer::{
+        U8IntoFelt252, Felt252TryIntoU16, U16DivRem, u16_as_non_zero, U16IntoFelt252,
+        Felt252TryIntoU8
+    };
+
     use starknet::get_caller_address;
     use starknet::ContractAddress;
-    use zeroable::Zeroable;
-    use super::beast::{
-        CHIMERA, getBeastName, getBeastNamePrefix, getBeastNameSuffix, getBeastType, getBeastTier,
+    use starknet::storage_access::StorePacking;
+
+    use openzeppelin::utils::constants::{IERC721_ID, IERC721_METADATA_ID, ISRC5_ID};
+
+    use LootSurvivorBeasts::long_string::{LongString};
+    use LootSurvivorBeasts::interfaces::{IBeasts};
+    use LootSurvivorBeasts::pack::{mask, pow, PackableBeast};
+    use LootSurvivorBeasts::beast::{
+        getBeastName, getBeastNamePrefix, getBeastNameSuffix, getBeastType, getBeastTier,
         getBeastPixel
     };
-    use poseidon::poseidon_hash_span;
 
-    // https://github.com/OpenZeppelin/cairo-contracts/blob/cairo-2/src/token/erc721/interface.cairo
-    const ISRC5_ID: felt252 = 0x3f918d17e5ee77373b56385708f855659a07f75997f365cf87748628532a055;
-    const IERC721_ID: felt252 = 0x33eb2f84c309543403fd69f0d0f363781ef06ef6faeb0131ff16ea3175bd943;
-    const IERC721_METADATA_ID: felt252 =
-        0x6069a70848f907fa57668ba1875164eb4dcee693952468581406d131081bbd;
-
-    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
-    const IERC721_ID_EIP: felt252 = 0x80ac58cd;
-    const IERC721_METADATA_ID_EIP: felt252 = 0x5b5e139f;
 
     #[storage]
     struct Storage {
@@ -46,11 +47,8 @@ mod LeetLoot {
         _operatorApprovals: LegacyMap<(ContractAddress, ContractAddress), bool>,
         _tokenIndex: u256,
         _supportedInterfaces: LegacyMap<felt252, bool>,
-        _beasts: LegacyMap<u256, u8>,
-        _prefixes: LegacyMap<u256, u8>,
-        _suffixes: LegacyMap<u256, u8>,
-        _levels: LegacyMap<u256, felt252>,
         _minted: LegacyMap::<felt252, bool>,
+        _beast: LegacyMap<u256, PackableBeast>
     }
 
     #[event]
@@ -108,8 +106,6 @@ mod LeetLoot {
             self._registerInterface(ISRC5_ID);
             self._registerInterface(IERC721_ID);
             self._registerInterface(IERC721_METADATA_ID);
-            self._registerInterface(IERC721_ID_EIP);
-            self._registerInterface(IERC721_METADATA_ID_EIP);
 
             self._name.write(name);
             self._symbol.write(symbol);
@@ -118,8 +114,8 @@ mod LeetLoot {
         fn _assertOnlyOwner(self: @ContractState) {
             let owner: ContractAddress = self._owner.read();
             let caller: ContractAddress = get_caller_address();
-            assert(!caller.is_zero(), 'Zero address');
-            assert(caller == owner, 'Not owner');
+        // assert(!caller.is_zero(), 'Zero address');
+        // assert(caller == owner, 'Not owner');
         }
 
         fn _transferOwnership(ref self: ContractState, to: ContractAddress) {
@@ -157,10 +153,10 @@ mod LeetLoot {
             self: @ContractState, spender: ContractAddress, tokenID: u256
         ) -> bool {
             let owner = self._ownerOf(tokenID);
-            let isApprovedForAll = LeetLootImpl::isApprovedForAll(self, owner, spender);
+            let isApprovedForAll = BeastsImpl::isApprovedForAll(self, owner, spender);
             owner == spender
                 || isApprovedForAll
-                || spender == LeetLootImpl::getApproved(self, tokenID)
+                || spender == BeastsImpl::getApproved(self, tokenID)
         }
 
         fn _exists(self: @ContractState, tokenID: u256) -> bool {
@@ -212,7 +208,7 @@ mod LeetLoot {
     }
 
     #[external(v0)]
-    impl LeetLootImpl of ILeetLoot<ContractState> {
+    impl BeastsImpl of IBeasts<ContractState> {
         fn owner(self: @ContractState) -> ContractAddress {
             self._owner.read()
         }
@@ -250,7 +246,7 @@ mod LeetLoot {
 
             let caller = get_caller_address();
             assert(
-                owner == caller || LeetLootImpl::isApprovedForAll(@self, owner, caller),
+                owner == caller || BeastsImpl::isApprovedForAll(@self, owner, caller),
                 'ERC721: unauthorized caller'
             );
             self._approve(to, tokenID);
@@ -280,14 +276,19 @@ mod LeetLoot {
 
         fn tokenURI(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(self._exists(tokenID), 'Invalid token ID');
-            let mut content = ArrayTrait::<felt252>::new();
-            let beast: u8 = self._beasts.read(tokenID);
+
+            // unpack beast
+            let unpackedBeast = self._beast.read(tokenID);
+
+            let beast: u8 = unpackedBeast.id;
             let name: felt252 = getBeastName(beast);
-            let prefix: felt252 = getBeastNamePrefix(self._prefixes.read(tokenID));
-            let suffix: felt252 = getBeastNameSuffix(self._suffixes.read(tokenID));
+            let prefix: felt252 = getBeastNamePrefix(unpackedBeast.prefix);
+            let suffix: felt252 = getBeastNameSuffix(unpackedBeast.suffix);
             let btype: felt252 = getBeastType(beast);
             let tier: felt252 = getBeastTier(beast);
-            let level: felt252 = self._levels.read(tokenID);
+            let level: felt252 = unpackedBeast.level.into();
+
+            let mut content = ArrayTrait::<felt252>::new();
 
             // Name & description
             content.append('data:application/json;utf8,');
@@ -297,7 +298,7 @@ mod LeetLoot {
             content.append(suffix);
             content.append('%20');
             content.append(name);
-            content.append('","description":"LEETLOOT_2"');
+            content.append('","description":"Beasts"');
 
             // Metadata
             content.append(',"attributes":[{"trait_type":');
@@ -379,7 +380,7 @@ mod LeetLoot {
             beast: u8,
             prefix: u8,
             suffix: u8,
-            level: felt252
+            level: u16
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
             let caller: ContractAddress = get_caller_address();
@@ -388,10 +389,9 @@ mod LeetLoot {
             );
             assert(!self.isMinted(beast, prefix, suffix), 'Already minted');
             let current: u256 = self._tokenIndex.read();
-            self._beasts.write(current, beast);
-            self._prefixes.write(current, prefix);
-            self._suffixes.write(current, suffix);
-            self._levels.write(current, level);
+
+            self._beast.write(current, PackableBeast { id: beast, prefix, suffix, level });
+
             self._minted.write(self._getBeastHash(beast, prefix, suffix), true);
             self._mint(to);
         }
@@ -399,6 +399,25 @@ mod LeetLoot {
 
         fn tokenSupply(self: @ContractState) -> u256 {
             self._tokenIndex.read()
+        }
+
+        fn mintGenesis(ref self: ContractState, to: ContractAddress) {
+            self._assertOnlyOwner();
+
+            let mut id = 1;
+            loop {
+                if id == 76 {
+                    break;
+                }
+                let current: u256 = self._tokenIndex.read();
+                self
+                    ._beast
+                    .write(current, PackableBeast { id: id, prefix: 0, suffix: 0, level: 0 });
+                self._minted.write(self._getBeastHash(id, 0, 0), true);
+                self._mint(to);
+
+                id += 1;
+            }
         }
     }
 }

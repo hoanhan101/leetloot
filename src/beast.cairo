@@ -212,7 +212,7 @@ const SUFFIX_MOON: u8 = 18;
 
 
 fn getBeastName(beast: u8) -> felt252 {
-    assert(beast >= 1 && beast <= 75, 'Invalid beast');
+    assert(beast >= 0 && beast <= 75, 'Invalid beast');
     if beast == WARLOCK {
         return 'Warlock';
     } else if beast == TYPHON {
@@ -369,7 +369,7 @@ fn getBeastName(beast: u8) -> felt252 {
 }
 
 fn getBeastNamePrefix(prefix: u8) -> felt252 {
-    assert(prefix >= 1 && prefix <= 69, 'Invalid prefix');
+    assert(prefix >= 0 && prefix <= 69, 'Invalid prefix');
     if prefix == PREFIX_AGONY {
         return 'Agony';
     } else if prefix == PREFIX_APOCALYPSE {
@@ -509,12 +509,12 @@ fn getBeastNamePrefix(prefix: u8) -> felt252 {
     } else if prefix == PREFIX_SHIMMERING {
         return 'Shimmering';
     } else {
-        return '1337';
+        return '';
     }
 }
 
 fn getBeastNameSuffix(suffix: u8) -> felt252 {
-    assert(suffix >= 1 && suffix <= 18, 'Invalid suffix');
+    assert(suffix >= 0 && suffix <= 18, 'Invalid suffix');
     if suffix == SUFFIX_BANE {
         return 'Bane';
     } else if suffix == SUFFIX_ROOT {
@@ -552,12 +552,12 @@ fn getBeastNameSuffix(suffix: u8) -> felt252 {
     } else if suffix == SUFFIX_MOON {
         return 'Moon';
     } else {
-        return '1337';
+        return '';
     }
 }
 
 fn getBeastTier(beast: u8) -> felt252 {
-    assert(beast >= 1 && beast <= 75, 'Invalid beast');
+    assert(beast >= 0 && beast <= 75, 'Invalid beast');
     if ((beast >= 1 && beast <= 5)
         || (beast >= 26 && beast <= 30)
         || (beast >= 51 && beast <= 55)) {
@@ -579,12 +579,12 @@ fn getBeastTier(beast: u8) -> felt252 {
         || (beast >= 71 && beast <= 75)) {
         return TIER_5;
     } else {
-        return '1337';
+        return '';
     }
 }
 
 fn getBeastType(beast: u8) -> felt252 {
-    assert(beast >= 1 && beast <= 75, 'Invalid beast');
+    assert(beast >= 0 && beast <= 75, 'Invalid beast');
     if (beast >= 1 && beast <= 25) {
         return TYPE_MAGICAL;
     } else if (beast >= 26 && beast <= 50) {
@@ -595,7 +595,7 @@ fn getBeastType(beast: u8) -> felt252 {
 }
 
 fn getBeastPixel(beast: u8) -> LongString {
-    assert(beast >= 1 && beast <= 75, 'Invalid beast');
+    assert(beast >= 0 && beast <= 75, 'Invalid beast');
     let mut content = ArrayTrait::<felt252>::new();
     if beast == ENT {
         content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
