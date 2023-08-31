@@ -33,6 +33,9 @@ mod Beasts {
         get_name, get_prefix, get_suffix, get_type, get_tier, get_hash, get_svg
     };
 
+    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
+    const IERC721_ID_EIP: felt252 = 0x80ac58cd;
+    const IERC721_METADATA_ID_EIP: felt252 = 0x5b5e139f;
 
     #[storage]
     struct Storage {
@@ -105,6 +108,8 @@ mod Beasts {
             self._registerInterface(ISRC5_ID);
             self._registerInterface(IERC721_ID);
             self._registerInterface(IERC721_METADATA_ID);
+            self._registerInterface(IERC721_ID_EIP);
+            self._registerInterface(IERC721_METADATA_ID_EIP);
 
             self._name.write(name);
             self._symbol.write(symbol);
@@ -283,11 +288,11 @@ mod Beasts {
 
             // Name & description
             content.append('data:application/json;utf8,');
-            content.append('{"name":"');
+            content.append('{"name":""');
             content.append(prefix);
             content.append('%20');
             content.append(suffix);
-            content.append('%20');
+            content.append('"%20');
             content.append(name);
             content.append('","description":"Beasts"');
 

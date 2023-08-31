@@ -50,7 +50,7 @@ export STARKNET_NETWORK=alpha-mainnet
 
 Declare contract
 ```
-starknet declare --contract target/dev/leetloot_LeetLoot.sierra.json --account pusscode
+starknet declare --contract target/dev/LootSurvivorBeasts_Beasts.sierra.json --account pusscode
 ```
 
 If compiling error happens, try building with a recent version manually in the home dir
@@ -58,7 +58,7 @@ If compiling error happens, try building with a recent version manually in the h
 cd ~/
 git clone https://github.com/starkware-libs/cairo/ .cairo
 cd .cairo/
-git checkout tags/v2.0.2
+git checkout tags/v2.1.1
 cargo build --all --release
 ```
 
@@ -90,4 +90,10 @@ starknet invoke --function mint --address <CONTRACT_ADDRESS> --account pusscode 
 
 ## Test
 
+```
+starknet deploy --class_hash 0x5b465308d15885b3b7ed9e8ceb31ec686bbdb817c2ecf96c93d976c7723b281 --max_fee 1000000000000000 --input 0x07862d11bf327959b7989cb158def3b8debf8948813150e43689485706f3db53 0x07862d11bf327959b7989cb158def3b8debf8948813150e43689485706f3db53 5504917669703282548 5495875148635393876 --account pusscode
+```
+
+```
 starkli deploy 0x02cb532fc4a77e28eca87132b5326830aaf5fa87c6fb3cdc4314a4219ce0545f 0x3481bceb5771419b69cac998eece0cbf6be21699cdfb1a736f3c28796efbd7d 0x0 0x424541535453 0x424541535453 --account ./account --keystore ./keys
+```

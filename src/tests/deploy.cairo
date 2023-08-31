@@ -28,7 +28,7 @@ mod tests {
         IBeastsDispatcher { contract_address: addr }
     }
     #[test]
-    #[available_gas(715130)]
+    #[available_gas(1000000)]
     fn test_deploy_args() {
         let contract = deploy();
         let owner = contract.owner();
