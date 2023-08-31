@@ -288,11 +288,11 @@ mod Beasts {
 
             // Name & description
             content.append('data:application/json;utf8,');
-            content.append('{"name":""');
+            content.append('{"name":"\"');
             content.append(prefix);
             content.append('%20');
             content.append(suffix);
-            content.append('"%20');
+            content.append('\"%20');
             content.append(name);
             content.append('","description":"Beasts"');
 
