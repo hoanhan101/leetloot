@@ -1,5 +1,49 @@
 # LeetLoot
 
+## Deploy with Starkli
+
+
+Initialize a signer and account if haven't. Otherwise check its correctness
+```
+starkli signer keystore new keys/key.json
+export STARKNET_KEYSTORE="/workspaces/leetloot/keys/key.json"
+```
+
+```
+starkli account oz init accounts/account.json
+export STARKNET_ACCOUNT="/workspaces/leetloot/accounts/account.json"
+```
+
+Deploy the account if haven't
+```
+starkli account deploy accounts/account.json
+```
+
+Test and build the contract
+```
+scarb test && scarb build
+```
+
+Declare contract
+```
+starkli declare --account accounts/account.json --rpc <RPC_URL> --network goerli-1 ./target/dev/LootSurvivorBeasts_Beasts.sierra.json
+```
+
+Helpful Cairo string conversion
+```
+starkli to-cairo-string BEASTS
+```
+
+Deploy contract with argument resolution
+```
+starkli deploy --account accounts/account.json --rpc <RPC_URL> <CLASS_HASH> <OWNER_ADDRESS> <WHITELIST_ADDRESS> str:Beasts str:BEASTS
+```
+
+Get transaction
+```
+starkli transaction --rpc <RPC_URL> <TRANSACTION_HASH>
+```
+
 ## Deploy
 
 If you have a deployer account, double check its correctness
