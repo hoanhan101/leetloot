@@ -29,9 +29,7 @@ mod Beasts {
     use LootSurvivorBeasts::long_string::{LongString};
     use LootSurvivorBeasts::interfaces::{IBeasts};
     use LootSurvivorBeasts::pack::{mask, pow, PackableBeast};
-    use LootSurvivorBeasts::beast::{
-        get_name, get_prefix, get_suffix, get_type, get_tier, get_hash, get_svg
-    };
+    use LootSurvivorBeasts::beast::{get_hash, get_content};
 
     // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
     const IERC721_ID_EIP: felt252 = 0x80ac58cd;
@@ -271,81 +269,8 @@ mod Beasts {
 
         fn tokenURI(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(self._exists(tokenID), 'Invalid token ID');
-
-            // unpack beast
-            let unpackedBeast = self._beast.read(tokenID);
-
-            let beast: u8 = unpackedBeast.id;
-            let name: felt252 = get_name(beast);
-            let prefix: felt252 = get_prefix(unpackedBeast.prefix);
-            let suffix: felt252 = get_suffix(unpackedBeast.suffix);
-            let btype: felt252 = get_type(beast);
-            let tier: felt252 = get_tier(beast);
-            let level: felt252 = unpackedBeast.level.into();
-
-            let mut content = ArrayTrait::<felt252>::new();
-
-            // Name & description
-            content.append('data:application/json;utf8,');
-            content.append('{"name":"\"');
-            content.append(prefix);
-            content.append('%20');
-            content.append(suffix);
-            content.append('\"%20');
-            content.append(name);
-            content.append('","description":"Beasts"');
-
-            // Metadata
-            content.append(',"attributes":[{"trait_type":');
-            content.append('"prefix","value":"');
-            content.append(prefix);
-            content.append('"},{"trait_type":');
-            content.append('"name","value":"');
-            content.append(name);
-            content.append('"},{"trait_type":');
-            content.append('"suffix","value":"');
-            content.append(suffix);
-            content.append('"},{"trait_type":');
-            content.append('"type","value":"');
-            content.append(btype);
-            content.append('"},{"trait_type":');
-            content.append('"tier","value":"');
-            content.append(tier);
-            content.append('"},{"trait_type":');
-            content.append('"level","value":"');
-            content.append(level);
-            content.append('"}]');
-
-            // Image
-            content.append(',"image":"');
-            content.append('data:image/svg+xml;utf8,<svg%20');
-            content.append('width=\\"100%\\"%20height=\\"100%\\');
-            content.append('"%20viewBox=\\"0%200%2020000%202');
-            content.append('0000\\"%20xmlns=\\"http://www.w3.');
-            content.append('org/2000/svg\\"><style>svg{backg');
-            content.append('round-image:url(');
-            content.append('data:image/png;base64,');
-            let ls: LongString = get_svg(beast);
-            let mut i = 0_usize;
-            loop {
-                if i == ls.len {
-                    break;
-                }
-
-                content.append(*ls.content[i]);
-                i += 1;
-            };
-
-            content.append(');background-repeat:no-repeat;b');
-            content.append('ackground-size:contain;backgrou');
-            content.append('nd-position:center;image-render');
-            content.append('ing:-webkit-optimize-contrast;-');
-            content.append('ms-interpolation-mode:nearest-n');
-            content.append('eighbor;image-rendering:-moz-cr');
-            content.append('isp-edges;image-rendering:pixel');
-            content.append('ated;}</style></svg>"}');
-
-            content
+            let beast = self._beast.read(tokenID);
+            get_content(beast)
         }
 
         fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
