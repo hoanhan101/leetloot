@@ -227,10 +227,13 @@ fn get_content(self: PackableBeast) -> Array<felt252> {
     // Name & description
     content.append('data:application/json;utf8,');
     content.append('{"name":"\"');
-    content.append(prefix);
-    content.append('%20');
-    content.append(suffix);
-    content.append('\"%20');
+
+    if (self.level > 0) {
+        content.append(prefix);
+        content.append('%20');
+        content.append(suffix);
+        content.append('\"%20');
+    }
     content.append(name);
     content.append('","description":"Beasts"');
 
@@ -2738,15 +2741,15 @@ mod tests {
     use debug::PrintTrait;
     use core::array::ArrayTrait;
     use LootSurvivorBeasts::beast::{
-        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, get_level, get_content,
-        TYPE_MAGICAL, TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN, BEAR, FENRIR,
-        WENDIGO, GHOUL, PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE, DRAGON, GIANT,
-        NEMEANLION, YETI, KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN, BASILISK, KITSUNE,
-        LICH, WEREWOLF, BANSHEE, DRAUGR, VAMPIRE, SPRITE, KAPPA, FAIRY, LEPRECHAUN, KELPIE, GNOME,
-        ANANSI, TYPHON, JIANGSHI, GORGON, HYDRA, QILIN, MANTIS, HARPY, WRAITH, NUE, SKINWALKER,
-        CHUPACABRA, WERETIGER, ROC, HIPPOGRIFF, JAGUAR, SATORI, DIREWOLF, WOLF, SPIDER, RAT,
-        COLOSSUS, BALROG, LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN, ETTIN, CYCLOPS,
-        ENT, TROLL, BIGFOOT, OGRE, ORC, SKELETON
+        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, get_level,
+        get_content, TYPE_MAGICAL, TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN,
+        BEAR, FENRIR, WENDIGO, GHOUL, PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE,
+        DRAGON, GIANT, NEMEANLION, YETI, KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN,
+        BASILISK, KITSUNE, LICH, WEREWOLF, BANSHEE, DRAUGR, VAMPIRE, SPRITE, KAPPA, FAIRY,
+        LEPRECHAUN, KELPIE, GNOME, ANANSI, TYPHON, JIANGSHI, GORGON, HYDRA, QILIN, MANTIS, HARPY,
+        WRAITH, NUE, SKINWALKER, CHUPACABRA, WERETIGER, ROC, HIPPOGRIFF, JAGUAR, SATORI, DIREWOLF,
+        WOLF, SPIDER, RAT, COLOSSUS, BALROG, LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN,
+        ETTIN, CYCLOPS, ENT, TROLL, BIGFOOT, OGRE, ORC, SKELETON
     };
     use LootSurvivorBeasts::pack::{PackableBeast};
 
