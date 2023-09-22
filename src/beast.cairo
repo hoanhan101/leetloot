@@ -3,6 +3,7 @@ use array::{ArrayTrait};
 use core::traits::{Into};
 
 use super::long_string::LongString;
+use LootSurvivorBeasts::pack::{PackableBeast};
 
 // Tiers
 const TIER_1: felt252 = '1';
@@ -211,6 +212,80 @@ const SUFFIX_PEAK: u8 = 15;
 const SUFFIX_FORM: u8 = 16;
 const SUFFIX_SUN: u8 = 17;
 const SUFFIX_MOON: u8 = 18;
+
+fn get_content(self: PackableBeast) -> Array<felt252> {
+    let beast: u8 = self.id;
+    let name: felt252 = get_name(beast);
+    let prefix: felt252 = get_prefix(self.prefix);
+    let suffix: felt252 = get_suffix(self.suffix);
+    let btype: felt252 = get_type(beast);
+    let tier: felt252 = get_tier(beast);
+    let level: felt252 = get_level(self.level);
+
+    let mut content = ArrayTrait::<felt252>::new();
+
+    // Name & description
+    content.append('data:application/json;utf8,');
+    content.append('{"name":"\"');
+    content.append(prefix);
+    content.append('%20');
+    content.append(suffix);
+    content.append('\"%20');
+    content.append(name);
+    content.append('","description":"Beasts"');
+
+    // Metadata
+    content.append(',"attributes":[{"trait_type":');
+    content.append('"prefix","value":"');
+    content.append(prefix);
+    content.append('"},{"trait_type":');
+    content.append('"name","value":"');
+    content.append(name);
+    content.append('"},{"trait_type":');
+    content.append('"suffix","value":"');
+    content.append(suffix);
+    content.append('"},{"trait_type":');
+    content.append('"type","value":"');
+    content.append(btype);
+    content.append('"},{"trait_type":');
+    content.append('"tier","value":');
+    content.append(tier);
+    content.append('},{"trait_type":');
+    content.append('"level","value":');
+    content.append(level);
+    content.append('}]');
+
+    // Image
+    content.append(',"image":"');
+    content.append('data:image/svg+xml;utf8,<svg%20');
+    content.append('width=\\"100%\\"%20height=\\"100%\\');
+    content.append('"%20viewBox=\\"0%200%2020000%202');
+    content.append('0000\\"%20xmlns=\\"http://www.w3.');
+    content.append('org/2000/svg\\"><style>svg{backg');
+    content.append('round-image:url(');
+    content.append('data:image/png;base64,');
+    let ls: LongString = get_svg(beast);
+    let mut i = 0_usize;
+    loop {
+        if i == ls.len {
+            break;
+        }
+
+        content.append(*ls.content[i]);
+        i += 1;
+    };
+
+    content.append(');background-repeat:no-repeat;b');
+    content.append('ackground-size:contain;backgrou');
+    content.append('nd-position:center;image-render');
+    content.append('ing:-webkit-optimize-contrast;-');
+    content.append('ms-interpolation-mode:nearest-n');
+    content.append('eighbor;image-rendering:-moz-cr');
+    content.append('isp-edges;image-rendering:pixel');
+    content.append('ated;}</style></svg>"}');
+
+    content
+}
 
 fn get_name(beast: u8) -> felt252 {
     if beast == WARLOCK {
@@ -551,6 +626,612 @@ fn get_suffix(suffix: u8) -> felt252 {
         'Moon'
     } else {
         ''
+    }
+}
+
+fn get_level(level: u16) -> felt252 {
+    if level == 0 {
+        '0'
+    } else if level == 1 {
+        '1'
+    } else if level == 2 {
+        '2'
+    } else if level == 3 {
+        '3'
+    } else if level == 4 {
+        '4'
+    } else if level == 5 {
+        '5'
+    } else if level == 6 {
+        '6'
+    } else if level == 7 {
+        '7'
+    } else if level == 8 {
+        '8'
+    } else if level == 9 {
+        '9'
+    } else if level == 10 {
+        '10'
+    } else if level == 11 {
+        '11'
+    } else if level == 12 {
+        '12'
+    } else if level == 13 {
+        '13'
+    } else if level == 14 {
+        '14'
+    } else if level == 15 {
+        '15'
+    } else if level == 16 {
+        '16'
+    } else if level == 17 {
+        '17'
+    } else if level == 18 {
+        '18'
+    } else if level == 19 {
+        '19'
+    } else if level == 20 {
+        '20'
+    } else if level == 21 {
+        '21'
+    } else if level == 22 {
+        '22'
+    } else if level == 23 {
+        '23'
+    } else if level == 24 {
+        '24'
+    } else if level == 25 {
+        '25'
+    } else if level == 26 {
+        '26'
+    } else if level == 27 {
+        '27'
+    } else if level == 28 {
+        '28'
+    } else if level == 29 {
+        '29'
+    } else if level == 30 {
+        '30'
+    } else if level == 31 {
+        '31'
+    } else if level == 32 {
+        '32'
+    } else if level == 33 {
+        '33'
+    } else if level == 34 {
+        '34'
+    } else if level == 35 {
+        '35'
+    } else if level == 36 {
+        '36'
+    } else if level == 37 {
+        '37'
+    } else if level == 38 {
+        '38'
+    } else if level == 39 {
+        '39'
+    } else if level == 40 {
+        '40'
+    } else if level == 41 {
+        '41'
+    } else if level == 42 {
+        '42'
+    } else if level == 43 {
+        '43'
+    } else if level == 44 {
+        '44'
+    } else if level == 45 {
+        '45'
+    } else if level == 46 {
+        '46'
+    } else if level == 47 {
+        '47'
+    } else if level == 48 {
+        '48'
+    } else if level == 49 {
+        '49'
+    } else if level == 50 {
+        '50'
+    } else if level == 51 {
+        '51'
+    } else if level == 52 {
+        '52'
+    } else if level == 53 {
+        '53'
+    } else if level == 54 {
+        '54'
+    } else if level == 55 {
+        '55'
+    } else if level == 56 {
+        '56'
+    } else if level == 57 {
+        '57'
+    } else if level == 58 {
+        '58'
+    } else if level == 59 {
+        '59'
+    } else if level == 60 {
+        '60'
+    } else if level == 61 {
+        '61'
+    } else if level == 62 {
+        '62'
+    } else if level == 63 {
+        '63'
+    } else if level == 64 {
+        '64'
+    } else if level == 65 {
+        '65'
+    } else if level == 66 {
+        '66'
+    } else if level == 67 {
+        '67'
+    } else if level == 68 {
+        '68'
+    } else if level == 69 {
+        '69'
+    } else if level == 70 {
+        '70'
+    } else if level == 71 {
+        '71'
+    } else if level == 72 {
+        '72'
+    } else if level == 73 {
+        '73'
+    } else if level == 74 {
+        '74'
+    } else if level == 75 {
+        '75'
+    } else if level == 76 {
+        '76'
+    } else if level == 77 {
+        '77'
+    } else if level == 78 {
+        '78'
+    } else if level == 79 {
+        '79'
+    } else if level == 80 {
+        '80'
+    } else if level == 81 {
+        '81'
+    } else if level == 82 {
+        '82'
+    } else if level == 83 {
+        '83'
+    } else if level == 84 {
+        '84'
+    } else if level == 85 {
+        '85'
+    } else if level == 86 {
+        '86'
+    } else if level == 87 {
+        '87'
+    } else if level == 88 {
+        '88'
+    } else if level == 89 {
+        '89'
+    } else if level == 90 {
+        '90'
+    } else if level == 91 {
+        '91'
+    } else if level == 92 {
+        '92'
+    } else if level == 93 {
+        '93'
+    } else if level == 94 {
+        '94'
+    } else if level == 95 {
+        '95'
+    } else if level == 96 {
+        '96'
+    } else if level == 97 {
+        '97'
+    } else if level == 98 {
+        '98'
+    } else if level == 99 {
+        '99'
+    } else if level == 100 {
+        '100'
+    } else if level == 101 {
+        '101'
+    } else if level == 102 {
+        '102'
+    } else if level == 103 {
+        '103'
+    } else if level == 104 {
+        '104'
+    } else if level == 105 {
+        '105'
+    } else if level == 106 {
+        '106'
+    } else if level == 107 {
+        '107'
+    } else if level == 108 {
+        '108'
+    } else if level == 109 {
+        '109'
+    } else if level == 110 {
+        '110'
+    } else if level == 111 {
+        '111'
+    } else if level == 112 {
+        '112'
+    } else if level == 113 {
+        '113'
+    } else if level == 114 {
+        '114'
+    } else if level == 115 {
+        '115'
+    } else if level == 116 {
+        '116'
+    } else if level == 117 {
+        '117'
+    } else if level == 118 {
+        '118'
+    } else if level == 119 {
+        '119'
+    } else if level == 120 {
+        '120'
+    } else if level == 121 {
+        '121'
+    } else if level == 122 {
+        '122'
+    } else if level == 123 {
+        '123'
+    } else if level == 124 {
+        '124'
+    } else if level == 125 {
+        '125'
+    } else if level == 126 {
+        '126'
+    } else if level == 127 {
+        '127'
+    } else if level == 128 {
+        '128'
+    } else if level == 129 {
+        '129'
+    } else if level == 130 {
+        '130'
+    } else if level == 131 {
+        '131'
+    } else if level == 132 {
+        '132'
+    } else if level == 133 {
+        '133'
+    } else if level == 134 {
+        '134'
+    } else if level == 135 {
+        '135'
+    } else if level == 136 {
+        '136'
+    } else if level == 137 {
+        '137'
+    } else if level == 138 {
+        '138'
+    } else if level == 139 {
+        '139'
+    } else if level == 140 {
+        '140'
+    } else if level == 141 {
+        '141'
+    } else if level == 142 {
+        '142'
+    } else if level == 143 {
+        '143'
+    } else if level == 144 {
+        '144'
+    } else if level == 145 {
+        '145'
+    } else if level == 146 {
+        '146'
+    } else if level == 147 {
+        '147'
+    } else if level == 148 {
+        '148'
+    } else if level == 149 {
+        '149'
+    } else if level == 150 {
+        '150'
+    } else if level == 151 {
+        '151'
+    } else if level == 152 {
+        '152'
+    } else if level == 153 {
+        '153'
+    } else if level == 154 {
+        '154'
+    } else if level == 155 {
+        '155'
+    } else if level == 156 {
+        '156'
+    } else if level == 157 {
+        '157'
+    } else if level == 158 {
+        '158'
+    } else if level == 159 {
+        '159'
+    } else if level == 160 {
+        '160'
+    } else if level == 161 {
+        '161'
+    } else if level == 162 {
+        '162'
+    } else if level == 163 {
+        '163'
+    } else if level == 164 {
+        '164'
+    } else if level == 165 {
+        '165'
+    } else if level == 166 {
+        '166'
+    } else if level == 167 {
+        '167'
+    } else if level == 168 {
+        '168'
+    } else if level == 169 {
+        '169'
+    } else if level == 170 {
+        '170'
+    } else if level == 171 {
+        '171'
+    } else if level == 172 {
+        '172'
+    } else if level == 173 {
+        '173'
+    } else if level == 174 {
+        '174'
+    } else if level == 175 {
+        '175'
+    } else if level == 176 {
+        '176'
+    } else if level == 177 {
+        '177'
+    } else if level == 178 {
+        '178'
+    } else if level == 179 {
+        '179'
+    } else if level == 180 {
+        '180'
+    } else if level == 181 {
+        '181'
+    } else if level == 182 {
+        '182'
+    } else if level == 183 {
+        '183'
+    } else if level == 184 {
+        '184'
+    } else if level == 185 {
+        '185'
+    } else if level == 186 {
+        '186'
+    } else if level == 187 {
+        '187'
+    } else if level == 188 {
+        '188'
+    } else if level == 189 {
+        '189'
+    } else if level == 190 {
+        '190'
+    } else if level == 191 {
+        '191'
+    } else if level == 192 {
+        '192'
+    } else if level == 193 {
+        '193'
+    } else if level == 194 {
+        '194'
+    } else if level == 195 {
+        '195'
+    } else if level == 196 {
+        '196'
+    } else if level == 197 {
+        '197'
+    } else if level == 198 {
+        '198'
+    } else if level == 199 {
+        '199'
+    } else if level == 200 {
+        '200'
+    } else if level == 201 {
+        '201'
+    } else if level == 202 {
+        '202'
+    } else if level == 203 {
+        '203'
+    } else if level == 204 {
+        '204'
+    } else if level == 205 {
+        '205'
+    } else if level == 206 {
+        '206'
+    } else if level == 207 {
+        '207'
+    } else if level == 208 {
+        '208'
+    } else if level == 209 {
+        '209'
+    } else if level == 210 {
+        '210'
+    } else if level == 211 {
+        '211'
+    } else if level == 212 {
+        '212'
+    } else if level == 213 {
+        '213'
+    } else if level == 214 {
+        '214'
+    } else if level == 215 {
+        '215'
+    } else if level == 216 {
+        '216'
+    } else if level == 217 {
+        '217'
+    } else if level == 218 {
+        '218'
+    } else if level == 219 {
+        '219'
+    } else if level == 220 {
+        '220'
+    } else if level == 221 {
+        '221'
+    } else if level == 222 {
+        '222'
+    } else if level == 223 {
+        '223'
+    } else if level == 224 {
+        '224'
+    } else if level == 225 {
+        '225'
+    } else if level == 226 {
+        '226'
+    } else if level == 227 {
+        '227'
+    } else if level == 228 {
+        '228'
+    } else if level == 229 {
+        '229'
+    } else if level == 230 {
+        '230'
+    } else if level == 231 {
+        '231'
+    } else if level == 232 {
+        '232'
+    } else if level == 233 {
+        '233'
+    } else if level == 234 {
+        '234'
+    } else if level == 235 {
+        '235'
+    } else if level == 236 {
+        '236'
+    } else if level == 237 {
+        '237'
+    } else if level == 238 {
+        '238'
+    } else if level == 239 {
+        '239'
+    } else if level == 240 {
+        '240'
+    } else if level == 241 {
+        '241'
+    } else if level == 242 {
+        '242'
+    } else if level == 243 {
+        '243'
+    } else if level == 244 {
+        '244'
+    } else if level == 245 {
+        '245'
+    } else if level == 246 {
+        '246'
+    } else if level == 247 {
+        '247'
+    } else if level == 248 {
+        '248'
+    } else if level == 249 {
+        '249'
+    } else if level == 250 {
+        '250'
+    } else if level == 251 {
+        '251'
+    } else if level == 252 {
+        '252'
+    } else if level == 253 {
+        '253'
+    } else if level == 254 {
+        '254'
+    } else if level == 255 {
+        '255'
+    } else if level == 256 {
+        '256'
+    } else if level == 257 {
+        '257'
+    } else if level == 258 {
+        '258'
+    } else if level == 259 {
+        '259'
+    } else if level == 260 {
+        '260'
+    } else if level == 261 {
+        '261'
+    } else if level == 262 {
+        '262'
+    } else if level == 263 {
+        '263'
+    } else if level == 264 {
+        '264'
+    } else if level == 265 {
+        '265'
+    } else if level == 266 {
+        '266'
+    } else if level == 267 {
+        '267'
+    } else if level == 268 {
+        '268'
+    } else if level == 269 {
+        '269'
+    } else if level == 270 {
+        '270'
+    } else if level == 271 {
+        '271'
+    } else if level == 272 {
+        '272'
+    } else if level == 273 {
+        '273'
+    } else if level == 274 {
+        '274'
+    } else if level == 275 {
+        '275'
+    } else if level == 276 {
+        '276'
+    } else if level == 277 {
+        '277'
+    } else if level == 278 {
+        '278'
+    } else if level == 279 {
+        '279'
+    } else if level == 280 {
+        '280'
+    } else if level == 281 {
+        '281'
+    } else if level == 282 {
+        '282'
+    } else if level == 283 {
+        '283'
+    } else if level == 284 {
+        '284'
+    } else if level == 285 {
+        '285'
+    } else if level == 286 {
+        '286'
+    } else if level == 287 {
+        '287'
+    } else if level == 288 {
+        '288'
+    } else if level == 289 {
+        '289'
+    } else if level == 290 {
+        '290'
+    } else if level == 291 {
+        '291'
+    } else if level == 292 {
+        '292'
+    } else if level == 293 {
+        '293'
+    } else if level == 294 {
+        '294'
+    } else if level == 295 {
+        '295'
+    } else if level == 296 {
+        '296'
+    } else if level == 297 {
+        '297'
+    } else if level == 298 {
+        '298'
+    } else if level == 299 {
+        '299'
+    } else {
+        '300'
     }
 }
 
@@ -2054,18 +2735,68 @@ fn get_svg(beast: u8) -> LongString {
 // ---------------------------
 #[cfg(test)]
 mod tests {
+    use debug::PrintTrait;
     use core::array::ArrayTrait;
     use LootSurvivorBeasts::beast::{
-        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, TYPE_MAGICAL,
-        TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN, BEAR, FENRIR, WENDIGO, GHOUL,
-        PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE, DRAGON, GIANT, NEMEANLION, YETI,
-        KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN, BASILISK, KITSUNE, LICH, WEREWOLF,
-        BANSHEE, DRAUGR, VAMPIRE, SPRITE, KAPPA, FAIRY, LEPRECHAUN, KELPIE, GNOME, ANANSI, TYPHON,
-        JIANGSHI, GORGON, HYDRA, QILIN, MANTIS, HARPY, WRAITH, NUE, SKINWALKER, CHUPACABRA,
-        WERETIGER, ROC, HIPPOGRIFF, JAGUAR, SATORI, DIREWOLF, WOLF, SPIDER, RAT, COLOSSUS, BALROG,
-        LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN, ETTIN, CYCLOPS, ENT, TROLL, BIGFOOT,
-        OGRE, ORC, SKELETON
+        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, get_level, get_content,
+        TYPE_MAGICAL, TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN, BEAR, FENRIR,
+        WENDIGO, GHOUL, PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE, DRAGON, GIANT,
+        NEMEANLION, YETI, KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN, BASILISK, KITSUNE,
+        LICH, WEREWOLF, BANSHEE, DRAUGR, VAMPIRE, SPRITE, KAPPA, FAIRY, LEPRECHAUN, KELPIE, GNOME,
+        ANANSI, TYPHON, JIANGSHI, GORGON, HYDRA, QILIN, MANTIS, HARPY, WRAITH, NUE, SKINWALKER,
+        CHUPACABRA, WERETIGER, ROC, HIPPOGRIFF, JAGUAR, SATORI, DIREWOLF, WOLF, SPIDER, RAT,
+        COLOSSUS, BALROG, LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN, ETTIN, CYCLOPS,
+        ENT, TROLL, BIGFOOT, OGRE, ORC, SKELETON
     };
+    use LootSurvivorBeasts::pack::{PackableBeast};
+
+    #[test]
+    #[available_gas(2265600)]
+    fn test_get_level() {
+        assert(get_level(0) == '0', 'wrong level for 0');
+        assert(get_level(1) == '1', 'wrong level for 1');
+        assert(get_level(2) == '2', 'wrong level for 2');
+        assert(get_level(3) == '3', 'wrong level for 3');
+        assert(get_level(4) == '4', 'wrong level for 4');
+        assert(get_level(5) == '5', 'wrong level for 5');
+        assert(get_level(6) == '6', 'wrong level for 6');
+        assert(get_level(7) == '7', 'wrong level for 7');
+        assert(get_level(8) == '8', 'wrong level for 8');
+        assert(get_level(9) == '9', 'wrong level for 9');
+        assert(get_level(10) == '10', 'wrong level for 10');
+        assert(get_level(11) == '11', 'wrong level for 11');
+        assert(get_level(12) == '12', 'wrong level for 12');
+        assert(get_level(13) == '13', 'wrong level for 13');
+        assert(get_level(14) == '14', 'wrong level for 14');
+        assert(get_level(15) == '15', 'wrong level for 15');
+        assert(get_level(16) == '16', 'wrong level for 16');
+        assert(get_level(17) == '17', 'wrong level for 17');
+        assert(get_level(18) == '18', 'wrong level for 18');
+        assert(get_level(19) == '19', 'wrong level for 19');
+        assert(get_level(20) == '20', 'wrong level for 20');
+        assert(get_level(21) == '21', 'wrong level for 21');
+        assert(get_level(100) == '100', 'wrong level for 100');
+        assert(get_level(200) == '200', 'wrong level for 200');
+        assert(get_level(300) == '300', 'wrong level for 300');
+    }
+
+    #[test]
+    #[available_gas(11125360)]
+    fn test_get_content() {
+        let beast = PackableBeast { id: 1, prefix: 1, suffix: 1, level: 1 };
+
+        let content = get_content(beast);
+        let mut i = 0;
+        loop {
+            if i >= content.len() {
+                break;
+            }
+            let segment = *content.at(i);
+            // Uncomment to view content
+            //segment.print();
+            i += 1;
+        }
+    }
 
     #[test]
     #[available_gas(25360)]
@@ -2608,53 +3339,53 @@ mod tests {
             i += 1;
         };
     }
-// @dev: the below test could technically verify there are no hash collisions
-//       across our entire hash space but it's impractical to run all 100k hashes
-//       so we're just running all combinations for the first beast
-#[test]
-#[available_gas(300000000000)]
-fn test_get_hash_extended() {
-    let mut hashes = ArrayTrait::<felt252>::new();
+    // @dev: the below test could technically verify there are no hash collisions
+    //       across our entire hash space but it's impractical to run all 100k hashes
+    //       so we're just running all combinations for the first beast
+    #[test]
+    #[available_gas(300000000000)]
+    fn test_get_hash_extended() {
+        let mut hashes = ArrayTrait::<felt252>::new();
 
-    // iterarate over all possible hashes
-    let mut beast = 1;
-    loop {
-        if beast == 1 {
-            break;
-        }
-        let mut prefix = 1;
+        // iterarate over all possible hashes
+        let mut beast = 1;
         loop {
-            if prefix == 70 {
+            if beast == 1 {
                 break;
             }
-            let mut suffix = 1;
+            let mut prefix = 1;
             loop {
-                if suffix == 19 {
+                if prefix == 70 {
                     break;
                 }
-                hashes.append(get_hash(beast, prefix, suffix));
-                suffix += 1;
+                let mut suffix = 1;
+                loop {
+                    if suffix == 19 {
+                        break;
+                    }
+                    hashes.append(get_hash(beast, prefix, suffix));
+                    suffix += 1;
+                };
+                prefix += 1;
             };
-            prefix += 1;
+            beast += 1;
         };
-        beast += 1;
-    };
 
-    let mut i = 0;
-    loop {
-        if i == hashes.len() {
-            break;
-        }
-        let hashes_clone = hashes.clone();
-        let mut j = i + 1;
+        let mut i = 0;
         loop {
-            if j == hashes_clone.len() {
+            if i == hashes.len() {
                 break;
             }
-            assert(hashes_clone[i] != hashes_clone[j], 'hashes should be unique');
-            j += 1;
+            let hashes_clone = hashes.clone();
+            let mut j = i + 1;
+            loop {
+                if j == hashes_clone.len() {
+                    break;
+                }
+                assert(hashes_clone[i] != hashes_clone[j], 'hashes should be unique');
+                j += 1;
+            };
+            i += 1;
         };
-        i += 1;
-    };
-}
+    }
 }
