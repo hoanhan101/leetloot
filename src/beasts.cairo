@@ -281,16 +281,16 @@ mod Beasts {
             self._registerInterface(interface_id);
         }
 
-        fn whitelist(ref self: ContractState, to: ContractAddress) {
+        fn setMinter(ref self: ContractState, to: ContractAddress) {
             self._assertOnlyOwner();
             self._whitelist.write(to);
         }
 
-        fn getWhitelist(self: @ContractState) -> ContractAddress {
+        fn getMinter(self: @ContractState) -> ContractAddress {
             return self._whitelist.read();
         }
 
-        fn isMinted(ref self: ContractState, beast: u8, prefix: u8, suffix: u8) -> bool {
+        fn isMinted(self: @ContractState, beast: u8, prefix: u8, suffix: u8) -> bool {
             self._minted.read(get_hash(beast, prefix, suffix))
         }
 
@@ -304,9 +304,7 @@ mod Beasts {
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
             let caller: ContractAddress = get_caller_address();
-            assert(
-                caller == self.owner() || caller == self.getWhitelist(), 'Not owner or whitelist'
-            );
+            assert(caller == self.getMinter(), 'Not authorized to mint');
             assert(!self.isMinted(beast, prefix, suffix), 'Already minted');
             let current: u256 = self._tokenIndex.read();
 
@@ -321,7 +319,7 @@ mod Beasts {
             self._tokenIndex.read()
         }
 
-        fn mintGenesis(ref self: ContractState, to: ContractAddress) {
+        fn mintGenesisBeasts(ref self: ContractState, to: ContractAddress) {
             self._assertOnlyOwner();
 
             let mut id = 1;

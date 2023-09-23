@@ -46,7 +46,7 @@ mod tests {
         let contract = deploy();
         let owner = contract.owner();
 
-        contract.mintGenesis(owner);
+        contract.mintGenesisBeasts(owner);
         assert(starknet::get_caller_address() == owner, 'Wrong caller');
         assert(contract.tokenSupply() == 75, 'Wrong supply');
     }
