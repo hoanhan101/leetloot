@@ -48,7 +48,8 @@ mod Beasts {
         _tokenIndex: u256,
         _supportedInterfaces: LegacyMap<felt252, bool>,
         _minted: LegacyMap::<felt252, bool>,
-        _beast: LegacyMap<u256, PackableBeast>
+        _beast: LegacyMap<u256, PackableBeast>,
+        _genesis_mint: bool,
     }
 
     #[event]
@@ -321,6 +322,7 @@ mod Beasts {
 
         fn mintGenesisBeasts(ref self: ContractState, to: ContractAddress) {
             self._assertOnlyOwner();
+            assert(self._genesis_mint.read() == false, 'Already minted');
 
             let mut id = 1;
             loop {
@@ -335,7 +337,9 @@ mod Beasts {
                 self._mint(to);
 
                 id += 1;
-            }
+            };
+
+            self._genesis_mint.write(true);
         }
     }
 }

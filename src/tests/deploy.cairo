@@ -52,6 +52,16 @@ mod tests {
     }
 
     #[test]
+    #[should_panic(expected: ('Already minted', 'ENTRYPOINT_FAILED'))]
+    #[available_gas(136114530)]
+    fn test_mint_genesis_twice() {
+        let contract = deploy();
+        let owner = contract.owner();
+        contract.mintGenesisBeasts(owner);
+        contract.mintGenesisBeasts(owner);
+    }
+
+    #[test]
     #[available_gas(3000000)]
     fn test_mint() {
         let contract = deploy();
