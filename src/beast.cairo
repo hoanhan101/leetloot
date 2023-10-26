@@ -889,23 +889,18 @@ fn get_pegasus_svg() -> LongString {
 fn get_fairy_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAU9JREFUWIXFl92ywyAIhDHT939le');
-    content.append('6VjNgssYTrl6hw18MmfdJjZtD/K1VUw');
-    content.append('Z4+/DTDG2BBvYIZBCE4lYwyr7C0Y3Iv');
-    content.append('kw5Sw/5W9NxA7BOyj070o5x4aX/pKAJ');
-    content.append('6oN0IgFUJKQs8TuM4MZxByFUThwHPs7');
-    content.append('zaAB4FrK1zLeAa+ASo3VM6dyRiV86tG');
-    content.append('xGLPPMP2sFou/EgtHzUx0QNYVQ8PdCD');
-    content.append('mnLcbKuVLQ3AqUCHQ5WonfLwFKFH/x3');
-    content.append('OsVXtJuNZubwElBKUMhL0L5bdAkaU46');
-    content.append('wULBDP+BNyXMXEi8kLBXI9n8PtzPwyB');
-    content.append('MhvgIxSVJ9NLAbxbRIbXHkJkufAAiEr');
-    content.append('IG1C8WSLTZwZJWDWuJCPTd65JVZDdFs');
-    content.append('9VhtNdBdGr5eUCmwNbQykz4JI3W/ADw');
-    content.append('BuvPLjsjCpyI8oMv7m9mfAWZAa63pAB');
-    content.append('KlAVKYXgF9L+cdqVL2rQY12jxJXbAAA');
-    content.append('AAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8A/////zPWC');
+    content.append('AAAAAR0Uk5TAP///7MtQIgAAACxSURB');
+    content.append('VDiNlZNbDsMwCARBe/87N20wDNhVlPx');
+    content.append('YggmwPMwfPpsGPQEXoQ2QxKcRFlGFpx');
+    content.append('G2sob1JqQdSO6byosooBEVA0DmuGMcA');
+    content.append('FSRAVNFERSiCQQBPdGoRqilMd8IlcwE');
+    content.append('oDsKmICje70OTlOUeQLSquhUqmASVai');
+    content.append('fwZp3zQnlGEXECORTZg1cFDBbXUM4rR');
+    content.append('z/P65cJh3+BbSl2dYeXeaqFODNPW6Ln');
+    content.append('ST1F5inebjNt8AHUyUFa2pdeGkAAAAA');
+    content.append('SUVORK5CYII=');
     content.into()
 }
 
@@ -936,25 +931,19 @@ fn get_satori_svg() -> LongString {
 fn get_juggernaut_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAX1JREFUWIWtV1uOAzEIc6u9WO/UY');
-    content.append('8yd5mi7H9uMiIvBVEWKmuYBwTiQAYDf');
-    content.append('STtwfnXd7dUZyYETAPDE4+rz/ycelq7');
-    content.append('rAAfOS4G7ORqPh6jW8fwN/3BtxjPFSp');
-    content.append('x9bJRR2mLmxi5bq/YeOLcW535sV/EOO');
-    content.append('XumOLD6a47DbDE3m6sQyDzOkLAQUMTM');
-    content.append('bkHW74jdcsCNdYceo/Hq1wfgcaGkNFb');
-    content.append('tuzOcCioVAmeskns1yQeKLHYk40fmZA');
-    content.append('lxxWa119GxmrwFnZeZR1k27EKyFaOor');
-    content.append('FNUFZ1JPZEciF5NDEzqyJI2jvw/xpNj');
-    content.append('PM0RdiZU41loJiGQHIiG1RjPTwkIACU');
-    content.append('CVVLKCDt9SwCBhM5jhOei4ar8WgdwxU');
-    content.append('nZEw4AH7wH+AZU67tbsYUg/jqSkXMq9');
-    content.append('7W5SqdRXHjtEHT1X/VVkUITPm5vIXCu');
-    content.append('0kJhWvsz2R4kUbkyzLIOnHHIzYp2HXC');
-    content.append('YndWG6rZsn2aMRua1e89VGud9Vyruvu');
-    content.append('mqMecgSj76Ov6m/AElrVxItBiR1AAAA');
-    content.append('ABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAjAC/MJKlOQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMpJREFUOI11');
+    content.append('kwEWgzAIQyH3P/RWB0mgrk+f2v6mEDD');
+    content.append('SBl7eIgeB73XudADGn/Varmc869DgVy');
+    content.append('leCgygIAdMXYeEQoYpPGvPBgGSab4Bj');
+    content.append('L0WzRERgJ5JzaTHMAVuAH585+FpouLW');
+    content.append('WXRSVrbqroXzbdEFWCq3AiwtWDk3ADC');
+    content.append('Plxh+c9UrQ8OKxYRzAVZuGiRiAHy1Hp');
+    content.append('r9ABkBU5A7WIYkm1a7dEoBnKwTuieaC');
+    content.append('JmkxwKogHKrC79iUJL9H80s6q9qT9mB');
+    content.append('kfcmfjrwd3wAu4YFMBJ5c6EAAAAASUV');
+    content.append('ORK5CYII=');
     content.into()
 }
 
@@ -1002,23 +991,19 @@ fn get_troll_svg() -> LongString {
 fn get_griffin_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUhJREFUWIXFV+0OwyAIxKUP7puzH');
-    content.append('4sNZRwctklNTJuKeHd8uA0RUXlxfJ50');
-    content.append('prO/Z4iI6hQZG5srEIzPRxWwh47JKXJ');
-    content.append('0jLMD0Zr3G9mr/MKg670zdcZ7kT9vP8');
-    content.append('RUQUcFz8TmUfRun94HhRwxWfZ2n/eRK');
-    content.append('XREzFglrAqWZWYX2VBs76qAvl0UWMw9');
-    content.append('wkyVSgWmx4ToPbuMVaQC2hf4yB1X4Do');
-    content.append('l2AKQzS5g/7Trf1XAxDqyQ3H2PSDKpx');
-    content.append('A5YohsszXkT2wIdlpxJw9Qkp7XcSZjN');
-    content.append('VA4UEn682jZkAroG1MNrd8DUYJatmsi');
-    content.append('JXVen+f3jE1nHdllZUkDQHV8F5BUxpm');
-    content.append('TrF1nXdT5rpl1+sSGanzvZhtMdhEFYG');
-    content.append('jDVuyre+GvE2aH3FGBuJa5OHunO+EAJ');
-    content.append('PZD0E1KmISs/JFS1a0YTQgAxW+3AzKg');
-    content.append('L39M3hhf2afRl39z47IAAAAASUVORK5');
-    content.append('CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMxJREFUOI2F');
+    content.append('UlEWwzAIUu5/6C0JKGZ9a37SZwmgGPl');
+    content.append('y4qGGCcADAvgP+NbQgIW3IxF9xyWZp4');
+    content.append('z6jhwUen5UViGm7VU6gCQ4VB8UaK89B');
+    content.append('9wUKZMJGI1eogHVE5pCRmtQJLZGdM1J');
+    content.append('Oni3SUCp191Gwpo6T8kgyki4RpoJcA4');
+    content.append('T4B1tE79hXbN0gHkZDIXAoEFn0dHcM+');
+    content.append('E+KCdzyMEyC/0vD04XLWBuoQgtzWFSe');
+    content.append('e4ubD2cQoFHi8PbqInfEm6UJm0B2d7h');
+    content.append('YvJRknOOtg8v5wOFywUbW3VO1AAAAAB');
+    content.append('JRU5ErkJggg==');
     content.into()
 }
 
@@ -1050,21 +1035,17 @@ fn get_kitsune_svg() -> LongString {
 fn get_sprite_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAASxJREFUWIXFVtEOAyEIw2X//8vu6');
-    content.append('RJSSy3ubuvLmRyWCgiOiJjxR7wsq5m+');
-    content.append('Su4E21sEzIgY6XutK7sBezYwzYRDXDf');
-    content.append('BI/BEVRScqwDX+RW7zukJ95sSX8aHYa');
-    content.append('WOC67zFOyK0uTkAu46ucFZX0N13ZBww');
-    content.append('D+0FweqBVRhzcKw8VSORIr2GayInT5g');
-    content.append('FLLXijNhJp6wzjYm1muIDjM5tlmMgLI');
-    content.append('vUKeAbWTOO/8I9C0wSZZ9eKSjCOzw6D');
-    content.append('D6IfoCsMAwEk34KcAOWKWAdcqvBWCOn');
-    content.append('etm1oX/JGPO1RPMjK0WUIUWRbHGZIrw');
-    content.append('i5CFvBLauJJ6GnZPdLCnVwN5zd4DKkr');
-    content.append('HApQwtm6ifhPiSU9mAYsMQI/jy3Emc8');
-    content.append('BEFOACGgRSROx51uA4jpszX/Gej+Ob8');
-    content.append('AETI34pAUrRkAAAAABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAKhJREFUOI2N');
+    content.append('klEOwzAIQ5N3/0NvWlOwgWrNR2uBYwJ');
+    content.append('m7T9nBWLDQV/YCb8gF9rCSIUdyaEEE4');
+    content.append('EkkLcaXMo2AlaCjOLUooBB7QKJKQ4FT');
+    content.append('iqGRFG4wwI6gVuBgaAp1A3tgvLzElnf');
+    content.append('/Xhp1lsCV/s8EE4Os9RWTiY5rtzOOYy');
+    content.append('DKm3SCZlRieUC+SmTdIN08QsBE0tCuK');
+    content.append('MPwAmYUTlQXzl5ia2cbn3d++JmPx+Lj');
+    content.append('wSp65nJ7wAAAABJRU5ErkJggg==');
     content.into()
 }
 
@@ -1072,23 +1053,18 @@ fn get_sprite_svg() -> LongString {
 fn get_goblin_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUtJREFUWIXFV8sSAyEIw53+/y/bS');
-    content.append('3cGswECe2guW5VHFBC7zGzbH3GNNZH2');
-    content.append('cBs5gcjoNrP1+24Yd+wUaqfyAueZvJf');
-    content.append('1ugRaCPxu0TgjirIJ9BzwxvDIWQiYc3');
-    content.append('LWdQi8orCjVIecih4CRnXDFx1V4ZIJe');
-    content.append('CLs2Nm8iP494J0afJvOvVof6EwpT+91');
-    content.append('RACNROOICCH5aTlWL5hG1dQE2NGyeDM');
-    content.append('5ISfqXuB3HR05I4MyIwJIJIs7yookYg');
-    content.append('JY5x1i6DghwZfw6FlsLZivZEEmT8JOb');
-    content.append('d9OUMd3R7OHvSeB6H5HRN2OzSfVcuYA');
-    content.append('XrFZkvkxrjMEbwS9DNlaYfxAsKHrIZR');
-    content.append('lP+uArBlVb8mQgNlpMDNStWUR83Z8/2');
-    content.append('bzZjIRnUB1MbE3goD5e4A5Hsj2Q8CaU');
-    content.append('rQmYP7XrIsgSfUQVG9+RW4cAlbv7AZk');
-    content.append('ch6E+PskfIkvJBuRJE4FQjgAAAAASUV');
-    content.append('ORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAALdJREFUOI2F');
+    content.append('kwESwyAIBM3+/9FNq8CdkiaddHBc8Tj');
+    content.append('IuF6e4UvWewKsfyBjz3Bv5FnmcgMSmd');
+    content.append('sN8GXydwIzab6pVqtgiw5Ab4jF5oPs9');
+    content.append('4Aa1QA/kyA8mKm8CgLkFFnCsUB6sWoP');
+    content.append('Mw+AsojwtQA/iPRr5AUhVEIEKP3RSSR');
+    content.append('D1OWjUhlKoJSjGrw/Miypwfqn7br2Xq');
+    content.append('zzPAFrFvte+A0tUMLUXR85ra+dyf8A+');
+    content.append('TVVZBMV9VFOdCL35wP5IQTbfyQzXAAA');
+    content.append('AABJRU5ErkJggg==');
     content.into()
 }
 
@@ -1141,23 +1117,18 @@ fn get_gnome_svg() -> LongString {
 fn get_rat_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVRJREFUWIXFV0GSwzAIg0z//2X2s');
-    content.append('u4QVYCcZFpOdWwjIbBN3czCfmjH1Y0R');
-    content.append('YRH3uW8RyIDubu4uk6jWbRFAwIgYSSy');
-    content.append('l3P0+AZVYBp9sOwU5kgy8fq+xmpqRwH');
-    content.append('LKZESQNc+IVvvcimOIBcfmq7x263BMF');
-    content.append('ciyquCV5FORfiiQwSty3VwG7vwuPwcu');
-    content.append('UmSdjEWdgU/f7V+BfKavRJ/XMODKz6v');
-    content.append('1tgleAbI1pxQo0V8x5b0YFZiKstuHx2');
-    content.append('+bgJpzBoRFh9W/vlMCO1Fj6rpLh9nHR');
-    content.append('bQ2KRcNvgOKIdE3gYktPjYTsFrQbwLK');
-    content.append('KVAIsrXSVbyT96nCqznm++gmVcOayT1');
-    content.append('BnmNKPNIRVVFW/cHjBHL9TO//owRY5A');
-    content.append('g2qSC1ZDjOYOr/g0qF8S3ojlceMxLST');
-    content.append('WqkI+o2dscV60C5jGhTqrRlJycCmS0C');
-    content.append('FRCCPtFHtDWgKHCXRKvAN+wPXo5QRzN');
-    content.append('JoJwAAAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA////g93P0gAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAALtJREFUOI2F');
+    content.append('kwEOwzAIA4n//+htSQw2dFtURWq5Gpu');
+    content.append('msf6s8FvgF4Dc6tYV8LngWhO4Qk8AW7');
+    content.append('xrmMB9svdNXDqs3CwiFainOSCA1a0bN');
+    content.append('oDVASY5AJrAqgzHJAXGlNdp0Rtkm7OH');
+    content.append('DcBD7k5UgJeYgQr6uhgCPdiz9tUjU/M');
+    content.append('7eEdNkfO31GHxaH7V+CZwamDwB4W08Q');
+    content.append('UomwTslIx+AiCnqEsV6rwABhTBCUird');
+    content.append('iYhjAJXF82mAumzE+3vnusF6bME0K/q');
+    content.append('cSgAAAAASUVORK5CYII=');
     content.into()
 }
 
@@ -1165,23 +1136,21 @@ fn get_rat_svg() -> LongString {
 fn get_cyclops_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAASxJREFUWIXFV8sOwzAII1P//5ezy');
-    content.append('6K0FGODWo1T1IBjwiN0mNm0P8pRU1e5');
-    content.append('jjcIzAKwrjuMurW2da8qdoQA8gSZIF1');
-    content.append('MIiHgDRWPkA4mIeaAGlNPmNuAG8iMWS');
-    content.append('Vkdve9D0EDIAsoWtfaSoHA2YO1nm5tV');
-    content.append('iXhCCxAdLgCnOne8U+akYfsgOhGlBzY');
-    content.append('62Irdpwv3lQ65ZYGgUXiGTnlQD+RuOD');
-    content.append('wkipAJFCCVTAkAtFNoFhXdGUCC9iLeg');
-    content.append('M8V1wSstj7WEaHsRf0uhdUAToA6akS6');
-    content.append('zdbMTtIr6BmH6gMJLk0JqKs7arftjSf');
-    content.append('Y7NrrvQbmDiURqNZBolsWwQ0oK5NsQq');
-    content.append('e123kAPv22kgWzXyo9+vh+iFmdR21UJ');
-    content.append('T12X9E/FYMszmrYxSX6M2I34enJ4+yf');
-    content.append('AHCHXEuCnp8LgAAAABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AAAD/0o8fl');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAACySURB');
+    content.append('VDiNhZMLDoQwCERp5v53XiMMDAWzaCK');
+    content.append('2j39r54+Y6EjZAaxqAs1M/ghAgjQnVv');
+    content.append('tp5QpuoIe4APQyNKoCkHcD3p3HHPUfg');
+    content.append('DuFP/HJZdOEwrpywAWc1ugNaJLABxGr');
+    content.append('BKQydr0Dnnd1CLeHtFJvBKJiD0XXXJR');
+    content.append('pVqb7NO8TtQJs1AToFaJPIGvAAnB+HM');
+    content.append('Y4tPPITUCr2IFMDjuQU0MPEXkhrgao+');
+    content.append('Maxdr7UW4xMb/cqP62ZBbfx0owaAAAA');
+    content.append('AElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_bigfoot_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1201,6 +1170,7 @@ fn get_bigfoot_svg() -> LongString {
     content.append('ORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_tarraque_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1225,29 +1195,27 @@ fn get_tarraque_svg() -> LongString {
     content.append('91/a0m7AAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_kelpie_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVhJREFUWIXFVtEOxCAIg8v9/y9zT');
-    content.append('y7YFawuy/G0OLQFoehmFvZH+6wcIt7l');
-    content.append('RwmooNkvIo7ILjNQEYoIc/fp2923SUg');
-    content.append('E8OABOKIeRIbvjn1xIR/O/mVCCMbWVu');
-    content.append('ZGuiADMcvkMtld8JaAchgCnxA5LsIKe');
-    content.append('LcQbxnA6Fm1rwhWNcJsygDbpBwyfE66');
-    content.append('Qb6CVUQ56p0rmAiwzVlkVDsuQrxvVg/');
-    content.append('sOwOPdVWaJyF62tMnZ9xqIKe7U0O2dt');
-    content.append('KOZRHidWSCCJy7gKW+I1KOYxw2VYt20');
-    content.append('Sud0Q6jbhZg1EwV0U8igADqv2ourPRD');
-    content.append('FqIuK1i4Xfve9lqaBQxIuRJGuLN8zpU');
-    content.append('BljIFlFV9NRNYe1IdYCDdOqtyto4FOh');
-    content.append('FAvVdSj9Gt3g3Mp9WBp4bXygSNPkjQd');
-    content.append('siw9yITJEqgEhQVtHold68sqoQqMCPN');
-    content.append('hKjyNytexU+sugIG/goBheCrGdi1HzR');
-    content.append('GkzQeq2+uAAAAAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8A/////zPWC');
+    content.append('AAAAAR0Uk5TAP///7MtQIgAAADBSURB');
+    content.append('VDiNhZMLDoMwDENTvfvfeWP5OS2wIqB');
+    content.append('SXxPXBlt/huWEV4ACrhn3AE1yX8Efey');
+    content.append('vzdYj7kBMVUgFHjWqRh9lVNkAT2sRkn');
+    content.append('WyDECZ8WbG3yJ2l46lFA2cFpgwpZ1Kd');
+    content.append('eRQ9ZnShPF9sQIXBShIFiN2LNd8dVks');
+    content.append('gex0iM0uPgwPoXZm9+ICuO/IbDnjN6X');
+    content.append('h8FwQgDWao33n5sGdBXPtn365GIFaal');
+    content.append('hBhJcw0c3V4Z2mN1Kclyr+pg8z1CVC1');
+    content.append('r8A1Pnr9BbUUk/lCAAAAAElFTkSuQmC');
+    content.append('C');
     content.into()
 }
+
 #[inline(always)]
 fn get_typhon_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1290,6 +1258,7 @@ fn get_typhon_svg() -> LongString {
     content.append('rkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_ogre_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1314,6 +1283,7 @@ fn get_ogre_svg() -> LongString {
     content.append('lFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_anansi_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1351,51 +1321,44 @@ fn get_anansi_svg() -> LongString {
     content.append('UVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_jiangshi_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAARlJREFUWIXtV1sSwyAIxE4OnSN4a');
-    content.append('/NTJ0hZHmqbn+6M01QRFhBMiIjaymh1');
-    content.append('bX95P7hoNSJ1o5xYj1zb6i2SafVe4zJ');
-    content.append('Hzq85cK9lBMIp4MoscOVdFqWDiGg6Ah');
-    content.append('95rOOvZ3ggIL2yNpYTRyFiUBI8NKVZL');
-    content.append('6IGObre4QzwnPXDIuc0Jdq8NQfLkJeH');
-    content.append('LCethHhpIRlP70sPEIb0BJVXFFNVYKX');
-    content.append('jJwRWDEqoKZCdSzvJqGr4nHWATQIaEe');
-    content.append('nx0E7BmmV4sEOB047kMuvgosK3FlLoD');
-    content.append('bQ/RCCqNNIzImPqhcR62fBkJFJlKFuv');
-    content.append('9387AY/ILLa8is3uSd8Fu/E4AaIvhD+');
-    content.append('z9/EI/Ak8TiDUirMNJyOf+jKKtthMZ0');
-    content.append('x/mu3GBeupmDA9ZhjsAAAAAElFTkSuQ');
-    content.append('mCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAJpJREFUOI3N');
+    content.append('k0kSwCAIBIH/PzolYRkWbznEAyXY4kA');
+    content.append('CcVvSfIIjWAkDkJfFLpzNHZCZgeEBf6');
+    content.append('UDgYFIdCWMZzwZQDcAHiWXe4xG1JoxD');
+    content.append('aZXq1LEXB5AqW8FXPEdgGoK8GoDNqU4');
+    content.append('IPUzZog4UoBAjgQGtA4alMBQBmz9Ydp');
+    content.append('mZpDo5QVY5FA9n86HQJsH+SXA2F/Zys');
+    content.append('TphWCZrG09N3IEyUneHIcAAAAASUVOR');
+    content.append('K5CYII=');
     return content.into();
 }
+
 #[inline(always)]
 fn get_werewolf_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVxJREFUWIXFV1sOgzAMg2n3v3L3F');
-    content.append('RFc20kL0iJNlCbEJq+y8ziOcfxRvloV');
-    content.append('vE7zOOPO7IfUf7TzMBwCaCQbvCrw+d5');
-    content.append('EIBNhJGJ/NUKxf3YIBEisHZDT9xAeOl');
-    content.append('d59nViasCBq5QgeH0vCASAAnf7I91n0');
-    content.append('PjNdJKlbhcPzkj0aiJFANuq2+NK35tv');
-    content.append('JAWup53kusgzZIkA5m8QnXOMbVs3WSK');
-    content.append('g3hgLEtdqQKFtTRkeQiAkqUihrww1Sz');
-    content.append('EHsnMG7qZkDR6ahePYRWIvCgUBxw0fZ');
-    content.append('STquVBMQgaar4oM2mshbehmfKct2fmv');
-    content.append('Ay0mYQBi+Pg8vxPt7l/aMeeq+6Gh8u7');
-    content.append('g7iJqoBpKaMtOPlxrpHE5VwNIEWSRUj');
-    content.append('nnREwburQoYHRZE2lMQkWMgeO6lg0C7');
-    content.append('s2zDQt5uwjDmKVByd4fmcWz4C3w9lfx');
-    content.append('LhEmfFY8IKDOC2e/VANdZ51zX0/Yl2p');
-    content.append('gX37yhIgxVEcAlwAAAABJRU5ErkJggg');
-    content.append('==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAAD/rmEGTQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMJJREFUOI2F');
+    content.append('kgsOwzAIQ8H3P/SU8DPQaKnULeHVGIj');
+    content.append('onyX3DfgWZ+XfAmKH+zQ0AD+APgCWeA');
+    content.append('Ha0e7hiCOoRLOKqsE8gBnRddQ2lgJWR');
+    content.append('SFDoX9YZu6hcJAqdbiq8FU+g+VWU5G2');
+    content.append('B6hRcxA6gPAOkkBPYRYQHuGfCEez5+7');
+    content.append('lHEocejyGmMWKZmmmyRLmAf0ONLeVgs');
+    content.append('Ilz1VwXEsFc1gxDOrZBqIfCyCCExJQY');
+    content.append('wD9fgA1saeCEiEjyjdvK9DVzXu1Usz1');
+    content.append('A6mbBSUhSCFIAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_leviathan_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1492,25 +1455,20 @@ fn get_orc_svg() -> LongString {
 fn get_banshee_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAYVJREFUWIXFltsSwjAIRBPH///l+');
-    content.append('qC1dHMWsDojT5kQwma5ZY4xtvFHufWP');
-    content.append('Ks4N1p+/ZbLVJqoJDlSvuq8ARBDR8Rw');
-    content.append('MToH2JYRAcUTnevG+N+FsJeczN+9EgW');
-    content.append('QhcfYE6Ey6JCEZOGYUnAJTUJyoAQ69L');
-    content.append('ks+lx8EVEEcusDAHtOInpJLdSQ95wCb');
-    content.append('LicayYkDmwMsQkBGWVVUTlfb165LmEy');
-    content.append('uZP0KAkKgB6+MCrV3DQxnAb2MSm9fU0');
-    content.append('PahZi1SahxrNB3Yu3y6jhzXy/odMWsP');
-    content.append('BVE1K3ApQ+QkZPYM7J8cezZHBjjfJGL');
-    content.append('Y3xVdOAmIwOUaUi12u3vc6whco6PveR');
-    content.append('HRK92c6L6E/iJKo2oGqudD0d217onDC');
-    content.append('hdkXbXah29jvrcY4r2syqpRvNTIAco2');
-    content.append('TLnjhFlTatke5+CcUygqtdmLdd1VluG');
-    content.append('itTNfieuY9ppWCFW551qyO5aGHBdi6q');
-    content.append('CHJAuG+3HGoZRdVncU6ppIKndWaAM69');
-    content.append('plEGRfh8r8iHrGXvqPuPrn+pk8AGvKx');
-    content.append('yHOvsQ0AAAAAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AAAD/0o8fl');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAADeSURB');
+    content.append('VDiNhVMBDsQwCNLw/z/frYpgl9w12bo');
+    content.append('Nqwgu8s8KPaIunIcr4PvxgXD2Z3tlOH');
+    content.append('A2fpcAkzSmCJwAHUAzaDJ1D5JCXqGdM');
+    content.append('XiwKKazBEiS0KZZW3Suk9NI4qxUCYAk');
+    content.append('MGhnULxqUzKWqNq2utvuggaQHqFKEcK');
+    content.append('7w2mmIqLta/0oIuZc2BsbluKQDsRHDm');
+    content.append('YN82eIDVfjoBJmG+126Wc2aHmQovFfc');
+    content.append('6mRWyOhuaTdV7djPnVIOyzCq004qJq0');
+    content.append('22h7JzCSS5/REfyzZup6tmaS2QWc4vr');
+    content.append('54nofGZYOv9YHt/cGjd5fhNsAAAAASU');
+    content.append('VORK5CYII=');
     content.into()
 }
 
@@ -1552,76 +1510,66 @@ fn get_basilisk_svg() -> LongString {
     content.append('DU0fk/7DIAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_harpy_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUZJREFUWIXFV9ESwyAI093+/5fdk');
-    content.append('1eaJRicveWl1gpEBKS9tTbaH/GqiwwY');
-    content.append('4/sjBEZ49mC4k/cBMkcITMWdzKn5OPc');
-    content.append('zgYi40w7j+hEUpdD4FMU5b/cbBCKJ6j');
-    content.append('eOt1YUwZRGY8rwWg8hgMpYoE1l8QiUc');
-    content.append('dR1XwtHgLtShhihPVmRBSy4WLhgIWpk');
-    content.append('PZK6I0lD5lZU2mGsYkEH5qIOsPxWicN');
-    content.append('iZ51khUKEJBBo3EOBQCW//bXFu6A1Hn');
-    content.append('Q4Pn4XKPezksxkNEQlZGABhRmQreVYe');
-    content.append('ICl3Xwyo4xUfhSCgJNqrAFxU1QScFyX');
-    content.append('XcGO7J3IRh1w+oBH6gAzyNxf6weE37J');
-    content.append('dqRsu+6bJbXogGmDGfJhpmI3RsNMpXR');
-    content.append('CFSLlMKV6dv52GigwqU3B6ye8Vi5xRS');
-    content.append('jO3+yTMhgQNZ+vj2qMNyQQSUnO+tvr/');
-    content.append('1EF8ALASikDwxpNZAAAAAElFTkSuQmC');
-    content.append('C');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAAD/rmEGTQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAL9JREFUOI2F');
+    content.append('kwsOwyAMQ1Pf/9DrCv6ERmo3jQYeODF');
+    content.append('ZXR9PZYD7i2eYAPw/C0Ew1fev5TyjuL');
+    content.append('aP0ECq/EoROBaQMx4M3O9PJAnNhMSuL');
+    content.append('wZL7NqgZDNcAJy/a0ECW8ZJKhkCMIE2');
+    content.append('FUDYhxHIK5oAqzTHTwnaNErQTy1PZbK');
+    content.append('Wo0wx2qlNlZ1gN11XAC+/XwDzzBzVcn');
+    content.append('GF1jgBWhG2RdMiVqCK1fbZyOFoAvtw/');
+    content.append('R4Au5RavnsCzYi8/QZcQ9D+3dPzA4ts');
+    content.append('BSRylHBPAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_hippogriff_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVdJREFUWIXFV+0SwyAI057v/8rux');
-    content.append('+pK0wSodlvudvUDIYKgq6WUXv6I7VFt');
-    content.append('XbRDAk/5oBpdtu2gpYTrBJlO9BI9OZ5');
-    content.append('KghHrwRyMnwkwQ97ulTE0ZPuwplE6uJ');
-    content.append('ihglJF1IaCkOIh8NyoZHCX0blxCaARh');
-    content.append('OfeiASMNyJyNaTCMsKQ2bEglStEw8j4');
-    content.append('WcNMDtsO8pWwwhcP12Qxu1eKrSeU62+');
-    content.append('SmeeOO0dvRGm5o50mIlrK/URxFk0aj8');
-    content.append('qsl34eYO27qxRnsFgH1t8DLCwsM0R6+');
-    content.append('oXoLpHMrpc8kInvkLOGKsgYPVcCC0Xl');
-    content.append('pCN5jq4EokNoSzKbU2uE/uMMzD48LJx');
-    content.append('7nxl/L+mlh/mcvelQllVLwObmsLr1FD');
-    content.append('xZm6InAog7VU0ZQj32G2bBLKxirx5Ym');
-    content.append('c8y7xbL3HBMPhrf+9/7a4YQYT0ct+oF');
-    content.append('9RQLvLHRCVVkojl26Lx3hSPyM7wAjnG');
-    content.append('YOCjZpEsAAAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMZJREFUOI2F');
+    content.append('k4kOwyAMQ4P//6PXksMOZBtCKoInxzl');
+    content.append('q68+y4Q57F4DfxKMAXw3AyhuGECw/Ca');
+    content.append('iAHxBxEApQgXyMMKaaflCLKA8qUAS6y');
+    content.append('RJIoExShM8YgLL2FXgjoLgJ2C8hISbf');
+    content.append('2JGDOgjO/P2IkFnCgdbQXgfcQPmIPQC');
+    content.append('RAW4FcqBLy/40QLSaAjgNZdWYNgpiVx');
+    content.append('8gMz8MIIthvXflDYmYXLQsafICFku/Z');
+    content.append('xLaGi2IK00AR9iH9iTA3yo8IAeWZaLe');
+    content.append('9He39QFNtQUDkNPYpgAAAABJRU5ErkJ');
+    content.append('ggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_jaguar_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAXNJREFUWIXFVtFuxDAII1X//5ezh');
-    content.append('6064tiGTKuGdErLpWAwkIyImPGPch3t');
-    content.append('fgFqH8CMiPH3IM4y8ILcrV2n0eO+obd');
-    content.append('ys+gQnyunw+gsAHTYcYyAHUDy38dF3u');
-    content.append('AMMcPZGuoxxxDUvRnpOneZccFAZncKl');
-    content.append('EEUR1O3XsbThq66Hyf5l/UKNOoEVd8m');
-    content.append('FGJMZQRPrXtePW0grs2oco7gBnlWlLB');
-    content.append('1ZgA5zVMYUpEhfVX7wvu9OVBRd7g/GV');
-    content.append('I/ci1/zOBcqyhRZ/p9s7nUQBY2nNFYl');
-    content.append('Q1HC+xdAajeRv4VQLdGUIr0YcQ+UKlX');
-    content.append('Ixh1xKY+jln/sy5AMM/ezgEVrAaq/me');
-    content.append('A1HcVdRsAdZHozPhGtIzwDwA2B9jqjL');
-    content.append('K5ICLfAWRhlexEOcKgSgCq9RjfCoh6F');
-    content.append('wHtcyDCc1ldVlTWUL8cRifizv/ubYpO');
-    content.append('wi7XDwg3C9QNSqjXK1nWdk43BKZmgxB');
-    content.append('eA9lAVXDs3MjOi6z6NkSjzHlefyEd5l');
-    content.append('+VLzYqqj6KlayqAAAAAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMxJREFUOI2V');
+    content.append('UlEWwzAIUu5/6G1RQNe+9S39SRUBNZE');
+    content.append('PJ8YdDwDcIv4AvPMCALqHk4ydpBBxIr');
+    content.append('NcSiAAy3+VHsJTFVXvNIvRZCEuHGelZ');
+    content.append('TsfhgIg5SYdaYkmBbm7i2MnRmL1YQ9o');
+    content.append('5lk9sEEsS91GMQd7g1wAOejCmjBJf+A');
+    content.append('usMQhKQHcajuCZq5tKkiitW5aAAX0l+');
+    content.append('5CzOoW9MCZwU446/Ee4GeGC4PW5715J');
+    content.append('/Ed8MBLdAH8GOXLo54acuNlGaHyPSj5');
+    content.append('G9uYgBnJG8Cv8wJtjgUiWsDz8QAAAAB');
+    content.append('JRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_jotunn_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1642,94 +1590,81 @@ fn get_jotunn_svg() -> LongString {
     content.append('9bAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_nephilim_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAATdJREFUWIXFVtsNwyAMvFRdLDtlD');
-    content.append('HZitPSLynVtc5dS5SSkgAl+PzYAJ27E');
-    content.append('c3ahob+/D+whLTuPaBFOdjX0r++GHp6');
-    content.append('zawPpgoaOA/uHdhHGHUbzyxaItKxo1X');
-    content.append('rQYuLTn9YSqs8tJAH+gdsFoIMQyNOOp');
-    content.append('f8kQBT9g1FFm4FyQRZkDb2kLRNgPF7l');
-    content.append('uKWpmUDnfpX/di/WBJ25sp8JIaehj3T');
-    content.append('rEtbvFqkAVe0f54OWxQXTP2QLRIF4pQ');
-    content.append('HJAniT24j3mi7JAqbHZ5nB/g/glCYiv');
-    content.append('4+CzxejmTWmAkSPecZ+r2QDLYBlnjGO');
-    content.append('7jCgfBgVlmweVOZEygJqVC/NgkwT5rs');
-    content.append('6A2uBqOBEiGoAkwXTQuSHz6zd2qKkIL');
-    content.append('VA9lik6cwylRVKF9imkzWbDGxvuH0op');
-    content.append('ZuR4lvlrjyUrhbiBfCFpngkQj8MAAAA');
-    content.append('AElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAACpSURB');
+    content.append('VDiNrZONDsQgCINH+v7vfJmApYK5XHL');
+    content.append('G+fuNleoe+1KeHADwrkwEeJffitUOEX');
+    content.append('zTSyU0Ako3AK4AkKX/ArmFWxYrgew6s');
+    content.append('NKLLAtRgHTCxCpanS67iGY1dgbxYAIA');
+    content.append('Dg7AhW0N5TwEsHx3BuKYgmhALIQDzFQ');
+    content.append('jlGbUkEleNfA0Rw0SoWsgxol+wqReIu');
+    content.append('wsbBBpR1WANtAIBSwuUvtzfry0x0ABV');
+    content.append('IDEBxciBgM4SLpkAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_direwolf_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAATBJREFUWIXFV0kSwjAMsxn+/+Vwg');
-    content.append('ZmgSt4CU1+gjRfZsZXUzWzZjfK4M7iZ');
-    content.append('2bOlHdXK3+veA9CrQMX5stam5gDQGQP');
-    content.append('hZK0IJAaw4Hciia0GkO230mUVCnw5XV');
-    content.append('YG1QZr2Neb8DS4kCuAU1qKgBLftQo0Z');
-    content.append('7uj/w2gkv2yeMQyH7CeVwCz2Wcegy3x');
-    content.append('PpDZWRAFadJxHQBjRATiQncMYHeoslJ');
-    content.append('b9BMAQ6cdm34PdHiiAGJ2GrLuH8rVnT');
-    content.append('pYsA/YM7NL1s7OAnTsQo+9XwqAyooF3');
-    content.append('N8pdkSbj54rAJFU5j7rB+APDgCvWCwL');
-    content.append('1I2esTpbBWLm3rmd7WE2ZlnjWpUJEWY');
-    content.append('UvHOVSwEo5xEXVOh7DMDh/z4BSanPAb');
-    content.append('CsVQc17gTzb8O95JMGHQGoXjj/VgG15');
-    content.append('0yvWIEXxy5aOIV4Bw4AAAAASUVORK5C');
-    content.append('YII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAKZJREFUOI2V');
+    content.append('k0ESxSAIQ0nuf+i/qAQi/OnUTWt9hgR');
+    content.append('t4GXEF4DPAP8qJEAuAJOohwG2wkZEiW');
+    content.append('Mlohe/zVzAjCPgFuhELAK2JfosMTaJM');
+    content.append('IGni1qfAI7QrpAi8mgAsKRwwEJgB1gA');
+    content.append('BkAZmEAeZVmsjx1QzF6oDkvbD3QmBlQ');
+    content.append('PZJi6MMMCTm905SpGNVQmTcXeHOh1sA');
+    content.append('FVavsvRLiXG2BDJ4AXDy1qU/gB1Z4FJ');
+    content.append('kIxQpEAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_lich_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAASFJREFUWIXNV0ESgzAIxI4f65/6D');
-    content.append('P/k0+yJzooLgSStZYaZGAksm9XoIiKH');
-    content.append('3GgPO7HJ/lMAqy38kudpHBmCbcV69mH');
-    content.append('AJqgUZ9cVO9A32Q87x9zGbbKn16JfNF');
-    content.append('ChUrse1U2JAe2UMRCt8/zCQGRWnMiAi');
-    content.append('lc9aykAmBSfEgThgfXyUADYCTO9hzpB');
-    content.append('NnRsGcKx1dgJACtuO7fFPUA4F21JuAV');
-    content.append('eQdYJrlFnABmYpsp1nHlCojxOjnainh');
-    content.append('gPdBlAMkkZmHrpPWDNqjzSjMYw7YSdV');
-    content.append('DtqsUK8TwOZQsm1eQYmFMsD6KW041jO');
-    content.append('Fxjoci4DvewMM9CK7WToO10WwMyhO3t');
-    content.append('eDAHIvoIrviiKu4yeBa1vupl/T//JAL');
-    content.append('Oo66n/BaNeFePtW/AGknimXqSXJxIAA');
-    content.append('AAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAACnSURB');
+    content.append('VDiNjZILEoAgCERx9v53rpTPAmYxjTr');
+    content.append('ygAWT8WHyLDgDwPOpAWjAnYD9hSglMK');
+    content.append('EGhM1yHYC70SQzsNSWHAFgpdd1mJjoQ');
+    content.append('oN9V7Fi6Lyf7Iq2QgaoWxGSIq4+xgXu');
+    content.append('R/wqHVQWA4NGEFgHXL1BYjEcNehQNKR');
+    content.append('8BHgLL2+RYm3GCQC7s8nuEg3ICg9/VO');
+    content.append('1xUyI9SgWQtpPIDtBD74HPDO8S/g7qY');
+    content.append('BdzqwU9vZyI5AAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_vampire_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUdJREFUWIXFVkEOwzAII1P//2V2W');
-    content.append('VRKbXAydeNSKSVgwECGmbn9UY71Kx3e');
-    content.append('8RSA6bhzoOqdWkIJXDa4euf1jHMzNbY');
-    content.append('GwK5zHYSQgWclAPhlN56+Uo48HX+T/u');
-    content.append('wwujrtghKguu1kB9m4B0Q4EBUjegXI1');
-    content.append('MuB4GySQeThOy+O9C8bROcRBM4AyHdE');
-    content.append('X3Eg/ld173piG8b0V2WIOhpvRABqpJj');
-    content.append('plTTLCHGgE8YNLE0biruKSs8ToQ3ZXN');
-    content.append('jRuUvBAVZP1ONV39e8WVxGmRNOznRpA');
-    content.append('HQGh2n9v++BGGJXUKlqWZgDbDyj9Oub');
-    content.append('dONB0g2idWtFCTKrlcj0TZgAIBzIKVo');
-    content.append('sbNkgMFdQB+/1aKDBLulgH8WTzKy+jG');
-    content.append('Y+6xT+lvgAqCJRStOnGtscNszctddNd');
-    content.append('FTpsewgQM5KwCRG3pGwm6AXiyvzm7Vj');
-    content.append('VQZu6w1N4YUx6kkKVwAAAABJRU5ErkJ');
-    content.append('ggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAAD/rmEGTQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMRJREFUOI2N');
+    content.append('UlEWwzAIUu5/6G0NIibt6/LRFyMiWiJ');
+    content.append('fTngAngdAJxzSgFGHEzDyFsZ9vh/+Ae');
+    content.append('AZgMXwFX3kf8lrmNB1n4JlwagKVvoKM');
+    content.append('50BTNi3GZIFRTaeBDDe0rQBSinYZAMg');
+    content.append('ZwvNHiMaGpANqISW2kzjX0ik7d4BpbT');
+    content.append('JcvoBd/fpKFnyxlFaXq/1BMxpNpFuCv');
+    content.append('29BVh9tV1dl5wAxZX6moBiQculiVcFL');
+    content.append('cduaiTyVRpuIt9kcYbW44apJ7aAIXoA');
+    content.append('Pn0A2q8FC6y+R30AAAAASUVORK5CYII');
+    content.append('=');
     content.into()
 }
+
 #[inline(always)]
 fn get_nemeanlion_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1753,6 +1688,7 @@ fn get_nemeanlion_svg() -> LongString {
     content.append('AAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_draugr_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1791,30 +1727,27 @@ fn get_draugr_svg() -> LongString {
     content.append('YII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_balrog_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAW5JREFUWIXFV0uuwzAInFQ5dI/gW');
-    content.append('/MWT04RGQZIF0Wyktj8PBhwDgCGH9KZ');
-    content.append('Ldj6vB/vZ8o7Og4EBKJQpsTPqzWl4+a');
-    content.append('AMsYU7e9sTTnlyQCYrf+nevffjCfjjT');
-    content.append('yBTyutDH/jCAA7bMFUbD1kEVZGnkfpu');
-    content.append('tazXVSIqNHVZwuGygiJGYW+4smceGVQ');
-    content.append('Mdhs5WHYJ99nhqLN9/KMMZ2YgFKsYr/');
-    content.append('noz1gmHoKWr/WyQTsNIxKMoFOnCv5m/');
-    content.append('NPdlMhNkENqWcDY0/4rkK04xAPT1Z8W');
-    content.append('P2P756XHUzaC5SX7JnVgYo3jjN6l3kZ');
-    content.append('5zoI+O9o4+KrSuyDtJKHN6J2u5Aoqop');
-    content.append('Rtwre5KajSsvJOHYuMq+r1tyZr3RfIZ');
-    content.append('gIqhBMN0LPQNZM1MWkuoh4+Zs9NGPZK');
-    content.append('c3dSrlH+l+gdlJRmvOEpAMM5g5N0vDn');
-    content.append('CADDM/Dtepyj3XCa02r3TJ/XcWYtmBn');
-    content.append('zvDHt2F0vytHWDNELVLWb1AGF2h/ZD/');
-    content.append('6G981/NwAAAABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAM9JREFUOI2t');
+    content.append('UkkSA0EIQv7/6GRasHEuuSQ1FRV3bNS');
+    content.append('PH1qQ3PgAsNUIRzgEE03BLQbG49FXbK');
+    content.append('XVk/EEcLtfIQV3VlRPOFARZDaJCMXBH');
+    content.append('k0fSkdAI6v/zCbsWyFGjMJ3zFmzhhqm');
+    content.append('X0TF/snHIWolVXZvBeWr3EVD472F6pP');
+    content.append('ucm9RHoPmwWpfc0j1rmMcHCY4V5Nxgr');
+    content.append('Be0Zb3ReWR1tEOD1RW7zL/hrHMqGMY1');
+    content.append('7gsju0ZJpMhBCNz4g5T788V3tIBe/Uk');
+    content.append('pYmyGo+9bhoiafMgxwcWBAVgSaxWswA');
+    content.append('AAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_mantis_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1840,6 +1773,7 @@ fn get_mantis_svg() -> LongString {
     content.append('UVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_warlock_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1861,6 +1795,7 @@ fn get_warlock_svg() -> LongString {
     content.append('AAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_kraken_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1882,6 +1817,7 @@ fn get_kraken_svg() -> LongString {
     content.append('QCqlz2k0H53+wAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_leprechaun_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1899,31 +1835,27 @@ fn get_leprechaun_svg() -> LongString {
     content.append('ABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_chimera_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAXxJREFUWIXFV8kNwzAMU4Iulp0yR');
-    content.append('nbKaO2ndhWGFJ2ihwAj9aWDutwpIu7x');
-    content.append('R7q5A1vs/fcay1eUuKuxxU6/nxyz064');
-    content.append('hkJEYmV+hEgG0Os8/gcwBgS32PiJePv');
-    content.append('9mHHQFttg78zUWCmlec/ujNMUzDbPVT');
-    content.append('RlEwgl5B50ZhWclGNM1FiqIrWV3qmCO');
-    content.append('eCOYcnCqu1Ww5vs0BhSp1GPrOYAzsgy');
-    content.append('tIQSUFZiqjBeeBTk83yslGGMHtXLLjJ');
-    content.append('Co9MLMYKQyqErfUyFiF9CfyITtYxFTP');
-    content.append('AMhcb52Ue/cgEMioOBmFrJ7Dvo2nzPj');
-    content.append('CmampFMeixZzB23HrqYzRg4BRfY9kAX');
-    content.append('kL+5VbmhIMB69GaF1SglnnVMGDRpGgA');
-    content.append('nA9Uo4Cm50WQHVM1Q7b1+l0KEZOfiZB');
-    content.append('Ti/isDpQaKEIyNXFfOZig4PEidcpV0m');
-    content.append('dsbJGOqGIyVYtNuy3U/PjaH3HEujtq7');
-    content.append('SjN3N+10BdbFickVQ3kP3uRfLUNcb3S');
-    content.append('fjd/8D2TiV4l/TA52mfrhX+5pzAAAAA');
-    content.append('ElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAADNSURB');
+    content.append('VDiNhZNZEsMwCENhdP87t2OQWJymzk8');
+    content.append('cNM9CJuZ/lvEFwKsA53kT4CDgvnQliN');
+    content.append('LFMR6fFp4EcTxOCZcX40fQCLaHLJVXe');
+    content.append('gqUDaQ+p93v3ryQcFS39NwISEW2ktpJ');
+    content.append('iJZpGkEggn0GQZ2bKtUu5AYjqKC34FZ');
+    content.append('QGFlmIMi7EBFyGS8UjOVSLAHB9fCIpW');
+    content.append('gMDox6gnLQ8CxCyzr7tPKoC2seuoAhM');
+    content.append('YA2MGVsKCBBjcODwsY8SVHjZ+2fk1Uy');
+    content.append('4rrbIDcjAtvc3st+VnJ9AOFfBvtWFc+');
+    content.append('xAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_oni_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -1946,99 +1878,85 @@ fn get_oni_svg() -> LongString {
     content.append('ANrAhEO3Zl04AAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_minotaur_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAXFJREFUWIWtV1EOxSAIw53cm/s+N');
-    content.append('g3WomV7Jst0YikI6MzM2ulp9X4UWVx3');
-    content.append('kilPx8zMWjXaSvBdaR6T4QwCrd4CfcE');
-    content.append('XpRkixW5XHZVH3sG2w/F6+txEwCuKxg');
-    content.append('ww+oaGMbLXbrFfyPoMHD0wWQvvgWcuY');
-    content.append('tlbyQKc9+Pd3EKAKWcgCgmcCwzR8p1Z');
-    content.append('wWQjyzfkzoUH+8xDH7wTC6tWqvERyGk');
-    content.append('W7Lz00QuaYDYLEnLnYMt6JimT3jPJW1');
-    content.append('HakW8a+zfbwgjh2vA49uWS1Xxs7DxBH');
-    content.append('NQz5D2jN8GUKLsrfrb6ZYgxw8IsYHuU');
-    content.append('Lasv1+fAvx5KKFNataZeNjLzXYa16Z6');
-    content.append('g1HscK7GhpvRyI2LWKdYiTrfSY+Kc2X');
-    content.append('MlK1VXzshE5CTS7FT7R/2PMHErL0ckt');
-    content.append('NDPn74xLPbu7TLSWl3Bd+6MbseK/EKA');
-    content.append('3fOj/vSH40D99ZsF4aTH781pv3r/X8+');
-    content.append('IAWYZphI76dDtpzGbC2NAqY5Kep6C9w');
-    content.append('fiZadqp1Ij/wAAAABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAANhJREFUOI1l');
+    content.append('k4ESwyAIQ0P+/6N3KiShc7eeQgoPpKh');
+    content.append('ZZMXSAdd1Vu01FhzxnzcksJ9abeFJdA');
+    content.append('T3PKp+cBLfCKLgUtwftBUIS0o25OMQK');
+    content.append('TfkSk9nKJXZ9gcaFS9BvGoUWhDNqU8I');
+    content.append('eJtVeIco7JNdZTqfg70S2QKmK3BuaVB');
+    content.append('HMgZ1f9PqdJrpQmYbk4P9InzZ6u46I+');
+    content.append('3f67qQXBZ7erSGYc9AVg4Ozf5TE8Vow');
+    content.append('2qFBEw6p2gz4Y/Go15UhhZwB48AT9Bz');
+    content.append('wixhPgQIeIGYCNOQaHYUxGHIaUxk8ge');
+    content.append('WOAU3PiV9ywAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_wolf_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUlJREFUWIXFV1sOwzAIg2n3v3L2M');
-    content.append('SWiLhhIOg1pWpsHdnimKiJD/iivpxWO');
-    content.append('0TvPjcAYY/12wFT1Ns70qRgXzEWqut7');
-    content.append('nc4WE3YekIn2LAIJ3ZCre0dGOAeYaVa');
-    content.append('Xg3t4WATypBbZjHlDkzkXA818EhIrsW');
-    content.append('DYfEkAS0abMv90YumTBjmSZks0/Xogy');
-    content.append('QbeWCXQCi83je5lABDSJVasiyrYLbNH');
-    content.append('BLOiI2wuqMkGtdTyTM503ApXaH+W695');
-    content.append('xJKw0rzQnXPpKGrDBFUu0JqQWYuasll');
-    content.append('5GnBHbyvNuajyqh1wWt339aBxihzo3K');
-    content.append('JbATdLs3KrcQ2ZsNM6GXanhHPHIBs4J');
-    content.append('3Ga2ChgSqZq8SaxNA8aIczZ4BlnsBng');
-    content.append('rBrEKreP5nQRiReCE4U8bIIEjlg0VE5');
-    content.append('I0bWGWLIt3bhwezB7iMfdfVgw8VZfU/');
-    content.append('0318Kz6VDxmBaBCa9dO/AAAAAElFTkS');
-    content.append('uQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8A/////zPWC');
+    content.append('AAAAAR0Uk5TAP///7MtQIgAAACxSURB');
+    content.append('VDiNhZNBEsQgCAS1+v9/TsXACIi7OSS');
+    content.append('RaURGHfPPM7ogFQCyxgoKeH83sUYoNo');
+    content.append('TuOSglyvzMNIwAIgKZ1tDoRxe7RAQ6D');
+    content.append('/z7EyADVL2dAYKZDfDpVKB4c++CaEQD');
+    content.append('pPRzDceefa+RA6HVUoKcyOFD3HK1egO');
+    content.append('ibgDRiXxsRsiS3jnpujqIwE5gd1uBlY');
+    content.append('QRZKstZJrSdXHwy6I65hN27HF/sQs1l');
+    content.append('YHP4BZ4nX43L88DwwwFYW4O0c4AAAAA');
+    content.append('SUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_wraith_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAV9JREFUWIXFVUkOAyEMg2r+/2V6a');
-    content.append('JEyxnYCmqq5zELimKy9tTbaH+VV0tqh');
-    content.append('6HTJmSYwwrN/nwgw4OmwJg7IhNaGaIT');
-    content.append('/pnUXZ8RpPPMpUM4xGuh8gC5iBOzLEk');
-    content.append('CnSCw6Zf9cBID7HokElDpH21sKXIGhY');
-    content.append('Jib+I6EJ5mYvr6q3W+KN1ahFTejFyGR');
-    content.append('uxchOlKg5CaLM3Qs0rZ2AWsjDCcjXGn');
-    content.append('ZEoHohJVohzP3jYSJ6C5g+Wdd4Nrz0T');
-    content.append('ZkDpSuKlpily+jnSqPeso56OfLaIKxu');
-    content.append('kBQ1gVICPTWUaxyr+ZCdXYI7EseMvbV');
-    content.append('YcOqig2vFkcxGzRKXDG6iBCbj0pRORW');
-    content.append('3ohm5m9vNNWpJqPWNOkQ1B2eAjoh7Tw');
-    content.append('m41DgiG9HMI5Ct3oiStBwTv4xYBFh+2');
-    content.append('UBik5CIX0aukpHswSJaCewYV0JewFsj');
-    content.append('cNKCxYqvETglcShrEcawsS33sOy1Ifv');
-    content.append('+OYEfyxvT78cTfUlsXwAAAABJRU5Erk');
-    content.append('Jggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMtJREFUOI2F');
+    content.append('UgkOwzAIA///0dNK8BGtWiK1aSHGNlT');
+    content.append('/WcUT+j7CEvDdOIeJAIGAfQDz2t8q0Q');
+    content.append('MyEMqqiAqJiNVXhioCU2IvLraTxSBgq');
+    content.append('zPluW8qFvCwW6q3TPgmnfLwgskmOSkr');
+    content.append('oWwvIXbyG5FA9rLFjYJuqV30YXXBNLB');
+    content.append('vxc6sGpIc18ohvaPrdx15Nk8PCPtR3V');
+    content.append('f4wKxtMTDRbuQ8QJ3uAC2/Y8NGZdss0');
+    content.append('QorwkkfNLGpjm/CZ4lQiRTOgXlbRY0v');
+    content.append('SS7zZ079+BfrA1ViBPF/yQ1oAAAAAEl');
+    content.append('FTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_kappa_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAS9JREFUWIXFV9sWgzAIozv7/192T');
-    content.append('26ICQHUszxtLYVwbV1mttkf8Up3EbUt');
-    content.append('/I7/KzoclhTxu8utLSDn9+MZgne+HRQ');
-    content.append('wI4xIAXkEqt4rggmhPALMe4WGrK4BpH');
-    content.append('g/Eb1d1k6BrgEEZHiIvA0ZvGFVlI8Q8');
-    content.append('EYvRqFHwOd/zzVae4zAjmioV8oH1IuQ');
-    content.append('Vb6R9WIkNIGs5SZyAXoSdodR8wwnkCl');
-    content.append('ilNm4Tkj0BpEK66AQcQSQB5lhRqQQBd');
-    content.append('2Gg97+Gi9EZJaCG3EmkHncTUE8C3QfU');
-    content.append('zBpuw4ZkJbfUsX4ZA4I3TgFZre2GnzE');
-    content.append('mCfgXzrKw0oEsnPB1vw6ZsabNYPbkA0');
-    content.append('iRSLuFQr6XIRo5iOvohyTMSDn5OuXkd');
-    content.append('rryjtu/C7ofmhkHzKEBG9DREhhMEcuv');
-    content.append('ObuwQc2dnk8ZocLtQAAAABJRU5ErkJg');
-    content.append('gg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAALlJREFUOI2V');
+    content.append('k4sOxSAIQ7H//9FblEcLLjfXLM7psRR');
+    content.append('0tn408ze8A2oswLsCxtAVzgp2y90SIg');
+    content.append('WahIlAG9xCbJu3EGF8S38DGBH+Uzh7V');
+    content.append('aABqP4CeCWgiMky/Fmz1OKNP0ym/CyY');
+    content.append('YCB0gQFkBTgdKAAi4AUZQLUGHEEOUTa');
+    content.append('NUhAgCKOcpA4xbWSPLJRVo+Cq4FYYGK');
+    content.append('dZQBQyckTkBfeQ2zIZxNUxiYo+rkryz');
+    content.append('4LcnpXEajcRmbzcyVt7AOjLBOSqQZab');
+    content.append('AAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_colossus_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2060,32 +1978,28 @@ fn get_colossus_svg() -> LongString {
     content.append('8gPlrMBMRnvjvkAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_hydra_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAZZJREFUWIXFV1uOw0AIc1d7sdwpx');
-    content.append('8idcrTuFyPi2EDUSotUZcLADE+TvgC8');
-    content.append('8Y/080T4wIkD5+X9G/TOvwOnXGdeJ1P');
-    content.append('x+WcjcODEjs3ycjRUJHZs5X5QmwJWjv');
-    content.append('cd2zKGDa2MYXohFaHzpDJIyXKk3FkAR');
-    content.append('SB7VHmlvM/y4bGLXqYVAd7MYcuHKx6T');
-    content.append('8lrV1DIgNvOTSRmh9vks59zFAHdoVuA');
-    content.append('DXYS6CxW1Pax632FB7GUZJZt4/UWslJ');
-    content.append('8TeZYlB3u06rxW0Zsi4W+ZHNwretLjX');
-    content.append('Y0wfTwH3HMYmfsFrgiromIDu0KNdQlE');
-    content.append('XUpCTqVF6SuMkECUhdXFDFac7wpBlZO');
-    content.append('jloNISbVmeaWLSEHnLfMriHVzgN8vKb');
-    content.append('jFhpQqA/lil3tFO7b5LFCHudxnHVVfm');
-    content.append('WQE3FR0n2gd4FSGjVOgvHa8CimVseMZ');
-    content.append('4LpkgnxODu6yrFxdnvc6BOUzMUHCKeB');
-    content.append('UQ8q19UrBxPJpCqbz4BIB1SJP2q2aD5');
-    content.append('33txRM+rcClulQC1r/C+Jb33kaa9fz1');
-    content.append('RCqQO4RFLuJVvG7CPwBEkzOyiy+Rq0A');
-    content.append('AAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAjAC/MJKlOQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAN5JREFUOI2F');
+    content.append('UwkSg0AIg/z/0a1CjtXO1PFYXUhCwOo');
+    content.append('/R8Ua+F4/A7jhCDwDsI/r6PgUAVdycG');
+    content.append('hVN/LmAbtk9EuD2ZRU83Lra1BbkNUI2');
+    content.append('HgxYPOEcINMHWQ4jCK+BTJ+qxhWLAK3');
+    content.append('73tYnT4+nKRwLDmrklFHKxDO28k2swD');
+    content.append('mrKwJlieIauYNxGSHa+UKm+BQYxbBKt');
+    content.append('QYm1byABIBCRIFohACxMC0HHK71PKgA');
+    content.append('A4FEtkR4n5rpW6uUISvtBrCJIo865cP');
+    content.append('HAj3vjTFp9Ac+6ia0+mR9H+x8IbKX0/');
+    content.append('7TI+Z+wAytgWa3LC2QwAAAABJRU5Erk');
+    content.append('Jggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_yeti_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2105,6 +2019,7 @@ fn get_yeti_svg() -> LongString {
     content.append('ASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_phoenix_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2124,96 +2039,83 @@ fn get_phoenix_svg() -> LongString {
     content.append('WjmxzAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_weretiger_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVtJREFUWIXFVssOwyAMC1X//5fZC');
-    content.append('RGM44R2Un3ZAENCHqbNzLp9iOtL42Zm');
-    content.append('d53qA9VsDxzOtX874A/txECH9fqJBzU');
-    content.append('wqNHtsvUdxRrIwj84DcY5DiKQGcC1Wh');
-    content.append('QOuyAqsvObD4gizKpcIeqSHSQC3dYQ4');
-    content.append('k2747VgDo0Ozn4BcKCSu0Z4bE7tnUh0');
-    content.append('AG+AY8Y1wi27xPqY5T3TAeXYOuccUOr');
-    content.append('GWlApodq7ckkNqAOV0jXCG/N47sS1Gl');
-    content.append('NajxWvnGZ7vfNz7IpQVTEeEKHKm067F');
-    content.append('LA8KQPRwcxw3DGiBtj7zp5cvHVWsI90');
-    content.append('gDkVKSTboy1AG9baJ0alnSen8MJ0QmP');
-    content.append('pePZJFjiQReNEiDREETKnMM/ZXA7QAT');
-    content.append('QYVT4z6sdK0FYQHWBqFlW++l+Lwr2TM');
-    content.append('51XHC63Cte6ARG9CRGUbkgHWOFgvlmr');
-    content.append('IZCDv6EDLOfq66eC2hkQgcpL95bDd3y');
-    content.append('GH5Q4lUWauQCGAAAAAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAAD/rmEGTQAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAL5JREFUOI2V');
+    content.append('k4sShSAIRHH//6PvJIJny6a5PUzxCCt');
+    content.append('YjI8r/gAkXe9szsB89vcZohbSAQDNm5');
+    content.append('1DiNTwFiKnunEg1TdQngrQCutNItGqO');
+    content.append('rbMVMBBJICa0hbUesJwC5HdSFCDFVCb');
+    content.append('LkC9CJ9tjHJQ6RF7UnkQZVjKwrPAAHn');
+    content.append('HQPGEUKMB1hl1LXNs46rX8cgdakFg6e');
+    content.append('F5MGCe43I+uk8P2LalKgExb71b93BXx');
+    content.append('sHyIDFf3Cp3AWDjVU37Wzj8/Lt/R3wF');
+    content.append('DuZL55YAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_wyvern_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAUdJREFUWIXNV9EOxCAIE7P//+Xdw');
-    content.append('2KG2GL1lt3xskTQFqjEWSnlLD+0+g7M');
-    content.append('WVieRj3dsn0BjCBvIxWIG1e75DOO5Pu');
-    content.append('zAIEIZiUtFAVue09HwlzcZQcHj8zjYY');
-    content.append('xwBDLyvcxVADH1AOg767E/D5M4MNNIK');
-    content.append('vZzLi7Vf/AgxBjpw8crhPoWEHWNvUrD');
-    content.append('U2NELgxyCzKgLDMGxK2OQajnVri4PFB');
-    content.append('cZ5q5Yx0aEiISZQRG6+zajVUKtVZExo');
-    content.append('SX9xrPENgCdFjbzAhlV9DnOOqhckCFk');
-    content.append('Go8FmhgB6DtYYDcV3tHGza74Ez1UgV2');
-    content.append('LRMnItSTeYAAIxF92J88yVReUTs6eFt');
-    content.append('NkFQ97I5v6VGqVCIb03kCQgUY0DM2qQ');
-    content.append('DKbGb8Cb5BwIMrB/vboJEQI5UpGcG1i');
-    content.append('i3Mgey6xeN0rSz8mqlKXxPqQ5Nw3176');
-    content.append('Of1jAh9ZKnoxNr5u7QAAAABJRU5ErkJ');
-    content.append('ggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AAAD/0o8fl');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAAC8SURB');
+    content.append('VDiNnZILDsMgDEMT+f533gSx49DPpLV');
+    content.append('SK/DDJIbIH088KoADqKHJNRVz2HLWVF');
+    content.append('D/fn11rhcb4GqYWRELWP/Fb19utokw/');
+    content.append('VILAdKlGgSwiyrMHnpE69rCCG4BJNpK');
+    content.append('LXoXULhqsqNWcZ45PWOzUEwj7ulgy+w');
+    content.append('4Vw0+raXDYepW7c2FUb14AOgHazO9CB');
+    content.append('ztRt4Rdl4CjlPWsIHz2h7AtMAd0NPwQ');
+    content.append('LtNBTp0z4EXZuhnUJjndQVeuvgb+AA3');
+    content.append('cQYBxBXi6QAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_skeleton_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAS1JREFUWIXNl8ESwyAIRKWT//9le');
-    content.append('2KG0F1ANG05GhKeKyCRMcYcP7QLLc45');
-    content.append('h4iEL8555878mb06L2lwDSoiH0BtAN1');
-    content.append('95YMrvmWAilm5vRqrFuZAlgvdoNZuCv');
-    content.append('iAfqdWagXUte4x3BRgO7JgVnLvX6meE');
-    content.append('CAK7s86Wz8CgHIBSZ35REAUgAVHQWwe');
-    content.append('oGCRKrAMIzk18VCyIl9dZ0kqg9wFLHg');
-    content.append('mc7Rb9GypEdnSQ1VgQTwkUwACRC3WBq');
-    content.append('7sNuuUVIHs4wxytSFRAKaAlR9B+hsy6');
-    content.append('wm0CjIFKrBR7wgBImM9wUOgewNtqHUd');
-    content.append('MxAb2K8xNdO7oAuF1h8HqAT01j6CU9Y');
-    content.append('qw4pf1ZaP4MQQYm1rLD9h/5sDJ2b+LY');
-    content.append('BqL38MILrt2Oh+FADNg6zn7/wb0JHsW');
-    content.append('/YGjG4jU/v1QnIAAAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8A/////zPWC');
+    content.append('AAAAAR0Uk5TAP///7MtQIgAAACiSURB');
+    content.append('VDiNjZNRFoAgCAT17f3vXKnACoj54Ss');
+    content.append('Z1zGz9Utro4e84m0V8FbREQEd/OajAk');
+    content.append('5LwCJSyVUec5E6jDEsxEkoMO2kjwBmw');
+    content.append('nwAuTbbv+SsGhgQQZixEALIIMgBHpiC');
+    content.append('ugAIoE8pYdgSxBm6WQ+Qme0hdWDFCGi');
+    content.append('+BXiAj6Qfge23yAFqfwH+ZQqgx7oDbk');
+    content.append('uUkqiBnwnxVmwJ66jcxWjJpK09hJkFb');
+    content.append('cnr6SEAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_chupacabra_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVFJREFUWIXFVlsSgzAIRKcX804ew');
-    content.append('zt5NPvTWLpdyBL7YCZjaoAly8NOZnbY');
-    content.append('H2WuKG+20/1VOZS12U737DezbQvPSgw');
-    content.append('w2Wy31ZbwzJ+vtrwx1w2gQjXq+sD8Hv');
-    content.append('XK1OMT95kPcymxT6Sg3ajdkDEWpajJU');
-    content.append('AGq75gvOBsHroB7YH9+y+j0VevfoR7a');
-    content.append('+2eTyO4tABYEA8jyysAyu5BSzNfIMIo');
-    content.append('GkFtx7jGYHljmqxRA70Yq+FAAAmVl4M');
-    content.append('wfLcJobPYGirdRdV8mIRqyboi+DaOf5');
-    content.append('7kZ+/6Ner8iyJz3ixJONFzqWeYL3918');
-    content.append('tCx3Sg00Ozb9lMEl9342lLIB1mGlTrU');
-    content.append('ymCId1D27IEoD/hFdbekWZaUjzi6IwC');
-    content.append('MwlnO0UbunW9nFnKbpkGpAAVBGNitOo');
-    content.append('vc9cJEpmaq0EwbBnwGoRkXn3XV2Qatq');
-    content.append('//yVyLe50gnRmh6bv8kdX2onclKpJSQ');
-    content.append('AAAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAADASURB');
+    content.append('VDiNhZJZDsAgCEQhc/87N1FnoUtK+mG');
+    content.append('dh8Jg9U9UrLG+b+DoZAC8AqDcWOuyjM');
+    content.append('FgUwk0RAXxBLLUBEgkkldQCX3VuQEWp');
+    content.append('FtWtLuAe4sywgc0E+wUk0omIMv3svI3');
+    content.append('JzEApOKmAmjNJlw0MNu/TbX69DwqgZ0');
+    content.append('pOugcmXqMOvlxzDbFTsoEGbjhfDCyOg');
+    content.append('ZlgFOM94QEeN5o935FnzLcEZ+DZzFnu');
+    content.append('EuV1S+6tsqHhRnW5cN9X1G5+w14Fg+i');
+    content.append('+icuBf4F3zotd/EAAAAASUVORK5CYII');
+    content.append('=');
     content.into()
 }
+
 #[inline(always)]
 fn get_behemoth_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2251,78 +2153,67 @@ fn get_behemoth_svg() -> LongString {
     content.append('00xKtIqzwAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_qilin_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAWZJREFUWIXFV9sNwzAIJJUXy04ZI');
-    content.append('ztltPSjdUUod5ydSkVCTcDgCy+7i5md');
-    content.append('9kd6KIt2Oy6/SN+f4zuzNXtFoOTdDvg');
-    content.append('edV3W5ZnesQYgOkUgGNCMG4xLQputX+');
-    content.append('Hc7fjI+5qu93JESw/DHYr59SCivASAD');
-    content.append('OOXqkCQ3utgjpGsYqUOnCyvWuQEgUEF');
-    content.append('KRQn3oBVPQPB1iUfxw27gWfl69UoWWV');
-    content.append('U5RelsNp8GoBacAM1NFfpKE2D4T8/cy');
-    content.append('Drc3WYRPs4CdkMuYzi6AQ9Z4Q2V4iGM');
-    content.append('iuuqucjF+nRDdiMiPpMDvxqBlUU2Cxg');
-    content.append('UaUAMkDVWgYOzIqxgaOyenZId8JIqBP');
-    content.append('icYvaz69rXpjNAdb3SM5aMLZp88L4BZ');
-    content.append('Ux22SzVbrItO6QOa+AobXV0DJ7X8n85');
-    content.append('mj8RrkKpIoCPQuQ0wygAgSRMi7pMavY');
-    content.append('Iv3lVjxzkHi7zLaqH3otHwXCCPmlgwj');
-    content.append('lfIb8pt7vT/4Z3aEnqUD9Eh6b3ogAAA');
-    content.append('AASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAADTSURB');
+    content.append('VDiNhZMLDsMgDEMT+f53bktwbIK0Mam');
+    content.append('M6uVjh0b+WdH/8P5qT0BHAesFavsQzA');
+    content.append('wM3LG4ShRSoUowAEHr2QAYaUjtBawj4');
+    content.append('FnYBD5gZRw62UUBkn46klUCVM7KTaIy');
+    content.append('WG0wrskBqD8942yf4lQrcrSQo+WwERQ');
+    content.append('FGiOr+RJtATXS6oS13WLqEDowxa4Pyj');
+    content.append('y1uQUrKNwid4N1TqCnJVNDBekG2oU9r');
+    content.append('LZInlqf4dFyW3oj+wZiILLaxiQGBrQE');
+    content.append('eCWz+hy4X+nUtc97QbPAD+L+ssZ6AJp');
+    content.append('oBiX1LtEcAAAAAElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_nue_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAY5JREFUWIXFVtuNwzAMY4Ms1p06R');
-    content.append('nbKaLmPqwOZoSilQO8EFHFtWQ9aov0A');
-    content.append('cOAfZY1/Nuyp4gvPrwTwwBuBDTteeF6');
-    content.append('+MbAqCJVAtecMgA2w88rgp+gtmYENuz');
-    content.append('XKesMJOxtoOlvHhv3ALxLneMN+mVdza');
-    content.append('uxsRh0Ax8JRd8acXYZIB8WpCNk4G67W');
-    content.append('qvpQ61MRZtIpxOjkTjfYADqGGJm73bA');
-    content.append('KvXYGmbM7uikTxmwqyPn/XUK6tAZEG2');
-    content.append('ZrmZ5rvfg7EegynsssosB07sQSSpV9B');
-    content.append('7nCZh9yBXvFjM4uBhMOqLiAIpMpjlfQ');
-    content.append('M/tll9p0BCorzjD7uqNg9NK7gBHoFE7');
-    content.append('Wbor/403JawtvrJxX/DASUaLsT7eho9');
-    content.append('LKMTtih7EW2EfZLp1K7+xTevIuUNmrc');
-    content.append('ZyLbwCnq1BMEXDV67qiskd6fpODsvsk');
-    content.append('40CjjfJVzPMMOcPL+zrH0C6kTnbVPj6');
-    content.append('GiYiySDN6dXtdxiytc3eZV9lz1nG8js');
-    content.append('gyAort5c4+fln4kor716ikjDpRgWcwf');
-    content.append('/Qq/gv5AcT1gDac0N+XAAAAAElFTkSu');
-    content.append('QmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AjAC/THy84');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAADXSURB');
+    content.append('VDiNhVMJDsMwCAP5/3/eFvDRVlOzrlL');
+    content.append('Bss2R6pdT3z/m/AXg/NqIC3wZJhp5IU');
+    content.append('qBjeEQ/t5YAI4ISHSeDVJiAutiCIYjJ');
+    content.append('JpWbFYS6Z2ZcFmRFk/WUbfKIfE2IIpi');
+    content.append('IQ+JlO9WjdcqhFsaAuKL8tsQM9DeItT');
+    content.append('bZBjzO9SdXjBsFtKDnHFYTgcdBgBBWu');
+    content.append('YgF9U38gFB7+pIeAu8gwa0YSIIBrjFs');
+    content.append('BBnAZOG02HSVseg3egBxPS5lBwJtlFy');
+    content.append('FMWwjrIB77sswhcnWn3dct0LFni/xtU');
+    content.append('v5wPa5watFtZaaAAAAABJRU5ErkJggg');
+    content.append('==');
     content.into()
 }
+
 #[inline(always)]
 fn get_fenrir_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAATlJREFUWIXtVkEOwzAII1X//+XuF');
-    content.append('JUQYyCL2h2WyzREsQMG0kTkkhfP8Sb4');
-    content.append('n8APEfBk+IA87wxYsId64xQRkQZAm/p');
-    content.append('v7RvPDePd2AJee0mMGtCBm4xZ0PYL2L');
-    content.append('8iYMH76bdFJJB9mYAXrNs3132G0DfVY');
-    content.append('B64tqPylQnowNrKgiKyOmqZQCbV2XIU');
-    content.append('yNxdYFOKBlNWeF2kKA5wnV2q6Y8OyUi');
-    content.append('+BCugkYDFzgG2lKp97w0sE2dcRggkIy');
-    content.append('hGDBFROHMGLIg39TyxeiTscmuWgAAn/');
-    content.append('ctIVLrDZHp+EQGnAUzfoBF/9B0gi59k');
-    content.append('bAVXhMo2KiUQEWL/meiAoP3q2VtHywc');
-    content.append('JOPHI4ZPQC7r6SgJ+x+SgnTJ9X2lH4D');
-    content.append('e/iqOJqImtrGC4C6yCvRlOAtFD4h+Do');
-    content.append('QkHj0oTgYPvNj0t188HMBJ+JBUmIqUA');
-    content.append('AAAASUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAALRJREFUOI3N');
+    content.append('UksWhDAIg9z/0GP5hlqdrS7UvnwIBdE');
+    content.append('/j3yCAPvihbAwvBAWissBZ5IYHuCJYS');
+    content.append('UW7Iw7xUJ6iXPYVaIdjgTXln6v4l2UE');
+    content.append('NHUVoLQ+GuOh4wqpCyGDC17h4s8oPUW');
+    content.append('Ok19MKQSYBP7EMkhg4IPETJuGjnYFCE');
+    content.append('cQgjuFjm8XDmT5u6wRxOUytOWSQUE9U');
+    content.append('ZbVBnIddyWjCvAmFM61LQ3PB36buYiQ');
+    content.append('CmDUnuN6yQ8PD90jgS9NRkeyAAAAABJ');
+    content.append('RU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_wendigo_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2342,50 +2233,45 @@ fn get_wendigo_svg() -> LongString {
     content.append('0awciQiXInQAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_ghoul_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAV5JREFUWIWtV+0OhCAMG8b3f2Xvj');
-    content.append('15GbTtAmlz0yMa6T7BFxBU7cUVEI+8C');
-    content.append('xxaDV3pvaa1F6V4t4rxAb5UFozvAcQD');
-    content.append('ZWwx/kYbvKYh4uzFovCewoxSz0cH9zk');
-    content.append('55FM/mrtrzf5QHsTnfmTRunA0W6Vgj4');
-    content.append('ELNIomySUYXoaOF3rT0Qz3meZKZiwAL');
-    content.append('LZJ1a4TQfBuqfmdGWDrA5ZOIzANzK/L');
-    content.append('dyd74PogaPB8jrq0TwTkCqp3yATRK4s');
-    content.append('aeFDwkRgyDE3vOggcXPJ1MfCHAeh0rH');
-    content.append('1MSQVu3b4pqqlUjlumrlNzr79PQTTWF');
-    content.append('quVMgR52g0yCjV/UQSfwHSMYqgac5+7');
-    content.append('ygYRYe2YdSkBVcmWEkcuyLHqUAFMgin');
-    content.append('RdFZw5vvfOgQV8n4Tq2EWIluQRGL0fm');
-    content.append('rteqXNjPQKTn2B/gFx/K2bV7O54YlMK');
-    content.append('0dpnt4HySI3b2RQQx9Y+zbDwqhSYM2K');
-    content.append('NwEb8AAKQhEXXTSFuAAAAAElFTkSuQm');
-    content.append('CC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMZJREFUOI2V');
+    content.append('U0ESxCAMUv7/6N1JCGLipU6r04oQUNd');
+    content.append('+NMSTbY1J/CejawCcxdHqczBspMJg6C');
+    content.append('JWAzogi3gyAMcCMeueZ3WmcgOCnEups');
+    content.append('9wkFeoNqDNkPPE7aYzBE9AY3QTkWhkZ');
+    content.append('AL6oH81FlSIjL4Bli5FD5SVbPckKgy6');
+    content.append('REj3g+K4qVq0TQEcGrMEqLm/MC8mgLd');
+    content.append('ZIvdRZafukqwPLwRguL0J8Byil7RKeo');
+    content.append('gWNCbi1yHBtXw+ee6FDaBeCifR7Aa92');
+    content.append('nIdX+wEw9wT/I1DR0wAAAABJRU5ErkJ');
+    content.append('ggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_pixie_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAQhJREFUWIXNVtEOxCAIg8v9/y9zT');
-    content.append('2SOgBbEeD6NZbO1VICJSOji+twE/wsC');
-    content.append('X/RDkSdTzNxGAFJAwZmZmPlF5jgBETk');
-    content.append('CDBPw5O4kc92EKQ/os42PExgl15Tou9');
-    content.append('0bwZSohPa0FXBLuuSB6qk9xVIK6CYVE');
-    content.append('lG6IAIeaIbIzCtTArb8RrG3uYKujBoS');
-    content.append('8MCsAhpHIMgtcU1oa39EbKwJ3nukYob');
-    content.append('dMMyZdfGgggdWUmC2YdSW7TN6S5Ye8P');
-    content.append('LeUQGXBCJCr58bSMATkQfYoQTcDU/NB');
-    content.append('fBENMYWdIfENAW22BDRNK6kA/KA28U2');
-    content.append('gXVdH8mW1xA54Y4KUwUy5qoaMWxG2VP');
-    content.append('plcwSSU9E3eu6CX/F99YiwUo5eQAAAA');
-    content.append('BJRU5ErkJggg==');
-    return content.into();
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAA9QTFRFAAAAAAAAAP8A////AAD/t');
+    content.append('OJkVwAAAAV0Uk5TAP////8c0CZSAAAA');
+    content.append('kElEQVQ4ja2SCwrAIAxDK7n/nYdiP7F');
+    content.append('VGZsgin3EpCrtMuRPAMAR6OWCMGCUT4');
+    content.append('AyHwB0l/kWSlG5oCvWoEgAC2BVaMj1p');
+    content.append('VERAXsYAcbUSGxSA1orTEmC/GwFyK44');
+    content.append('rx5AcVVhvhVSGPNAzjIwZYovEwFynwH');
+    content.append('QkgHPUAPwMjYAls1bwI93HhyoFOJfQt');
+    content.append('nq/bgCDz8WBQVaYwgSAAAAAElFTkSuQ');
+    content.append('mCC');
+    content.into()
 }
+
 #[inline(always)]
 fn get_ammit_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2408,6 +2294,7 @@ fn get_ammit_svg() -> LongString {
     content.append('/qpme8KK6AAAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_berserker_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2429,6 +2316,7 @@ fn get_berserker_svg() -> LongString {
     content.append('ElFTkSuQmCC');
     content.into()
 }
+
 #[inline(always)]
 fn get_rakshasa_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2449,28 +2337,26 @@ fn get_rakshasa_svg() -> LongString {
     content.append('AAAABJRU5ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_bear_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAATZJREFUWIXFV8sSwyAIXDr9/1+2l');
-    content.append('+oQwlsz2VNrFFYWFAnAwIv4VBeMMTDG');
-    content.append('nbM1HuGrGeIgosu3+d+ax+dE9gCA8Je');
-    content.append('ATySiZcgyKA1p49KG9AEICaRRTsYbky');
-    content.append('StMc1HKQe40UlCG6tgEdDCzsMqDc853');
-    content.append('jf+25J05UAGnSSMoEpglZnEjEB3PeBE');
-    content.append('wNqJt8POGjMJrYTSJLBKMwOTQKSlVgW');
-    content.append('SWAZuEsqdRaSyh1aagGYoo3NFkvRBxA');
-    content.append('8b7qQapTaBiSga1URMH0Sny28iFQHPA');
-    content.append('aDvOitFWQKOTt2XCVSSqtMRhQT4iWg5');
-    content.append('8G7NbQLcSXQTdkiEVVCt6+rarSQ8AZf');
-    content.append('Azu6BnByPRuBxCaLHyFYEsldvp/RSBH');
-    content.append('jDoTnvjt38wOkJORHZpp9aY3bF1ksna');
-    content.append('tMyL6nLN7z8PP8BC0hLIwSnudMAAAAA');
-    content.append('SUVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8A/////zPWC');
+    content.append('AAAAAR0Uk5TAP///7MtQIgAAACqSURB');
+    content.append('VDiNhVPREoAgCIPb//9zZwlshNWDh2M');
+    content.append('MZ2L+8xlvgFqFANwgIkJhi7AibDAVbm');
+    content.append('hFtuOnnpaAmQAuJ0IyonJHTwW7kEOqz');
+    content.append('TxcKQTNvBhRKZtoUTkoIgrlYlBotXnf');
+    content.append('5QKo5vQ7iOBxRQ4/ENCMKGE0+WrxpSD');
+    content.append('PZCBAsrNCuZwJfFXfLWYXf4SWL+BEOC');
+    content.append('rk8ZoCwRgJNDNt/izzSFA28aohM5vD2');
+    content.append('KZ7+i6bwwVnShVyQwAAAABJRU5ErkJg');
+    content.append('gg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_titan_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
@@ -2510,93 +2396,83 @@ fn get_titan_svg() -> LongString {
     content.append('C6Kp2/lujcjkAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_golem_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVVJREFUWIXFVlmuAzEII9W7/5XTn');
-    content.append('44edWwDXVSkqpOBgFmHFRE7fki3XxqP');
-    content.append('iPh76zaL3ZqpmEVgw/OCnwMmaB6BSzn');
-    content.append('zdM2MR0wjsOB/J4PXc+Y1VfYxZwOVTE');
-    content.append('c2vtUFGUThngeAIe54HyBXxJizUdEm0');
-    content.append('pmHwFwtrPP4LKI8rUBkHnvPzgcAZ7wb');
-    content.append('jUwV2JjOAQSoZoECQc41gEkRKmIgHnR');
-    content.append('2AY5bpeRVIKDnH8AGgexxx/Pc+wPic4');
-    content.append('DlWUWmY9yA8jXAxiozptoP+RFHLXEAL');
-    content.append('owsLaxAK/4BwFTqmFj/I2+hKKJkZ1To');
-    content.append('dgOUEQBmg0hFqQLXSkEmVeUIhLUugnP');
-    content.append('AI7ch6/9sHL3EodKZGbg7EmwnqfZSn2');
-    content.append('OlTaRiXgOXkU6rZkBCvjc81dLBNLhdg');
-    content.append('vDrSchAuC2nSkHvdWiv3ZBRdw1g3YZu');
-    content.append('2Zh+9czO6CMwUfri/U+sGW/RHQ7SiUU');
-    content.append('jgGBMAAAAAElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAAAP8AEEcUsgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMFJREFUOI2V');
+    content.append('kwsShCAMQ2vuf+gdJUmDC8PI+EF4pmm');
+    content.append('Bug6tvgK42w7Ac90PbAD9iw3wSIDXJo');
+    content.append('Q6JyA0KsZivkWqh8AZmRki1doiQLMjT');
+    content.append('PV8IM1OgEz4hyuBqLDL5RBD9qXAypeD');
+    content.append('xwT+gHGDXaCrYYASUJLPmx4WDuAINIm');
+    content.append('2ppwizfAQW4FRJmBIAQsFOo5Kvwslz+');
+    content.append('K6Xt4wzIVu4LwSsDq6G1vO6UHbYwIAL');
+    content.append('dk6hA5ML6RiVC5wrrTeUmAz6O/j6f4B');
+    content.append('Jx0FD0j789sAAAAASUVORK5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_manticore_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAAVZJREFUWIXFV+0OwyAIPJc9uG/e/');
-    content.append('ZlG6R0fbZeRNHGKcOAJrgE48Ed5/dM5');
-    content.append('ALyzikcHWufzqzCdRwAop9ahAqqkocC');
-    content.append('B4ThysILwwE79ynf0vJ7VZXNlABkQ6z');
-    content.append('obm/11AE40co5lYwMwlCxKG4FKK9ubH');
-    content.append('HOn1qAydCVD9AiYsyi6O9wZ41kHWsd2');
-    content.append('ZdiVs0XnCZl1gBn/ReWjgXlXpUIs73N');
-    content.append('4xBcjJ0y/UHzm3FaKbdm0dT1TVpUes9');
-    content.append('X6lwPsXKtNJSMMmMyAVVQGroA4dVAIs');
-    content.append('rH5K/Ug2BMzuuo02yM2AFGkWRBREGEG');
-    content.append('VEMKOlqqLrC17VE6mdnBGdvxuNAnmbq');
-    content.append('z6+8BSF3hMWa27Vq6fCJIMdufWLvGZK');
-    content.append('9FZwh7ascsTSpt9ggUNxSXTv68yL3ov');
-    content.append('BdP1JhOR5A5b8959uVk118jpZbl6iZE');
-    content.append('KWf2Vpv0CO7U+czn2S/9NfuFfAC08WC');
-    content.append('OS4iJHgAAAABJRU5ErkJggg==');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAMlJREFUOI2V');
+    content.append('UwEOhDAIg/7/0acMWnAzFxejUUopBc3');
+    content.append('/HPsAwLpf5x2QQZwBrlRhpwZMbNymSO');
+    content.append('gZF7YumoZFcgPualhlqwuIxCIWH9FEg');
+    content.append('CQWpcDEh6IoEUGqPgBA854urhLZT1PW');
+    content.append('wiESLoEgTTWcGjw7ZHJmLIZdf4PNLvY');
+    content.append('20gdvQhWNFyvrR7RthSlXCPgA1LRyfA');
+    content.append('yphGMYcQB45XJqZb0WRvxdRjrZmKGeB');
+    content.append('4DzQB+JAJTATap55T7MuGaDtpM0e/AI');
+    content.append('4PvB8b/Yzw8ulgUFnTfMVQAAAABJRU5');
+    content.append('ErkJggg==');
     content.into()
 }
+
 #[inline(always)]
 fn get_dragon_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAIAAAD8GO2jAAAAAXNSR0IArs4c6Q');
-    content.append('AAAR5JREFUSImdVkkSwzAIw5k8uk/wr');
-    content.append('91DmgxFIOQwvQTLIFbX7JY1DWXNUq8K');
-    content.append('gRLr1RHK8NfGJzr2mpQQAnJGKUeDIJB');
-    content.append('7G8pItWk0hK/3ETDjhTnuo7n1ZIYAeP');
-    content.append('FLz202Mfuqj/RANCcq+1aphHRgRHi7o');
-    content.append('vUUkDhAhBVxpCnmQZwVKHQbxqQ08Zp2');
-    content.append('BKPXL5Vw5Buf7I8jvYxE0svKvjusCxY');
-    content.append('TgtkjQTd0yPT59iOAs0VwdoT+H8cXY1');
-    content.append('zpwzCdyBGX69ZaZbL1mCj0LQzaw/T5x');
-    content.append('NSpqb/l5+CyRR4Nz6Cyrk/43wUzqeAV');
-    content.append('nqFDg4klSVey5I/oK+5r3jVo7fLM7la');
-    content.append('evewVA7UAol1u1H/GB+fF0DbDoadi63');
-    content.append('/GRgths+o+1rQvxnQq3zSqGWEAAAAAS');
-    content.append('UVORK5CYII=');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAlQTFRFAAAAAAAA/4AABnhFZgAAA');
+    content.append('AN0Uk5TAP//RFDWIQAAAN9JREFUOI2F');
+    content.append('UwESwzAIUv7/6F0iIOtuW3ttUkVUYqv');
+    content.append('/XPX4xm8APhGVzvMCvgCg5YEgAGPGWY');
+    content.append('EMqbHrOX6XAQJuxDUrHK2wA2AQ/Yvgt');
+    content.append('jDREIBkNpa2KsMpia8GkgEuj6lLjaFN');
+    content.append('IUnvXfCeFMtxYSqSWd2khKMObo0cijo');
+    content.append('p7GcjyqCNAOxkGHQuV0n5VfUe5jCXjo');
+    content.append('diB8WYar3RyIo9gJQvGJpS64PXgmdgN');
+    content.append('h39TkEl1UFIZBgHRv6Ogdy6Stk7ETHb');
+    content.append('BZshZGqugUEciXXcoY2koQKlzqAcnu3');
+    content.append('iTaKPn7tf1nUFaqrjsNoAAAAASUVORK');
+    content.append('5CYII=');
     content.into()
 }
+
 #[inline(always)]
 fn get_giant_svg() -> LongString {
     let mut content = ArrayTrait::<felt252>::new();
     content.append('iVBORw0KGgoAAAANSUhEUgAAACAAAAA');
-    content.append('gCAYAAABzenr0AAAAAXNSR0IArs4c6Q');
-    content.append('AAATdJREFUWIXFV8sSwyAIxI7//8v0k');
-    content.append('LEhCMsjyXQPTaUoG8GlDiJi+iPmdchE');
-    content.append('NMBY+2pYvtpvbCPGC7L4HhHLvMDVNvG');
-    content.append('CMjArG4NnhPOlZsx6jS0ikuAwbMj/sI');
-    content.append('Ma0IGljcXYgn4Ji9D4fTJOwT5pT4fl5');
-    content.append('/lcCQZF6C2A/HHRaZtKgb9VPUQ7S/Sx');
-    content.append('gyOb/s0qwsz8jUAHHom8uDYIPKvcRQJ');
-    content.append('ZaUaCZCphJZAVcAWVdqmO/roOgQwi6Z');
-    content.append('ZB/Tk3izCCLE6b8MME6gVaTEEksXXRa');
-    content.append('tRAphndJmBV8EJVojHJoAZQw9G74D0x');
-    content.append('QArqsrqj1IwQBqGjhOfdSkEXGSU9EJw');
-    content.append('CayF0CvKBF5o74LXfug48kIJObZwAKb');
-    content.append('C2Wf9jzsC73EACUd/vnAZ77svdMEYiB');
-    content.append('VlkrmX7zmUvc6/hCwI5WmV2vSpWAAAA');
-    content.append('AElFTkSuQmCC');
+    content.append('gCAMAAABEpIrGAAAAAXNSR0IArs4c6Q');
+    content.append('AAAAxQTFRFAAAAAAAAAP8AAAD/0o8fl');
+    content.append('wAAAAR0Uk5TAP///7MtQIgAAACwSURB');
+    content.append('VDiNjZILDsQgCEQhc/87d1UYPi1xNY1');
+    content.append('gHzgiopchvw/2rWUNWgacTQRGCxuAJ9');
+    content.append('vYmRa9FkEKQU6xoQOAGeHDoXzE3oXt+');
+    content.append('xkhMmnnPwIWXgCKEaUsMxDOF1DdDuAC');
+    content.append('IOwIkJrAaoCgGhAq/OITQOcLwAR4gcc');
+    content.append('MGo8VaK1DUtEBf+80C8DGY0/pC7hmyA');
+    content.append('BeGqjS+3sAlM02A72svCZbOcqagBTf2');
+    content.append('+ZfoNS/eKzDNB6kygX1hPndnwAAAABJ');
+    content.append('RU5ErkJggg==');
     content.into()
 }
 
