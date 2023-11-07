@@ -301,7 +301,8 @@ mod Beasts {
             beast: u8,
             prefix: u8,
             suffix: u8,
-            level: u16
+            level: u16,
+            health: u16
         ) {
             assert(!to.is_zero(), 'Invalid receiver');
             let caller: ContractAddress = get_caller_address();
@@ -309,7 +310,7 @@ mod Beasts {
             assert(!self.isMinted(beast, prefix, suffix), 'Already minted');
             let current: u256 = self._tokenIndex.read();
 
-            self._beast.write(current, PackableBeast { id: beast, prefix, suffix, level });
+            self._beast.write(current, PackableBeast { id: beast, prefix, suffix, level, health });
 
             self._minted.write(get_hash(beast, prefix, suffix), true);
             self._mint(to);
@@ -332,7 +333,9 @@ mod Beasts {
                 let current: u256 = self._tokenIndex.read();
                 self
                     ._beast
-                    .write(current, PackableBeast { id: id, prefix: 0, suffix: 0, level: 0 });
+                    .write(
+                        current, PackableBeast { id: id, prefix: 0, suffix: 0, level: 0, health: 0 }
+                    );
                 self._minted.write(get_hash(id, 0, 0), true);
                 self._mint(to);
 

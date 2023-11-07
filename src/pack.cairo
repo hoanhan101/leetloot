@@ -3,18 +3,11 @@ use debug::PrintTrait;
 
 #[derive(Drop, Serde, Copy)]
 struct PackableBeast {
-    id: u8,
-    prefix: u8,
-    suffix: u8,
-    level: u16
-}
-
-fn rshift_split(value: u256, bits: u256) -> (u256, u256) {
-    // temporary commented out until 0.12.1 when u256_safe_divmod is an allowed libfunc
-    // integer::U256DivRem::div_rem(value, bits.try_into().expect('0 bits'))
-    let value = integer::u512 { limb0: value.low, limb1: value.high, limb2: 0, limb3: 0 };
-    let (q, r) = integer::u512_safe_div_rem_by_u256(value, bits.try_into().expect('0 bits'));
-    (u256 { low: q.limb0, high: q.limb1 }, r)
+    id: u8, // 7 bits in storage
+    prefix: u8, // 7 bits in storage
+    suffix: u8, // 5 bits in storage
+    level: u16, // 16 bits in storage
+    health: u16, // 16 bits in storage
 }
 
 impl PackPackable of StorePacking<PackableBeast, felt252> {
@@ -22,33 +15,68 @@ impl PackPackable of StorePacking<PackableBeast, felt252> {
         (value.id.into()
             + value.prefix.into() * pow::TWO_POW_7
             + value.suffix.into() * pow::TWO_POW_14
-            + value.level.into() * pow::TWO_POW_19)
+            + value.level.into() * pow::TWO_POW_19
+            + value.health.into() * pow::TWO_POW_35)
             .try_into()
             .expect('pack beast')
     }
     fn unpack(value: felt252) -> PackableBeast {
         let packed = value.into();
-        let (packed, id) = rshift_split(packed, pow::TWO_POW_7);
-        let (packed, prefix) = rshift_split(packed, pow::TWO_POW_7);
-        let (packed, suffix) = rshift_split(packed, pow::TWO_POW_5);
-        let (packed, level) = rshift_split(packed, pow::TWO_POW_16);
+        let (packed, id) = integer::U256DivRem::div_rem(packed, pow::TWO_POW_7.try_into().expect('0 bits'));
+        let (packed, prefix) = integer::U256DivRem::div_rem(packed, pow::TWO_POW_7.try_into().expect('0 bits'));
+        let (packed, suffix) = integer::U256DivRem::div_rem(packed, pow::TWO_POW_5.try_into().expect('0 bits'));
+        let (packed, level) = integer::U256DivRem::div_rem(packed, pow::TWO_POW_16.try_into().expect('0 bits'));
+        let (packed, health) = integer::U256DivRem::div_rem(packed, pow::TWO_POW_16.try_into().expect('0 bits'));
         PackableBeast {
             id: id.try_into().expect('unpack id'),
             prefix: prefix.try_into().expect('unpack prefix'),
             suffix: suffix.try_into().expect('unpack suffix'),
-            level: level.try_into().expect('unpack level')
+            level: level.try_into().expect('unpack level'),
+            health: health.try_into().expect('unpack health'),
         }
     }
 }
 
 
 #[test]
-#[available_gas(1000000000000000)]
-fn test_pack() {
-    let mut beast = PackableBeast { id: 1, prefix: 2, suffix: 3, level: 4 };
-
+#[available_gas(180960)]
+fn test_pack_and_unpack_gas() {
+    let beast = PackableBeast { id: 1, prefix: 2, suffix: 3, level: 4, health: 5};
     let packed = PackPackable::pack(beast);
+    let unpacked = PackPackable::unpack(packed);
+}
 
+#[test]
+#[available_gas(1000000000)]
+fn test_pack_and_unpack_basic() {
+    let beast = PackableBeast { id: 1, prefix: 2, suffix: 3, level: 4, health: 5};
+    let packed = PackPackable::pack(beast);
+    let unpacked = PackPackable::unpack(packed);
+
+    assert(beast.id == unpacked.id, 'id');
+    assert(beast.prefix == unpacked.prefix, 'prefix');
+    assert(beast.suffix == unpacked.suffix, 'suffix');
+    assert(beast.level == unpacked.level, 'level');
+}
+
+#[test]
+#[available_gas(1000000000)]
+fn test_pack_and_unpack_zero() {
+    let beast = PackableBeast { id: 0, prefix: 0, suffix: 0, level: 0, health: 0};
+    let packed = PackPackable::pack(beast);
+    let unpacked = PackPackable::unpack(packed);
+
+    assert(beast.id == unpacked.id, 'id');
+    assert(beast.prefix == unpacked.prefix, 'prefix');
+    assert(beast.suffix == unpacked.suffix, 'suffix');
+    assert(beast.level == unpacked.level, 'level');
+}
+
+#[test]
+#[available_gas(1000000000)]
+fn test_pack_and_unpack_max() {
+    let beast = PackableBeast { id: 127, prefix: 127, suffix: 31, level: 65535, health: 65535};
+    let packed = PackPackable::pack(beast);
     let unpacked = PackPackable::unpack(packed);
 
     assert(beast.id == unpacked.id, 'id');
