@@ -73,7 +73,7 @@ mod tests {
         assert(contract.supportsInterface(0x150b7a02), 'No support interface');
         assert(!contract.isMinted(1, 1, 1), 'Already minted');
         assert(!contract.isMinted(1, 1, 1), 'Not minted');
-        contract.mint(owner, 1, 1, 1, 13104);
+        contract.mint(owner, 1, 1, 1, 13104, 1);
         assert(contract.isMinted(1, 1, 1), 'Already minted');
         assert(contract.tokenSupply() == 1, 'Wrong supply');
     }

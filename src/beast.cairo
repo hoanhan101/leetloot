@@ -220,7 +220,8 @@ fn get_content(self: PackableBeast) -> Array<felt252> {
     let suffix: felt252 = get_suffix(self.suffix);
     let btype: felt252 = get_type(beast);
     let tier: felt252 = get_tier(beast);
-    let level: felt252 = get_level(self.level);
+    let level: felt252 = u16_to_felt_string(self.level);
+    let health: felt252 = u16_to_felt_string(self.health);
 
     let mut content = ArrayTrait::<felt252>::new();
 
@@ -262,6 +263,9 @@ fn get_content(self: PackableBeast) -> Array<felt252> {
     content.append('},{"trait_type":');
     content.append('"level","value":');
     content.append(level);
+    content.append('},{"trait_type":');
+    content.append('"health","value":');
+    content.append(health);
     content.append('}]');
 
     // Image
@@ -2476,609 +2480,1031 @@ fn get_giant_svg() -> LongString {
     content.into()
 }
 
-fn get_level(level: u16) -> felt252 {
-    if level == 0 {
+fn u16_to_felt_string(number: u16) -> felt252 {
+    if number == 0 {
         '0'
-    } else if level == 1 {
+    } else if number == 1 {
         '1'
-    } else if level == 2 {
+    } else if number == 2 {
         '2'
-    } else if level == 3 {
+    } else if number == 3 {
         '3'
-    } else if level == 4 {
+    } else if number == 4 {
         '4'
-    } else if level == 5 {
+    } else if number == 5 {
         '5'
-    } else if level == 6 {
+    } else if number == 6 {
         '6'
-    } else if level == 7 {
+    } else if number == 7 {
         '7'
-    } else if level == 8 {
+    } else if number == 8 {
         '8'
-    } else if level == 9 {
+    } else if number == 9 {
         '9'
-    } else if level == 10 {
+    } else if number == 10 {
         '10'
-    } else if level == 11 {
+    } else if number == 11 {
         '11'
-    } else if level == 12 {
+    } else if number == 12 {
         '12'
-    } else if level == 13 {
+    } else if number == 13 {
         '13'
-    } else if level == 14 {
+    } else if number == 14 {
         '14'
-    } else if level == 15 {
+    } else if number == 15 {
         '15'
-    } else if level == 16 {
+    } else if number == 16 {
         '16'
-    } else if level == 17 {
+    } else if number == 17 {
         '17'
-    } else if level == 18 {
+    } else if number == 18 {
         '18'
-    } else if level == 19 {
+    } else if number == 19 {
         '19'
-    } else if level == 20 {
+    } else if number == 20 {
         '20'
-    } else if level == 21 {
+    } else if number == 21 {
         '21'
-    } else if level == 22 {
+    } else if number == 22 {
         '22'
-    } else if level == 23 {
+    } else if number == 23 {
         '23'
-    } else if level == 24 {
+    } else if number == 24 {
         '24'
-    } else if level == 25 {
+    } else if number == 25 {
         '25'
-    } else if level == 26 {
+    } else if number == 26 {
         '26'
-    } else if level == 27 {
+    } else if number == 27 {
         '27'
-    } else if level == 28 {
+    } else if number == 28 {
         '28'
-    } else if level == 29 {
+    } else if number == 29 {
         '29'
-    } else if level == 30 {
+    } else if number == 30 {
         '30'
-    } else if level == 31 {
+    } else if number == 31 {
         '31'
-    } else if level == 32 {
+    } else if number == 32 {
         '32'
-    } else if level == 33 {
+    } else if number == 33 {
         '33'
-    } else if level == 34 {
+    } else if number == 34 {
         '34'
-    } else if level == 35 {
+    } else if number == 35 {
         '35'
-    } else if level == 36 {
+    } else if number == 36 {
         '36'
-    } else if level == 37 {
+    } else if number == 37 {
         '37'
-    } else if level == 38 {
+    } else if number == 38 {
         '38'
-    } else if level == 39 {
+    } else if number == 39 {
         '39'
-    } else if level == 40 {
+    } else if number == 40 {
         '40'
-    } else if level == 41 {
+    } else if number == 41 {
         '41'
-    } else if level == 42 {
+    } else if number == 42 {
         '42'
-    } else if level == 43 {
+    } else if number == 43 {
         '43'
-    } else if level == 44 {
+    } else if number == 44 {
         '44'
-    } else if level == 45 {
+    } else if number == 45 {
         '45'
-    } else if level == 46 {
+    } else if number == 46 {
         '46'
-    } else if level == 47 {
+    } else if number == 47 {
         '47'
-    } else if level == 48 {
+    } else if number == 48 {
         '48'
-    } else if level == 49 {
+    } else if number == 49 {
         '49'
-    } else if level == 50 {
+    } else if number == 50 {
         '50'
-    } else if level == 51 {
+    } else if number == 51 {
         '51'
-    } else if level == 52 {
+    } else if number == 52 {
         '52'
-    } else if level == 53 {
+    } else if number == 53 {
         '53'
-    } else if level == 54 {
+    } else if number == 54 {
         '54'
-    } else if level == 55 {
+    } else if number == 55 {
         '55'
-    } else if level == 56 {
+    } else if number == 56 {
         '56'
-    } else if level == 57 {
+    } else if number == 57 {
         '57'
-    } else if level == 58 {
+    } else if number == 58 {
         '58'
-    } else if level == 59 {
+    } else if number == 59 {
         '59'
-    } else if level == 60 {
+    } else if number == 60 {
         '60'
-    } else if level == 61 {
+    } else if number == 61 {
         '61'
-    } else if level == 62 {
+    } else if number == 62 {
         '62'
-    } else if level == 63 {
+    } else if number == 63 {
         '63'
-    } else if level == 64 {
+    } else if number == 64 {
         '64'
-    } else if level == 65 {
+    } else if number == 65 {
         '65'
-    } else if level == 66 {
+    } else if number == 66 {
         '66'
-    } else if level == 67 {
+    } else if number == 67 {
         '67'
-    } else if level == 68 {
+    } else if number == 68 {
         '68'
-    } else if level == 69 {
+    } else if number == 69 {
         '69'
-    } else if level == 70 {
+    } else if number == 70 {
         '70'
-    } else if level == 71 {
+    } else if number == 71 {
         '71'
-    } else if level == 72 {
+    } else if number == 72 {
         '72'
-    } else if level == 73 {
+    } else if number == 73 {
         '73'
-    } else if level == 74 {
+    } else if number == 74 {
         '74'
-    } else if level == 75 {
+    } else if number == 75 {
         '75'
-    } else if level == 76 {
+    } else if number == 76 {
         '76'
-    } else if level == 77 {
+    } else if number == 77 {
         '77'
-    } else if level == 78 {
+    } else if number == 78 {
         '78'
-    } else if level == 79 {
+    } else if number == 79 {
         '79'
-    } else if level == 80 {
+    } else if number == 80 {
         '80'
-    } else if level == 81 {
+    } else if number == 81 {
         '81'
-    } else if level == 82 {
+    } else if number == 82 {
         '82'
-    } else if level == 83 {
+    } else if number == 83 {
         '83'
-    } else if level == 84 {
+    } else if number == 84 {
         '84'
-    } else if level == 85 {
+    } else if number == 85 {
         '85'
-    } else if level == 86 {
+    } else if number == 86 {
         '86'
-    } else if level == 87 {
+    } else if number == 87 {
         '87'
-    } else if level == 88 {
+    } else if number == 88 {
         '88'
-    } else if level == 89 {
+    } else if number == 89 {
         '89'
-    } else if level == 90 {
+    } else if number == 90 {
         '90'
-    } else if level == 91 {
+    } else if number == 91 {
         '91'
-    } else if level == 92 {
+    } else if number == 92 {
         '92'
-    } else if level == 93 {
+    } else if number == 93 {
         '93'
-    } else if level == 94 {
+    } else if number == 94 {
         '94'
-    } else if level == 95 {
+    } else if number == 95 {
         '95'
-    } else if level == 96 {
+    } else if number == 96 {
         '96'
-    } else if level == 97 {
+    } else if number == 97 {
         '97'
-    } else if level == 98 {
+    } else if number == 98 {
         '98'
-    } else if level == 99 {
+    } else if number == 99 {
         '99'
-    } else if level == 100 {
+    } else if number == 100 {
         '100'
-    } else if level == 101 {
+    } else if number == 101 {
         '101'
-    } else if level == 102 {
+    } else if number == 102 {
         '102'
-    } else if level == 103 {
+    } else if number == 103 {
         '103'
-    } else if level == 104 {
+    } else if number == 104 {
         '104'
-    } else if level == 105 {
+    } else if number == 105 {
         '105'
-    } else if level == 106 {
+    } else if number == 106 {
         '106'
-    } else if level == 107 {
+    } else if number == 107 {
         '107'
-    } else if level == 108 {
+    } else if number == 108 {
         '108'
-    } else if level == 109 {
+    } else if number == 109 {
         '109'
-    } else if level == 110 {
+    } else if number == 110 {
         '110'
-    } else if level == 111 {
+    } else if number == 111 {
         '111'
-    } else if level == 112 {
+    } else if number == 112 {
         '112'
-    } else if level == 113 {
+    } else if number == 113 {
         '113'
-    } else if level == 114 {
+    } else if number == 114 {
         '114'
-    } else if level == 115 {
+    } else if number == 115 {
         '115'
-    } else if level == 116 {
+    } else if number == 116 {
         '116'
-    } else if level == 117 {
+    } else if number == 117 {
         '117'
-    } else if level == 118 {
+    } else if number == 118 {
         '118'
-    } else if level == 119 {
+    } else if number == 119 {
         '119'
-    } else if level == 120 {
+    } else if number == 120 {
         '120'
-    } else if level == 121 {
+    } else if number == 121 {
         '121'
-    } else if level == 122 {
+    } else if number == 122 {
         '122'
-    } else if level == 123 {
+    } else if number == 123 {
         '123'
-    } else if level == 124 {
+    } else if number == 124 {
         '124'
-    } else if level == 125 {
+    } else if number == 125 {
         '125'
-    } else if level == 126 {
+    } else if number == 126 {
         '126'
-    } else if level == 127 {
+    } else if number == 127 {
         '127'
-    } else if level == 128 {
+    } else if number == 128 {
         '128'
-    } else if level == 129 {
+    } else if number == 129 {
         '129'
-    } else if level == 130 {
+    } else if number == 130 {
         '130'
-    } else if level == 131 {
+    } else if number == 131 {
         '131'
-    } else if level == 132 {
+    } else if number == 132 {
         '132'
-    } else if level == 133 {
+    } else if number == 133 {
         '133'
-    } else if level == 134 {
+    } else if number == 134 {
         '134'
-    } else if level == 135 {
+    } else if number == 135 {
         '135'
-    } else if level == 136 {
+    } else if number == 136 {
         '136'
-    } else if level == 137 {
+    } else if number == 137 {
         '137'
-    } else if level == 138 {
+    } else if number == 138 {
         '138'
-    } else if level == 139 {
+    } else if number == 139 {
         '139'
-    } else if level == 140 {
+    } else if number == 140 {
         '140'
-    } else if level == 141 {
+    } else if number == 141 {
         '141'
-    } else if level == 142 {
+    } else if number == 142 {
         '142'
-    } else if level == 143 {
+    } else if number == 143 {
         '143'
-    } else if level == 144 {
+    } else if number == 144 {
         '144'
-    } else if level == 145 {
+    } else if number == 145 {
         '145'
-    } else if level == 146 {
+    } else if number == 146 {
         '146'
-    } else if level == 147 {
+    } else if number == 147 {
         '147'
-    } else if level == 148 {
+    } else if number == 148 {
         '148'
-    } else if level == 149 {
+    } else if number == 149 {
         '149'
-    } else if level == 150 {
+    } else if number == 150 {
         '150'
-    } else if level == 151 {
+    } else if number == 151 {
         '151'
-    } else if level == 152 {
+    } else if number == 152 {
         '152'
-    } else if level == 153 {
+    } else if number == 153 {
         '153'
-    } else if level == 154 {
+    } else if number == 154 {
         '154'
-    } else if level == 155 {
+    } else if number == 155 {
         '155'
-    } else if level == 156 {
+    } else if number == 156 {
         '156'
-    } else if level == 157 {
+    } else if number == 157 {
         '157'
-    } else if level == 158 {
+    } else if number == 158 {
         '158'
-    } else if level == 159 {
+    } else if number == 159 {
         '159'
-    } else if level == 160 {
+    } else if number == 160 {
         '160'
-    } else if level == 161 {
+    } else if number == 161 {
         '161'
-    } else if level == 162 {
+    } else if number == 162 {
         '162'
-    } else if level == 163 {
+    } else if number == 163 {
         '163'
-    } else if level == 164 {
+    } else if number == 164 {
         '164'
-    } else if level == 165 {
+    } else if number == 165 {
         '165'
-    } else if level == 166 {
+    } else if number == 166 {
         '166'
-    } else if level == 167 {
+    } else if number == 167 {
         '167'
-    } else if level == 168 {
+    } else if number == 168 {
         '168'
-    } else if level == 169 {
+    } else if number == 169 {
         '169'
-    } else if level == 170 {
+    } else if number == 170 {
         '170'
-    } else if level == 171 {
+    } else if number == 171 {
         '171'
-    } else if level == 172 {
+    } else if number == 172 {
         '172'
-    } else if level == 173 {
+    } else if number == 173 {
         '173'
-    } else if level == 174 {
+    } else if number == 174 {
         '174'
-    } else if level == 175 {
+    } else if number == 175 {
         '175'
-    } else if level == 176 {
+    } else if number == 176 {
         '176'
-    } else if level == 177 {
+    } else if number == 177 {
         '177'
-    } else if level == 178 {
+    } else if number == 178 {
         '178'
-    } else if level == 179 {
+    } else if number == 179 {
         '179'
-    } else if level == 180 {
+    } else if number == 180 {
         '180'
-    } else if level == 181 {
+    } else if number == 181 {
         '181'
-    } else if level == 182 {
+    } else if number == 182 {
         '182'
-    } else if level == 183 {
+    } else if number == 183 {
         '183'
-    } else if level == 184 {
+    } else if number == 184 {
         '184'
-    } else if level == 185 {
+    } else if number == 185 {
         '185'
-    } else if level == 186 {
+    } else if number == 186 {
         '186'
-    } else if level == 187 {
+    } else if number == 187 {
         '187'
-    } else if level == 188 {
+    } else if number == 188 {
         '188'
-    } else if level == 189 {
+    } else if number == 189 {
         '189'
-    } else if level == 190 {
+    } else if number == 190 {
         '190'
-    } else if level == 191 {
+    } else if number == 191 {
         '191'
-    } else if level == 192 {
+    } else if number == 192 {
         '192'
-    } else if level == 193 {
+    } else if number == 193 {
         '193'
-    } else if level == 194 {
+    } else if number == 194 {
         '194'
-    } else if level == 195 {
+    } else if number == 195 {
         '195'
-    } else if level == 196 {
+    } else if number == 196 {
         '196'
-    } else if level == 197 {
+    } else if number == 197 {
         '197'
-    } else if level == 198 {
+    } else if number == 198 {
         '198'
-    } else if level == 199 {
+    } else if number == 199 {
         '199'
-    } else if level == 200 {
+    } else if number == 200 {
         '200'
-    } else if level == 201 {
+    } else if number == 201 {
         '201'
-    } else if level == 202 {
+    } else if number == 202 {
         '202'
-    } else if level == 203 {
+    } else if number == 203 {
         '203'
-    } else if level == 204 {
+    } else if number == 204 {
         '204'
-    } else if level == 205 {
+    } else if number == 205 {
         '205'
-    } else if level == 206 {
+    } else if number == 206 {
         '206'
-    } else if level == 207 {
+    } else if number == 207 {
         '207'
-    } else if level == 208 {
+    } else if number == 208 {
         '208'
-    } else if level == 209 {
+    } else if number == 209 {
         '209'
-    } else if level == 210 {
+    } else if number == 210 {
         '210'
-    } else if level == 211 {
+    } else if number == 211 {
         '211'
-    } else if level == 212 {
+    } else if number == 212 {
         '212'
-    } else if level == 213 {
+    } else if number == 213 {
         '213'
-    } else if level == 214 {
+    } else if number == 214 {
         '214'
-    } else if level == 215 {
+    } else if number == 215 {
         '215'
-    } else if level == 216 {
+    } else if number == 216 {
         '216'
-    } else if level == 217 {
+    } else if number == 217 {
         '217'
-    } else if level == 218 {
+    } else if number == 218 {
         '218'
-    } else if level == 219 {
+    } else if number == 219 {
         '219'
-    } else if level == 220 {
+    } else if number == 220 {
         '220'
-    } else if level == 221 {
+    } else if number == 221 {
         '221'
-    } else if level == 222 {
+    } else if number == 222 {
         '222'
-    } else if level == 223 {
+    } else if number == 223 {
         '223'
-    } else if level == 224 {
+    } else if number == 224 {
         '224'
-    } else if level == 225 {
+    } else if number == 225 {
         '225'
-    } else if level == 226 {
+    } else if number == 226 {
         '226'
-    } else if level == 227 {
+    } else if number == 227 {
         '227'
-    } else if level == 228 {
+    } else if number == 228 {
         '228'
-    } else if level == 229 {
+    } else if number == 229 {
         '229'
-    } else if level == 230 {
+    } else if number == 230 {
         '230'
-    } else if level == 231 {
+    } else if number == 231 {
         '231'
-    } else if level == 232 {
+    } else if number == 232 {
         '232'
-    } else if level == 233 {
+    } else if number == 233 {
         '233'
-    } else if level == 234 {
+    } else if number == 234 {
         '234'
-    } else if level == 235 {
+    } else if number == 235 {
         '235'
-    } else if level == 236 {
+    } else if number == 236 {
         '236'
-    } else if level == 237 {
+    } else if number == 237 {
         '237'
-    } else if level == 238 {
+    } else if number == 238 {
         '238'
-    } else if level == 239 {
+    } else if number == 239 {
         '239'
-    } else if level == 240 {
+    } else if number == 240 {
         '240'
-    } else if level == 241 {
+    } else if number == 241 {
         '241'
-    } else if level == 242 {
+    } else if number == 242 {
         '242'
-    } else if level == 243 {
+    } else if number == 243 {
         '243'
-    } else if level == 244 {
+    } else if number == 244 {
         '244'
-    } else if level == 245 {
+    } else if number == 245 {
         '245'
-    } else if level == 246 {
+    } else if number == 246 {
         '246'
-    } else if level == 247 {
+    } else if number == 247 {
         '247'
-    } else if level == 248 {
+    } else if number == 248 {
         '248'
-    } else if level == 249 {
+    } else if number == 249 {
         '249'
-    } else if level == 250 {
+    } else if number == 250 {
         '250'
-    } else if level == 251 {
+    } else if number == 251 {
         '251'
-    } else if level == 252 {
+    } else if number == 252 {
         '252'
-    } else if level == 253 {
+    } else if number == 253 {
         '253'
-    } else if level == 254 {
+    } else if number == 254 {
         '254'
-    } else if level == 255 {
+    } else if number == 255 {
         '255'
-    } else if level == 256 {
+    } else if number == 256 {
         '256'
-    } else if level == 257 {
+    } else if number == 257 {
         '257'
-    } else if level == 258 {
+    } else if number == 258 {
         '258'
-    } else if level == 259 {
+    } else if number == 259 {
         '259'
-    } else if level == 260 {
+    } else if number == 260 {
         '260'
-    } else if level == 261 {
+    } else if number == 261 {
         '261'
-    } else if level == 262 {
+    } else if number == 262 {
         '262'
-    } else if level == 263 {
+    } else if number == 263 {
         '263'
-    } else if level == 264 {
+    } else if number == 264 {
         '264'
-    } else if level == 265 {
+    } else if number == 265 {
         '265'
-    } else if level == 266 {
+    } else if number == 266 {
         '266'
-    } else if level == 267 {
+    } else if number == 267 {
         '267'
-    } else if level == 268 {
+    } else if number == 268 {
         '268'
-    } else if level == 269 {
+    } else if number == 269 {
         '269'
-    } else if level == 270 {
+    } else if number == 270 {
         '270'
-    } else if level == 271 {
+    } else if number == 271 {
         '271'
-    } else if level == 272 {
+    } else if number == 272 {
         '272'
-    } else if level == 273 {
+    } else if number == 273 {
         '273'
-    } else if level == 274 {
+    } else if number == 274 {
         '274'
-    } else if level == 275 {
+    } else if number == 275 {
         '275'
-    } else if level == 276 {
+    } else if number == 276 {
         '276'
-    } else if level == 277 {
+    } else if number == 277 {
         '277'
-    } else if level == 278 {
+    } else if number == 278 {
         '278'
-    } else if level == 279 {
+    } else if number == 279 {
         '279'
-    } else if level == 280 {
+    } else if number == 280 {
         '280'
-    } else if level == 281 {
+    } else if number == 281 {
         '281'
-    } else if level == 282 {
+    } else if number == 282 {
         '282'
-    } else if level == 283 {
+    } else if number == 283 {
         '283'
-    } else if level == 284 {
+    } else if number == 284 {
         '284'
-    } else if level == 285 {
+    } else if number == 285 {
         '285'
-    } else if level == 286 {
+    } else if number == 286 {
         '286'
-    } else if level == 287 {
+    } else if number == 287 {
         '287'
-    } else if level == 288 {
+    } else if number == 288 {
         '288'
-    } else if level == 289 {
+    } else if number == 289 {
         '289'
-    } else if level == 290 {
+    } else if number == 290 {
         '290'
-    } else if level == 291 {
+    } else if number == 291 {
         '291'
-    } else if level == 292 {
+    } else if number == 292 {
         '292'
-    } else if level == 293 {
+    } else if number == 293 {
         '293'
-    } else if level == 294 {
+    } else if number == 294 {
         '294'
-    } else if level == 295 {
+    } else if number == 295 {
         '295'
-    } else if level == 296 {
+    } else if number == 296 {
         '296'
-    } else if level == 297 {
+    } else if number == 297 {
         '297'
-    } else if level == 298 {
+    } else if number == 298 {
         '298'
-    } else if level == 299 {
+    } else if number == 299 {
         '299'
-    } else {
+    } else if number == 300 {
         '300'
+    } else if number == 301 {
+        '301'
+    } else if number == 302 {
+        '302'
+    } else if number == 303 {
+        '303'
+    } else if number == 304 {
+        '304'
+    } else if number == 305 {
+        '305'
+    } else if number == 306 {
+        '306'
+    } else if number == 307 {
+        '307'
+    } else if number == 308 {
+        '308'
+    } else if number == 309 {
+        '309'
+    } else if number == 310 {
+        '310'
+    } else if number == 311 {
+        '311'
+    } else if number == 312 {
+        '312'
+    } else if number == 313 {
+        '313'
+    } else if number == 314 {
+        '314'
+    } else if number == 315 {
+        '315'
+    } else if number == 316 {
+        '316'
+    } else if number == 317 {
+        '317'
+    } else if number == 318 {
+        '318'
+    } else if number == 319 {
+        '319'
+    } else if number == 320 {
+        '320'
+    } else if number == 321 {
+        '321'
+    } else if number == 322 {
+        '322'
+    } else if number == 323 {
+        '323'
+    } else if number == 324 {
+        '324'
+    } else if number == 325 {
+        '325'
+    } else if number == 326 {
+        '326'
+    } else if number == 327 {
+        '327'
+    } else if number == 328 {
+        '328'
+    } else if number == 329 {
+        '329'
+    } else if number == 330 {
+        '330'
+    } else if number == 331 {
+        '331'
+    } else if number == 332 {
+        '332'
+    } else if number == 333 {
+        '333'
+    } else if number == 334 {
+        '334'
+    } else if number == 335 {
+        '335'
+    } else if number == 336 {
+        '336'
+    } else if number == 337 {
+        '337'
+    } else if number == 338 {
+        '338'
+    } else if number == 339 {
+        '339'
+    } else if number == 340 {
+        '340'
+    } else if number == 341 {
+        '341'
+    } else if number == 342 {
+        '342'
+    } else if number == 343 {
+        '343'
+    } else if number == 344 {
+        '344'
+    } else if number == 345 {
+        '345'
+    } else if number == 346 {
+        '346'
+    } else if number == 347 {
+        '347'
+    } else if number == 348 {
+        '348'
+    } else if number == 349 {
+        '349'
+    } else if number == 350 {
+        '350'
+    } else if number == 351 {
+        '351'
+    } else if number == 352 {
+        '352'
+    } else if number == 353 {
+        '353'
+    } else if number == 354 {
+        '354'
+    } else if number == 355 {
+        '355'
+    } else if number == 356 {
+        '356'
+    } else if number == 357 {
+        '357'
+    } else if number == 358 {
+        '358'
+    } else if number == 359 {
+        '359'
+    } else if number == 360 {
+        '360'
+    } else if number == 361 {
+        '361'
+    } else if number == 362 {
+        '362'
+    } else if number == 363 {
+        '363'
+    } else if number == 364 {
+        '364'
+    } else if number == 365 {
+        '365'
+    } else if number == 366 {
+        '366'
+    } else if number == 367 {
+        '367'
+    } else if number == 368 {
+        '368'
+    } else if number == 369 {
+        '369'
+    } else if number == 370 {
+        '370'
+    } else if number == 371 {
+        '371'
+    } else if number == 372 {
+        '372'
+    } else if number == 373 {
+        '373'
+    } else if number == 374 {
+        '374'
+    } else if number == 375 {
+        '375'
+    } else if number == 376 {
+        '376'
+    } else if number == 377 {
+        '377'
+    } else if number == 378 {
+        '378'
+    } else if number == 379 {
+        '379'
+    } else if number == 380 {
+        '380'
+    } else if number == 381 {
+        '381'
+    } else if number == 382 {
+        '382'
+    } else if number == 383 {
+        '383'
+    } else if number == 384 {
+        '384'
+    } else if number == 385 {
+        '385'
+    } else if number == 386 {
+        '386'
+    } else if number == 387 {
+        '387'
+    } else if number == 388 {
+        '388'
+    } else if number == 389 {
+        '389'
+    } else if number == 390 {
+        '390'
+    } else if number == 391 {
+        '391'
+    } else if number == 392 {
+        '392'
+    } else if number == 393 {
+        '393'
+    } else if number == 394 {
+        '394'
+    } else if number == 395 {
+        '395'
+    } else if number == 396 {
+        '396'
+    } else if number == 397 {
+        '397'
+    } else if number == 398 {
+        '398'
+    } else if number == 399 {
+        '399'
+    } else if number == 400 {
+        '400'
+    } else if number == 401 {
+        '401'
+    } else if number == 402 {
+        '402'
+    } else if number == 403 {
+        '403'
+    } else if number == 404 {
+        '404'
+    } else if number == 405 {
+        '405'
+    } else if number == 406 {
+        '406'
+    } else if number == 407 {
+        '407'
+    } else if number == 408 {
+        '408'
+    } else if number == 409 {
+        '409'
+    } else if number == 410 {
+        '410'
+    } else if number == 411 {
+        '411'
+    } else if number == 412 {
+        '412'
+    } else if number == 413 {
+        '413'
+    } else if number == 414 {
+        '414'
+    } else if number == 415 {
+        '415'
+    } else if number == 416 {
+        '416'
+    } else if number == 417 {
+        '417'
+    } else if number == 418 {
+        '418'
+    } else if number == 419 {
+        '419'
+    } else if number == 420 {
+        '420'
+    } else if number == 421 {
+        '421'
+    } else if number == 422 {
+        '422'
+    } else if number == 423 {
+        '423'
+    } else if number == 424 {
+        '424'
+    } else if number == 425 {
+        '425'
+    } else if number == 426 {
+        '426'
+    } else if number == 427 {
+        '427'
+    } else if number == 428 {
+        '428'
+    } else if number == 429 {
+        '429'
+    } else if number == 430 {
+        '430'
+    } else if number == 431 {
+        '431'
+    } else if number == 432 {
+        '432'
+    } else if number == 433 {
+        '433'
+    } else if number == 434 {
+        '434'
+    } else if number == 435 {
+        '435'
+    } else if number == 436 {
+        '436'
+    } else if number == 437 {
+        '437'
+    } else if number == 438 {
+        '438'
+    } else if number == 439 {
+        '439'
+    } else if number == 440 {
+        '440'
+    } else if number == 441 {
+        '441'
+    } else if number == 442 {
+        '442'
+    } else if number == 443 {
+        '443'
+    } else if number == 444 {
+        '444'
+    } else if number == 445 {
+        '445'
+    } else if number == 446 {
+        '446'
+    } else if number == 447 {
+        '447'
+    } else if number == 448 {
+        '448'
+    } else if number == 449 {
+        '449'
+    } else if number == 450 {
+        '450'
+    } else if number == 451 {
+        '451'
+    } else if number == 452 {
+        '452'
+    } else if number == 453 {
+        '453'
+    } else if number == 454 {
+        '454'
+    } else if number == 455 {
+        '455'
+    } else if number == 456 {
+        '456'
+    } else if number == 457 {
+        '457'
+    } else if number == 458 {
+        '458'
+    } else if number == 459 {
+        '459'
+    } else if number == 460 {
+        '460'
+    } else if number == 461 {
+        '461'
+    } else if number == 462 {
+        '462'
+    } else if number == 463 {
+        '463'
+    } else if number == 464 {
+        '464'
+    } else if number == 465 {
+        '465'
+    } else if number == 466 {
+        '466'
+    } else if number == 467 {
+        '467'
+    } else if number == 468 {
+        '468'
+    } else if number == 469 {
+        '469'
+    } else if number == 470 {
+        '470'
+    } else if number == 471 {
+        '471'
+    } else if number == 472 {
+        '472'
+    } else if number == 473 {
+        '473'
+    } else if number == 474 {
+        '474'
+    } else if number == 475 {
+        '475'
+    } else if number == 476 {
+        '476'
+    } else if number == 477 {
+        '477'
+    } else if number == 478 {
+        '478'
+    } else if number == 479 {
+        '479'
+    } else if number == 480 {
+        '480'
+    } else if number == 481 {
+        '481'
+    } else if number == 482 {
+        '482'
+    } else if number == 483 {
+        '483'
+    } else if number == 484 {
+        '484'
+    } else if number == 485 {
+        '485'
+    } else if number == 486 {
+        '486'
+    } else if number == 487 {
+        '487'
+    } else if number == 488 {
+        '488'
+    } else if number == 489 {
+        '489'
+    } else if number == 490 {
+        '490'
+    } else if number == 491 {
+        '491'
+    } else if number == 492 {
+        '492'
+    } else if number == 493 {
+        '493'
+    } else if number == 494 {
+        '494'
+    } else if number == 495 {
+        '495'
+    } else if number == 496 {
+        '496'
+    } else if number == 497 {
+        '497'
+    } else if number == 498 {
+        '498'
+    } else if number == 499 {
+        '499'
+    } else if number == 500 {
+        '500'
+    } else if number == 501 {
+        '501'
+    } else if number == 502 {
+        '502'
+    } else if number == 503 {
+        '503'
+    } else if number == 504 {
+        '504'
+    } else if number == 505 {
+        '505'
+    } else if number == 506 {
+        '506'
+    } else if number == 507 {
+        '507'
+    } else if number == 508 {
+        '508'
+    } else if number == 509 {
+        '509'
+    } else if number == 510 {
+        '510'
+    } else {
+        '511'
     }
 }
 
@@ -3087,10 +3513,9 @@ fn get_level(level: u16) -> felt252 {
 // ---------------------------
 #[cfg(test)]
 mod tests {
-    use debug::PrintTrait;
     use core::array::ArrayTrait;
     use LootSurvivorBeasts::beast::{
-        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, get_level,
+        get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, u16_to_felt_string,
         get_content, TYPE_MAGICAL, TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN,
         BEAR, FENRIR, WENDIGO, GHOUL, PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE,
         DRAGON, GIANT, NEMEANLION, YETI, KRAKEN, MINOTAUR, PHOENIX, WYVERN, CHIMERA, GRIFFIN,
@@ -3103,39 +3528,579 @@ mod tests {
     use LootSurvivorBeasts::pack::{PackableBeast};
 
     #[test]
-    #[available_gas(2265600)]
-    fn test_get_level() {
-        assert(get_level(0) == '0', 'wrong level for 0');
-        assert(get_level(1) == '1', 'wrong level for 1');
-        assert(get_level(2) == '2', 'wrong level for 2');
-        assert(get_level(3) == '3', 'wrong level for 3');
-        assert(get_level(4) == '4', 'wrong level for 4');
-        assert(get_level(5) == '5', 'wrong level for 5');
-        assert(get_level(6) == '6', 'wrong level for 6');
-        assert(get_level(7) == '7', 'wrong level for 7');
-        assert(get_level(8) == '8', 'wrong level for 8');
-        assert(get_level(9) == '9', 'wrong level for 9');
-        assert(get_level(10) == '10', 'wrong level for 10');
-        assert(get_level(11) == '11', 'wrong level for 11');
-        assert(get_level(12) == '12', 'wrong level for 12');
-        assert(get_level(13) == '13', 'wrong level for 13');
-        assert(get_level(14) == '14', 'wrong level for 14');
-        assert(get_level(15) == '15', 'wrong level for 15');
-        assert(get_level(16) == '16', 'wrong level for 16');
-        assert(get_level(17) == '17', 'wrong level for 17');
-        assert(get_level(18) == '18', 'wrong level for 18');
-        assert(get_level(19) == '19', 'wrong level for 19');
-        assert(get_level(20) == '20', 'wrong level for 20');
-        assert(get_level(21) == '21', 'wrong level for 21');
-        assert(get_level(100) == '100', 'wrong level for 100');
-        assert(get_level(200) == '200', 'wrong level for 200');
-        assert(get_level(300) == '300', 'wrong level for 300');
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part1() {
+        assert(u16_to_felt_string(0) == '0', 'wrong level for 0');
+        assert(u16_to_felt_string(1) == '1', 'wrong level for 1');
+        assert(u16_to_felt_string(2) == '2', 'wrong level for 2');
+        assert(u16_to_felt_string(3) == '3', 'wrong level for 3');
+        assert(u16_to_felt_string(4) == '4', 'wrong level for 4');
+        assert(u16_to_felt_string(5) == '5', 'wrong level for 5');
+        assert(u16_to_felt_string(6) == '6', 'wrong level for 6');
+        assert(u16_to_felt_string(7) == '7', 'wrong level for 7');
+        assert(u16_to_felt_string(8) == '8', 'wrong level for 8');
+        assert(u16_to_felt_string(9) == '9', 'wrong level for 9');
+        assert(u16_to_felt_string(10) == '10', 'wrong level for 10');
+        assert(u16_to_felt_string(11) == '11', 'wrong level for 11');
+        assert(u16_to_felt_string(12) == '12', 'wrong level for 12');
+        assert(u16_to_felt_string(13) == '13', 'wrong level for 13');
+        assert(u16_to_felt_string(14) == '14', 'wrong level for 14');
+        assert(u16_to_felt_string(15) == '15', 'wrong level for 15');
+        assert(u16_to_felt_string(16) == '16', 'wrong level for 16');
+        assert(u16_to_felt_string(17) == '17', 'wrong level for 17');
+        assert(u16_to_felt_string(18) == '18', 'wrong level for 18');
+        assert(u16_to_felt_string(19) == '19', 'wrong level for 19');
+        assert(u16_to_felt_string(20) == '20', 'wrong level for 20');
+        assert(u16_to_felt_string(21) == '21', 'wrong level for 21');
+        assert(u16_to_felt_string(22) == '22', 'wrong level for 22');
+        assert(u16_to_felt_string(23) == '23', 'wrong level for 23');
+        assert(u16_to_felt_string(24) == '24', 'wrong level for 24');
+        assert(u16_to_felt_string(25) == '25', 'wrong level for 25');
+        assert(u16_to_felt_string(26) == '26', 'wrong level for 26');
+        assert(u16_to_felt_string(27) == '27', 'wrong level for 27');
+        assert(u16_to_felt_string(28) == '28', 'wrong level for 28');
+        assert(u16_to_felt_string(29) == '29', 'wrong level for 29');
+        assert(u16_to_felt_string(30) == '30', 'wrong level for 30');
+        assert(u16_to_felt_string(31) == '31', 'wrong level for 31');
+        assert(u16_to_felt_string(32) == '32', 'wrong level for 32');
+        assert(u16_to_felt_string(33) == '33', 'wrong level for 33');
+        assert(u16_to_felt_string(34) == '34', 'wrong level for 34');
+        assert(u16_to_felt_string(35) == '35', 'wrong level for 35');
+        assert(u16_to_felt_string(36) == '36', 'wrong level for 36');
+        assert(u16_to_felt_string(37) == '37', 'wrong level for 37');
+        assert(u16_to_felt_string(38) == '38', 'wrong level for 38');
+        assert(u16_to_felt_string(39) == '39', 'wrong level for 39');
+        assert(u16_to_felt_string(40) == '40', 'wrong level for 40');
+        assert(u16_to_felt_string(41) == '41', 'wrong level for 41');
+        assert(u16_to_felt_string(42) == '42', 'wrong level for 42');
+        assert(u16_to_felt_string(43) == '43', 'wrong level for 43');
+        assert(u16_to_felt_string(44) == '44', 'wrong level for 44');
+        assert(u16_to_felt_string(45) == '45', 'wrong level for 45');
+        assert(u16_to_felt_string(46) == '46', 'wrong level for 46');
+        assert(u16_to_felt_string(47) == '47', 'wrong level for 47');
+        assert(u16_to_felt_string(48) == '48', 'wrong level for 48');
+        assert(u16_to_felt_string(49) == '49', 'wrong level for 49');
+        assert(u16_to_felt_string(50) == '50', 'wrong level for 50');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part2() {
+        assert(u16_to_felt_string(51) == '51', 'wrong level for 51');
+        assert(u16_to_felt_string(52) == '52', 'wrong level for 52');
+        assert(u16_to_felt_string(53) == '53', 'wrong level for 53');
+        assert(u16_to_felt_string(54) == '54', 'wrong level for 54');
+        assert(u16_to_felt_string(55) == '55', 'wrong level for 55');
+        assert(u16_to_felt_string(56) == '56', 'wrong level for 56');
+        assert(u16_to_felt_string(57) == '57', 'wrong level for 57');
+        assert(u16_to_felt_string(58) == '58', 'wrong level for 58');
+        assert(u16_to_felt_string(59) == '59', 'wrong level for 59');
+        assert(u16_to_felt_string(60) == '60', 'wrong level for 60');
+        assert(u16_to_felt_string(61) == '61', 'wrong level for 61');
+        assert(u16_to_felt_string(62) == '62', 'wrong level for 62');
+        assert(u16_to_felt_string(63) == '63', 'wrong level for 63');
+        assert(u16_to_felt_string(64) == '64', 'wrong level for 64');
+        assert(u16_to_felt_string(65) == '65', 'wrong level for 65');
+        assert(u16_to_felt_string(66) == '66', 'wrong level for 66');
+        assert(u16_to_felt_string(67) == '67', 'wrong level for 67');
+        assert(u16_to_felt_string(68) == '68', 'wrong level for 68');
+        assert(u16_to_felt_string(69) == '69', 'wrong level for 69');
+        assert(u16_to_felt_string(70) == '70', 'wrong level for 70');
+        assert(u16_to_felt_string(71) == '71', 'wrong level for 71');
+        assert(u16_to_felt_string(72) == '72', 'wrong level for 72');
+        assert(u16_to_felt_string(73) == '73', 'wrong level for 73');
+        assert(u16_to_felt_string(74) == '74', 'wrong level for 74');
+        assert(u16_to_felt_string(75) == '75', 'wrong level for 75');
+        assert(u16_to_felt_string(76) == '76', 'wrong level for 76');
+        assert(u16_to_felt_string(77) == '77', 'wrong level for 77');
+        assert(u16_to_felt_string(78) == '78', 'wrong level for 78');
+        assert(u16_to_felt_string(79) == '79', 'wrong level for 79');
+        assert(u16_to_felt_string(80) == '80', 'wrong level for 80');
+        assert(u16_to_felt_string(81) == '81', 'wrong level for 81');
+        assert(u16_to_felt_string(82) == '82', 'wrong level for 82');
+        assert(u16_to_felt_string(83) == '83', 'wrong level for 83');
+        assert(u16_to_felt_string(84) == '84', 'wrong level for 84');
+        assert(u16_to_felt_string(85) == '85', 'wrong level for 85');
+        assert(u16_to_felt_string(86) == '86', 'wrong level for 86');
+        assert(u16_to_felt_string(87) == '87', 'wrong level for 87');
+        assert(u16_to_felt_string(88) == '88', 'wrong level for 88');
+        assert(u16_to_felt_string(89) == '89', 'wrong level for 89');
+        assert(u16_to_felt_string(90) == '90', 'wrong level for 90');
+        assert(u16_to_felt_string(91) == '91', 'wrong level for 91');
+        assert(u16_to_felt_string(92) == '92', 'wrong level for 92');
+        assert(u16_to_felt_string(93) == '93', 'wrong level for 93');
+        assert(u16_to_felt_string(94) == '94', 'wrong level for 94');
+        assert(u16_to_felt_string(95) == '95', 'wrong level for 95');
+        assert(u16_to_felt_string(96) == '96', 'wrong level for 96');
+        assert(u16_to_felt_string(97) == '97', 'wrong level for 97');
+        assert(u16_to_felt_string(98) == '98', 'wrong level for 98');
+        assert(u16_to_felt_string(99) == '99', 'wrong level for 99');
+        assert(u16_to_felt_string(100) == '100', 'wrong level for 100');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part3() {
+        assert(u16_to_felt_string(101) == '101', 'wrong level for 101');
+        assert(u16_to_felt_string(102) == '102', 'wrong level for 102');
+        assert(u16_to_felt_string(103) == '103', 'wrong level for 103');
+        assert(u16_to_felt_string(104) == '104', 'wrong level for 104');
+        assert(u16_to_felt_string(105) == '105', 'wrong level for 105');
+        assert(u16_to_felt_string(106) == '106', 'wrong level for 106');
+        assert(u16_to_felt_string(107) == '107', 'wrong level for 107');
+        assert(u16_to_felt_string(108) == '108', 'wrong level for 108');
+        assert(u16_to_felt_string(109) == '109', 'wrong level for 109');
+        assert(u16_to_felt_string(110) == '110', 'wrong level for 110');
+        assert(u16_to_felt_string(111) == '111', 'wrong level for 111');
+        assert(u16_to_felt_string(112) == '112', 'wrong level for 112');
+        assert(u16_to_felt_string(113) == '113', 'wrong level for 113');
+        assert(u16_to_felt_string(114) == '114', 'wrong level for 114');
+        assert(u16_to_felt_string(115) == '115', 'wrong level for 115');
+        assert(u16_to_felt_string(116) == '116', 'wrong level for 116');
+        assert(u16_to_felt_string(117) == '117', 'wrong level for 117');
+        assert(u16_to_felt_string(118) == '118', 'wrong level for 118');
+        assert(u16_to_felt_string(119) == '119', 'wrong level for 119');
+        assert(u16_to_felt_string(120) == '120', 'wrong level for 120');
+        assert(u16_to_felt_string(121) == '121', 'wrong level for 121');
+        assert(u16_to_felt_string(122) == '122', 'wrong level for 122');
+        assert(u16_to_felt_string(123) == '123', 'wrong level for 123');
+        assert(u16_to_felt_string(124) == '124', 'wrong level for 124');
+        assert(u16_to_felt_string(125) == '125', 'wrong level for 125');
+        assert(u16_to_felt_string(126) == '126', 'wrong level for 126');
+        assert(u16_to_felt_string(127) == '127', 'wrong level for 127');
+        assert(u16_to_felt_string(128) == '128', 'wrong level for 128');
+        assert(u16_to_felt_string(129) == '129', 'wrong level for 129');
+        assert(u16_to_felt_string(130) == '130', 'wrong level for 130');
+        assert(u16_to_felt_string(131) == '131', 'wrong level for 131');
+        assert(u16_to_felt_string(132) == '132', 'wrong level for 132');
+        assert(u16_to_felt_string(133) == '133', 'wrong level for 133');
+        assert(u16_to_felt_string(134) == '134', 'wrong level for 134');
+        assert(u16_to_felt_string(135) == '135', 'wrong level for 135');
+        assert(u16_to_felt_string(136) == '136', 'wrong level for 136');
+        assert(u16_to_felt_string(137) == '137', 'wrong level for 137');
+        assert(u16_to_felt_string(138) == '138', 'wrong level for 138');
+        assert(u16_to_felt_string(139) == '139', 'wrong level for 139');
+        assert(u16_to_felt_string(140) == '140', 'wrong level for 140');
+        assert(u16_to_felt_string(141) == '141', 'wrong level for 141');
+        assert(u16_to_felt_string(142) == '142', 'wrong level for 142');
+        assert(u16_to_felt_string(143) == '143', 'wrong level for 143');
+        assert(u16_to_felt_string(144) == '144', 'wrong level for 144');
+        assert(u16_to_felt_string(145) == '145', 'wrong level for 145');
+        assert(u16_to_felt_string(146) == '146', 'wrong level for 146');
+        assert(u16_to_felt_string(147) == '147', 'wrong level for 147');
+        assert(u16_to_felt_string(148) == '148', 'wrong level for 148');
+        assert(u16_to_felt_string(149) == '149', 'wrong level for 149');
+        assert(u16_to_felt_string(150) == '150', 'wrong level for 150');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part4() {
+        assert(u16_to_felt_string(151) == '151', 'wrong level for 151');
+        assert(u16_to_felt_string(152) == '152', 'wrong level for 152');
+        assert(u16_to_felt_string(153) == '153', 'wrong level for 153');
+        assert(u16_to_felt_string(154) == '154', 'wrong level for 154');
+        assert(u16_to_felt_string(155) == '155', 'wrong level for 155');
+        assert(u16_to_felt_string(156) == '156', 'wrong level for 156');
+        assert(u16_to_felt_string(157) == '157', 'wrong level for 157');
+        assert(u16_to_felt_string(158) == '158', 'wrong level for 158');
+        assert(u16_to_felt_string(159) == '159', 'wrong level for 159');
+        assert(u16_to_felt_string(160) == '160', 'wrong level for 160');
+        assert(u16_to_felt_string(161) == '161', 'wrong level for 161');
+        assert(u16_to_felt_string(162) == '162', 'wrong level for 162');
+        assert(u16_to_felt_string(163) == '163', 'wrong level for 163');
+        assert(u16_to_felt_string(164) == '164', 'wrong level for 164');
+        assert(u16_to_felt_string(165) == '165', 'wrong level for 165');
+        assert(u16_to_felt_string(166) == '166', 'wrong level for 166');
+        assert(u16_to_felt_string(167) == '167', 'wrong level for 167');
+        assert(u16_to_felt_string(168) == '168', 'wrong level for 168');
+        assert(u16_to_felt_string(169) == '169', 'wrong level for 169');
+        assert(u16_to_felt_string(170) == '170', 'wrong level for 170');
+        assert(u16_to_felt_string(171) == '171', 'wrong level for 171');
+        assert(u16_to_felt_string(172) == '172', 'wrong level for 172');
+        assert(u16_to_felt_string(173) == '173', 'wrong level for 173');
+        assert(u16_to_felt_string(174) == '174', 'wrong level for 174');
+        assert(u16_to_felt_string(175) == '175', 'wrong level for 175');
+        assert(u16_to_felt_string(176) == '176', 'wrong level for 176');
+        assert(u16_to_felt_string(177) == '177', 'wrong level for 177');
+        assert(u16_to_felt_string(178) == '178', 'wrong level for 178');
+        assert(u16_to_felt_string(179) == '179', 'wrong level for 179');
+        assert(u16_to_felt_string(180) == '180', 'wrong level for 180');
+        assert(u16_to_felt_string(181) == '181', 'wrong level for 181');
+        assert(u16_to_felt_string(182) == '182', 'wrong level for 182');
+        assert(u16_to_felt_string(183) == '183', 'wrong level for 183');
+        assert(u16_to_felt_string(184) == '184', 'wrong level for 184');
+        assert(u16_to_felt_string(185) == '185', 'wrong level for 185');
+        assert(u16_to_felt_string(186) == '186', 'wrong level for 186');
+        assert(u16_to_felt_string(187) == '187', 'wrong level for 187');
+        assert(u16_to_felt_string(188) == '188', 'wrong level for 188');
+        assert(u16_to_felt_string(189) == '189', 'wrong level for 189');
+        assert(u16_to_felt_string(190) == '190', 'wrong level for 190');
+        assert(u16_to_felt_string(191) == '191', 'wrong level for 191');
+        assert(u16_to_felt_string(192) == '192', 'wrong level for 192');
+        assert(u16_to_felt_string(193) == '193', 'wrong level for 193');
+        assert(u16_to_felt_string(194) == '194', 'wrong level for 194');
+        assert(u16_to_felt_string(195) == '195', 'wrong level for 195');
+        assert(u16_to_felt_string(196) == '196', 'wrong level for 196');
+        assert(u16_to_felt_string(197) == '197', 'wrong level for 197');
+        assert(u16_to_felt_string(198) == '198', 'wrong level for 198');
+        assert(u16_to_felt_string(199) == '199', 'wrong level for 199');
+        assert(u16_to_felt_string(200) == '200', 'wrong level for 200');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part5() {
+        assert(u16_to_felt_string(201) == '201', 'wrong level for 201');
+        assert(u16_to_felt_string(202) == '202', 'wrong level for 202');
+        assert(u16_to_felt_string(203) == '203', 'wrong level for 203');
+        assert(u16_to_felt_string(204) == '204', 'wrong level for 204');
+        assert(u16_to_felt_string(205) == '205', 'wrong level for 205');
+        assert(u16_to_felt_string(206) == '206', 'wrong level for 206');
+        assert(u16_to_felt_string(207) == '207', 'wrong level for 207');
+        assert(u16_to_felt_string(208) == '208', 'wrong level for 208');
+        assert(u16_to_felt_string(209) == '209', 'wrong level for 209');
+        assert(u16_to_felt_string(210) == '210', 'wrong level for 210');
+        assert(u16_to_felt_string(211) == '211', 'wrong level for 211');
+        assert(u16_to_felt_string(212) == '212', 'wrong level for 212');
+        assert(u16_to_felt_string(213) == '213', 'wrong level for 213');
+        assert(u16_to_felt_string(214) == '214', 'wrong level for 214');
+        assert(u16_to_felt_string(215) == '215', 'wrong level for 215');
+        assert(u16_to_felt_string(216) == '216', 'wrong level for 216');
+        assert(u16_to_felt_string(217) == '217', 'wrong level for 217');
+        assert(u16_to_felt_string(218) == '218', 'wrong level for 218');
+        assert(u16_to_felt_string(219) == '219', 'wrong level for 219');
+        assert(u16_to_felt_string(220) == '220', 'wrong level for 220');
+        assert(u16_to_felt_string(221) == '221', 'wrong level for 221');
+        assert(u16_to_felt_string(222) == '222', 'wrong level for 222');
+        assert(u16_to_felt_string(223) == '223', 'wrong level for 223');
+        assert(u16_to_felt_string(224) == '224', 'wrong level for 224');
+        assert(u16_to_felt_string(225) == '225', 'wrong level for 225');
+        assert(u16_to_felt_string(226) == '226', 'wrong level for 226');
+        assert(u16_to_felt_string(227) == '227', 'wrong level for 227');
+        assert(u16_to_felt_string(228) == '228', 'wrong level for 228');
+        assert(u16_to_felt_string(229) == '229', 'wrong level for 229');
+        assert(u16_to_felt_string(230) == '230', 'wrong level for 230');
+        assert(u16_to_felt_string(231) == '231', 'wrong level for 231');
+        assert(u16_to_felt_string(232) == '232', 'wrong level for 232');
+        assert(u16_to_felt_string(233) == '233', 'wrong level for 233');
+        assert(u16_to_felt_string(234) == '234', 'wrong level for 234');
+        assert(u16_to_felt_string(235) == '235', 'wrong level for 235');
+        assert(u16_to_felt_string(236) == '236', 'wrong level for 236');
+        assert(u16_to_felt_string(237) == '237', 'wrong level for 237');
+        assert(u16_to_felt_string(238) == '238', 'wrong level for 238');
+        assert(u16_to_felt_string(239) == '239', 'wrong level for 239');
+        assert(u16_to_felt_string(240) == '240', 'wrong level for 240');
+        assert(u16_to_felt_string(241) == '241', 'wrong level for 241');
+        assert(u16_to_felt_string(242) == '242', 'wrong level for 242');
+        assert(u16_to_felt_string(243) == '243', 'wrong level for 243');
+        assert(u16_to_felt_string(244) == '244', 'wrong level for 244');
+        assert(u16_to_felt_string(245) == '245', 'wrong level for 245');
+        assert(u16_to_felt_string(246) == '246', 'wrong level for 246');
+        assert(u16_to_felt_string(247) == '247', 'wrong level for 247');
+        assert(u16_to_felt_string(248) == '248', 'wrong level for 248');
+        assert(u16_to_felt_string(249) == '249', 'wrong level for 249');
+        assert(u16_to_felt_string(250) == '250', 'wrong level for 250');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part6() {
+        assert(u16_to_felt_string(251) == '251', 'wrong level for 251');
+        assert(u16_to_felt_string(252) == '252', 'wrong level for 252');
+        assert(u16_to_felt_string(253) == '253', 'wrong level for 253');
+        assert(u16_to_felt_string(254) == '254', 'wrong level for 254');
+        assert(u16_to_felt_string(255) == '255', 'wrong level for 255');
+        assert(u16_to_felt_string(256) == '256', 'wrong level for 256');
+        assert(u16_to_felt_string(257) == '257', 'wrong level for 257');
+        assert(u16_to_felt_string(258) == '258', 'wrong level for 258');
+        assert(u16_to_felt_string(259) == '259', 'wrong level for 259');
+        assert(u16_to_felt_string(260) == '260', 'wrong level for 260');
+        assert(u16_to_felt_string(261) == '261', 'wrong level for 261');
+        assert(u16_to_felt_string(262) == '262', 'wrong level for 262');
+        assert(u16_to_felt_string(263) == '263', 'wrong level for 263');
+        assert(u16_to_felt_string(264) == '264', 'wrong level for 264');
+        assert(u16_to_felt_string(265) == '265', 'wrong level for 265');
+        assert(u16_to_felt_string(266) == '266', 'wrong level for 266');
+        assert(u16_to_felt_string(267) == '267', 'wrong level for 267');
+        assert(u16_to_felt_string(268) == '268', 'wrong level for 268');
+        assert(u16_to_felt_string(269) == '269', 'wrong level for 269');
+        assert(u16_to_felt_string(270) == '270', 'wrong level for 270');
+        assert(u16_to_felt_string(271) == '271', 'wrong level for 271');
+        assert(u16_to_felt_string(272) == '272', 'wrong level for 272');
+        assert(u16_to_felt_string(273) == '273', 'wrong level for 273');
+        assert(u16_to_felt_string(274) == '274', 'wrong level for 274');
+        assert(u16_to_felt_string(275) == '275', 'wrong level for 275');
+        assert(u16_to_felt_string(276) == '276', 'wrong level for 276');
+        assert(u16_to_felt_string(277) == '277', 'wrong level for 277');
+        assert(u16_to_felt_string(278) == '278', 'wrong level for 278');
+        assert(u16_to_felt_string(279) == '279', 'wrong level for 279');
+        assert(u16_to_felt_string(280) == '280', 'wrong level for 280');
+        assert(u16_to_felt_string(281) == '281', 'wrong level for 281');
+        assert(u16_to_felt_string(282) == '282', 'wrong level for 282');
+        assert(u16_to_felt_string(283) == '283', 'wrong level for 283');
+        assert(u16_to_felt_string(284) == '284', 'wrong level for 284');
+        assert(u16_to_felt_string(285) == '285', 'wrong level for 285');
+        assert(u16_to_felt_string(286) == '286', 'wrong level for 286');
+        assert(u16_to_felt_string(287) == '287', 'wrong level for 287');
+        assert(u16_to_felt_string(288) == '288', 'wrong level for 288');
+        assert(u16_to_felt_string(289) == '289', 'wrong level for 289');
+        assert(u16_to_felt_string(290) == '290', 'wrong level for 290');
+        assert(u16_to_felt_string(291) == '291', 'wrong level for 291');
+        assert(u16_to_felt_string(292) == '292', 'wrong level for 292');
+        assert(u16_to_felt_string(293) == '293', 'wrong level for 293');
+        assert(u16_to_felt_string(294) == '294', 'wrong level for 294');
+        assert(u16_to_felt_string(295) == '295', 'wrong level for 295');
+        assert(u16_to_felt_string(296) == '296', 'wrong level for 296');
+        assert(u16_to_felt_string(297) == '297', 'wrong level for 297');
+        assert(u16_to_felt_string(298) == '298', 'wrong level for 298');
+        assert(u16_to_felt_string(299) == '299', 'wrong level for 299');
+        assert(u16_to_felt_string(300) == '300', 'wrong level for 300');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part7() {
+        assert(u16_to_felt_string(301) == '301', 'wrong level for 301');
+        assert(u16_to_felt_string(302) == '302', 'wrong level for 302');
+        assert(u16_to_felt_string(303) == '303', 'wrong level for 303');
+        assert(u16_to_felt_string(304) == '304', 'wrong level for 304');
+        assert(u16_to_felt_string(305) == '305', 'wrong level for 305');
+        assert(u16_to_felt_string(306) == '306', 'wrong level for 306');
+        assert(u16_to_felt_string(307) == '307', 'wrong level for 307');
+        assert(u16_to_felt_string(308) == '308', 'wrong level for 308');
+        assert(u16_to_felt_string(309) == '309', 'wrong level for 309');
+        assert(u16_to_felt_string(310) == '310', 'wrong level for 310');
+        assert(u16_to_felt_string(311) == '311', 'wrong level for 311');
+        assert(u16_to_felt_string(312) == '312', 'wrong level for 312');
+        assert(u16_to_felt_string(313) == '313', 'wrong level for 313');
+        assert(u16_to_felt_string(314) == '314', 'wrong level for 314');
+        assert(u16_to_felt_string(315) == '315', 'wrong level for 315');
+        assert(u16_to_felt_string(316) == '316', 'wrong level for 316');
+        assert(u16_to_felt_string(317) == '317', 'wrong level for 317');
+        assert(u16_to_felt_string(318) == '318', 'wrong level for 318');
+        assert(u16_to_felt_string(319) == '319', 'wrong level for 319');
+        assert(u16_to_felt_string(320) == '320', 'wrong level for 320');
+        assert(u16_to_felt_string(321) == '321', 'wrong level for 321');
+        assert(u16_to_felt_string(322) == '322', 'wrong level for 322');
+        assert(u16_to_felt_string(323) == '323', 'wrong level for 323');
+        assert(u16_to_felt_string(324) == '324', 'wrong level for 324');
+        assert(u16_to_felt_string(325) == '325', 'wrong level for 325');
+        assert(u16_to_felt_string(326) == '326', 'wrong level for 326');
+        assert(u16_to_felt_string(327) == '327', 'wrong level for 327');
+        assert(u16_to_felt_string(328) == '328', 'wrong level for 328');
+        assert(u16_to_felt_string(329) == '329', 'wrong level for 329');
+        assert(u16_to_felt_string(330) == '330', 'wrong level for 330');
+        assert(u16_to_felt_string(331) == '331', 'wrong level for 331');
+        assert(u16_to_felt_string(332) == '332', 'wrong level for 332');
+        assert(u16_to_felt_string(333) == '333', 'wrong level for 333');
+        assert(u16_to_felt_string(334) == '334', 'wrong level for 334');
+        assert(u16_to_felt_string(335) == '335', 'wrong level for 335');
+        assert(u16_to_felt_string(336) == '336', 'wrong level for 336');
+        assert(u16_to_felt_string(337) == '337', 'wrong level for 337');
+        assert(u16_to_felt_string(338) == '338', 'wrong level for 338');
+        assert(u16_to_felt_string(339) == '339', 'wrong level for 339');
+        assert(u16_to_felt_string(340) == '340', 'wrong level for 340');
+        assert(u16_to_felt_string(341) == '341', 'wrong level for 341');
+        assert(u16_to_felt_string(342) == '342', 'wrong level for 342');
+        assert(u16_to_felt_string(343) == '343', 'wrong level for 343');
+        assert(u16_to_felt_string(344) == '344', 'wrong level for 344');
+        assert(u16_to_felt_string(345) == '345', 'wrong level for 345');
+        assert(u16_to_felt_string(346) == '346', 'wrong level for 346');
+        assert(u16_to_felt_string(347) == '347', 'wrong level for 347');
+        assert(u16_to_felt_string(348) == '348', 'wrong level for 348');
+        assert(u16_to_felt_string(349) == '349', 'wrong level for 349');
+        assert(u16_to_felt_string(350) == '350', 'wrong level for 350');
+    }
+
+    #[test]
+    #[available_gas(2265600000000)]
+    fn test_u16_to_felt_string_part8() {
+        assert(u16_to_felt_string(351) == '351', 'wrong level for 351');
+        assert(u16_to_felt_string(352) == '352', 'wrong level for 352');
+        assert(u16_to_felt_string(353) == '353', 'wrong level for 353');
+        assert(u16_to_felt_string(354) == '354', 'wrong level for 354');
+        assert(u16_to_felt_string(355) == '355', 'wrong level for 355');
+        assert(u16_to_felt_string(356) == '356', 'wrong level for 356');
+        assert(u16_to_felt_string(357) == '357', 'wrong level for 357');
+        assert(u16_to_felt_string(358) == '358', 'wrong level for 358');
+        assert(u16_to_felt_string(359) == '359', 'wrong level for 359');
+        assert(u16_to_felt_string(360) == '360', 'wrong level for 360');
+        assert(u16_to_felt_string(361) == '361', 'wrong level for 361');
+        assert(u16_to_felt_string(362) == '362', 'wrong level for 362');
+        assert(u16_to_felt_string(363) == '363', 'wrong level for 363');
+        assert(u16_to_felt_string(364) == '364', 'wrong level for 364');
+        assert(u16_to_felt_string(365) == '365', 'wrong level for 365');
+        assert(u16_to_felt_string(366) == '366', 'wrong level for 366');
+        assert(u16_to_felt_string(367) == '367', 'wrong level for 367');
+        assert(u16_to_felt_string(368) == '368', 'wrong level for 368');
+        assert(u16_to_felt_string(369) == '369', 'wrong level for 369');
+        assert(u16_to_felt_string(370) == '370', 'wrong level for 370');
+        assert(u16_to_felt_string(371) == '371', 'wrong level for 371');
+        assert(u16_to_felt_string(372) == '372', 'wrong level for 372');
+        assert(u16_to_felt_string(373) == '373', 'wrong level for 373');
+        assert(u16_to_felt_string(374) == '374', 'wrong level for 374');
+        assert(u16_to_felt_string(375) == '375', 'wrong level for 375');
+        assert(u16_to_felt_string(376) == '376', 'wrong level for 376');
+        assert(u16_to_felt_string(377) == '377', 'wrong level for 377');
+        assert(u16_to_felt_string(378) == '378', 'wrong level for 378');
+        assert(u16_to_felt_string(379) == '379', 'wrong level for 379');
+        assert(u16_to_felt_string(380) == '380', 'wrong level for 380');
+        assert(u16_to_felt_string(381) == '381', 'wrong level for 381');
+        assert(u16_to_felt_string(382) == '382', 'wrong level for 382');
+        assert(u16_to_felt_string(383) == '383', 'wrong level for 383');
+        assert(u16_to_felt_string(384) == '384', 'wrong level for 384');
+        assert(u16_to_felt_string(385) == '385', 'wrong level for 385');
+        assert(u16_to_felt_string(386) == '386', 'wrong level for 386');
+        assert(u16_to_felt_string(387) == '387', 'wrong level for 387');
+        assert(u16_to_felt_string(388) == '388', 'wrong level for 388');
+        assert(u16_to_felt_string(389) == '389', 'wrong level for 389');
+        assert(u16_to_felt_string(390) == '390', 'wrong level for 390');
+        assert(u16_to_felt_string(391) == '391', 'wrong level for 391');
+        assert(u16_to_felt_string(392) == '392', 'wrong level for 392');
+        assert(u16_to_felt_string(393) == '393', 'wrong level for 393');
+        assert(u16_to_felt_string(394) == '394', 'wrong level for 394');
+        assert(u16_to_felt_string(395) == '395', 'wrong level for 395');
+        assert(u16_to_felt_string(396) == '396', 'wrong level for 396');
+        assert(u16_to_felt_string(397) == '397', 'wrong level for 397');
+        assert(u16_to_felt_string(398) == '398', 'wrong level for 398');
+        assert(u16_to_felt_string(399) == '399', 'wrong level for 399');
+    }
+
+    #[test]
+    #[available_gas(22656000000)]
+    fn test_u16_to_felt_string_part9() {
+        assert(u16_to_felt_string(400) == '400', 'wrong level for 400');
+        assert(u16_to_felt_string(401) == '401', 'wrong level for 401');
+        assert(u16_to_felt_string(402) == '402', 'wrong level for 402');
+        assert(u16_to_felt_string(403) == '403', 'wrong level for 403');
+        assert(u16_to_felt_string(404) == '404', 'wrong level for 404');
+        assert(u16_to_felt_string(405) == '405', 'wrong level for 405');
+        assert(u16_to_felt_string(406) == '406', 'wrong level for 406');
+        assert(u16_to_felt_string(407) == '407', 'wrong level for 407');
+        assert(u16_to_felt_string(408) == '408', 'wrong level for 408');
+        assert(u16_to_felt_string(409) == '409', 'wrong level for 409');
+        assert(u16_to_felt_string(410) == '410', 'wrong level for 410');
+        assert(u16_to_felt_string(411) == '411', 'wrong level for 411');
+        assert(u16_to_felt_string(412) == '412', 'wrong level for 412');
+        assert(u16_to_felt_string(413) == '413', 'wrong level for 413');
+        assert(u16_to_felt_string(414) == '414', 'wrong level for 414');
+        assert(u16_to_felt_string(415) == '415', 'wrong level for 415');
+        assert(u16_to_felt_string(416) == '416', 'wrong level for 416');
+        assert(u16_to_felt_string(417) == '417', 'wrong level for 417');
+        assert(u16_to_felt_string(418) == '418', 'wrong level for 418');
+        assert(u16_to_felt_string(419) == '419', 'wrong level for 419');
+        assert(u16_to_felt_string(420) == '420', 'wrong level for 420');
+        assert(u16_to_felt_string(421) == '421', 'wrong level for 421');
+        assert(u16_to_felt_string(422) == '422', 'wrong level for 422');
+        assert(u16_to_felt_string(423) == '423', 'wrong level for 423');
+        assert(u16_to_felt_string(424) == '424', 'wrong level for 424');
+        assert(u16_to_felt_string(425) == '425', 'wrong level for 425');
+        assert(u16_to_felt_string(426) == '426', 'wrong level for 426');
+        assert(u16_to_felt_string(427) == '427', 'wrong level for 427');
+        assert(u16_to_felt_string(428) == '428', 'wrong level for 428');
+        assert(u16_to_felt_string(429) == '429', 'wrong level for 429');
+        assert(u16_to_felt_string(430) == '430', 'wrong level for 430');
+        assert(u16_to_felt_string(431) == '431', 'wrong level for 431');
+        assert(u16_to_felt_string(432) == '432', 'wrong level for 432');
+        assert(u16_to_felt_string(433) == '433', 'wrong level for 433');
+        assert(u16_to_felt_string(434) == '434', 'wrong level for 434');
+        assert(u16_to_felt_string(435) == '435', 'wrong level for 435');
+        assert(u16_to_felt_string(436) == '436', 'wrong level for 436');
+        assert(u16_to_felt_string(437) == '437', 'wrong level for 437');
+        assert(u16_to_felt_string(438) == '438', 'wrong level for 438');
+        assert(u16_to_felt_string(439) == '439', 'wrong level for 439');
+        assert(u16_to_felt_string(440) == '440', 'wrong level for 440');
+        assert(u16_to_felt_string(441) == '441', 'wrong level for 441');
+        assert(u16_to_felt_string(442) == '442', 'wrong level for 442');
+        assert(u16_to_felt_string(443) == '443', 'wrong level for 443');
+        assert(u16_to_felt_string(444) == '444', 'wrong level for 444');
+        assert(u16_to_felt_string(445) == '445', 'wrong level for 445');
+        assert(u16_to_felt_string(446) == '446', 'wrong level for 446');
+        assert(u16_to_felt_string(447) == '447', 'wrong level for 447');
+        assert(u16_to_felt_string(448) == '448', 'wrong level for 448');
+        assert(u16_to_felt_string(449) == '449', 'wrong level for 449');
+        assert(u16_to_felt_string(450) == '450', 'wrong level for 450');
+    }
+
+    #[test]
+    #[available_gas(22656000000)]
+    fn test_u16_to_felt_string_part10() {
+        assert(u16_to_felt_string(451) == '451', 'wrong level for 451');
+        assert(u16_to_felt_string(452) == '452', 'wrong level for 452');
+        assert(u16_to_felt_string(453) == '453', 'wrong level for 453');
+        assert(u16_to_felt_string(454) == '454', 'wrong level for 454');
+        assert(u16_to_felt_string(455) == '455', 'wrong level for 455');
+        assert(u16_to_felt_string(456) == '456', 'wrong level for 456');
+        assert(u16_to_felt_string(457) == '457', 'wrong level for 457');
+        assert(u16_to_felt_string(458) == '458', 'wrong level for 458');
+        assert(u16_to_felt_string(459) == '459', 'wrong level for 459');
+        assert(u16_to_felt_string(460) == '460', 'wrong level for 460');
+        assert(u16_to_felt_string(461) == '461', 'wrong level for 461');
+        assert(u16_to_felt_string(462) == '462', 'wrong level for 462');
+        assert(u16_to_felt_string(463) == '463', 'wrong level for 463');
+        assert(u16_to_felt_string(464) == '464', 'wrong level for 464');
+        assert(u16_to_felt_string(465) == '465', 'wrong level for 465');
+        assert(u16_to_felt_string(466) == '466', 'wrong level for 466');
+        assert(u16_to_felt_string(467) == '467', 'wrong level for 467');
+        assert(u16_to_felt_string(468) == '468', 'wrong level for 468');
+        assert(u16_to_felt_string(469) == '469', 'wrong level for 469');
+        assert(u16_to_felt_string(470) == '470', 'wrong level for 470');
+        assert(u16_to_felt_string(471) == '471', 'wrong level for 471');
+        assert(u16_to_felt_string(472) == '472', 'wrong level for 472');
+        assert(u16_to_felt_string(473) == '473', 'wrong level for 473');
+        assert(u16_to_felt_string(474) == '474', 'wrong level for 474');
+        assert(u16_to_felt_string(475) == '475', 'wrong level for 475');
+        assert(u16_to_felt_string(476) == '476', 'wrong level for 476');
+        assert(u16_to_felt_string(477) == '477', 'wrong level for 477');
+        assert(u16_to_felt_string(478) == '478', 'wrong level for 478');
+        assert(u16_to_felt_string(479) == '479', 'wrong level for 479');
+        assert(u16_to_felt_string(480) == '480', 'wrong level for 480');
+        assert(u16_to_felt_string(481) == '481', 'wrong level for 481');
+        assert(u16_to_felt_string(482) == '482', 'wrong level for 482');
+        assert(u16_to_felt_string(483) == '483', 'wrong level for 483');
+        assert(u16_to_felt_string(484) == '484', 'wrong level for 484');
+        assert(u16_to_felt_string(485) == '485', 'wrong level for 485');
+        assert(u16_to_felt_string(486) == '486', 'wrong level for 486');
+        assert(u16_to_felt_string(487) == '487', 'wrong level for 487');
+        assert(u16_to_felt_string(488) == '488', 'wrong level for 488');
+        assert(u16_to_felt_string(489) == '489', 'wrong level for 489');
+        assert(u16_to_felt_string(490) == '490', 'wrong level for 490');
+        assert(u16_to_felt_string(491) == '491', 'wrong level for 491');
+        assert(u16_to_felt_string(492) == '492', 'wrong level for 492');
+        assert(u16_to_felt_string(493) == '493', 'wrong level for 493');
+        assert(u16_to_felt_string(494) == '494', 'wrong level for 494');
+        assert(u16_to_felt_string(495) == '495', 'wrong level for 495');
+        assert(u16_to_felt_string(496) == '496', 'wrong level for 496');
+        assert(u16_to_felt_string(497) == '497', 'wrong level for 497');
+        assert(u16_to_felt_string(498) == '498', 'wrong level for 498');
+        assert(u16_to_felt_string(499) == '499', 'wrong level for 499');
+        assert(u16_to_felt_string(500) == '500', 'wrong level for 500');
+    }
+
+    #[test]
+    #[available_gas(22656000000)]
+    fn test_u16_to_felt_string_part11() {
+        assert(u16_to_felt_string(501) == '501', 'wrong level for 501');
+        assert(u16_to_felt_string(502) == '502', 'wrong level for 502');
+        assert(u16_to_felt_string(503) == '503', 'wrong level for 503');
+        assert(u16_to_felt_string(504) == '504', 'wrong level for 504');
+        assert(u16_to_felt_string(505) == '505', 'wrong level for 505');
+        assert(u16_to_felt_string(506) == '506', 'wrong level for 506');
+        assert(u16_to_felt_string(507) == '507', 'wrong level for 507');
+        assert(u16_to_felt_string(508) == '508', 'wrong level for 508');
+        assert(u16_to_felt_string(509) == '509', 'wrong level for 509');
+        assert(u16_to_felt_string(510) == '510', 'wrong level for 510');
+        assert(u16_to_felt_string(511) == '511', 'wrong level for 511');
+
+        // 511 is max so anything beyond should be 511
+        assert(u16_to_felt_string(512) == '511', 'wrong level for 512');
     }
 
     #[test]
     #[available_gas(11125360)]
     fn test_get_content() {
-        let beast = PackableBeast { id: 1, prefix: 1, suffix: 1, level: 1 };
+        let beast = PackableBeast { id: 1, prefix: 1, suffix: 1, level: 1, health: 1 };
 
         let content = get_content(beast);
         let mut i = 0;
