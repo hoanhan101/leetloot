@@ -231,7 +231,16 @@ mod Beasts {
             self._balances.read(account)
         }
 
+        fn balance_of(self: @ContractState, account: ContractAddress) -> u256 {
+            assert(!account.is_zero(), 'Invalid account');
+            self._balances.read(account)
+        }
+
         fn ownerOf(self: @ContractState, tokenID: u256) -> ContractAddress {
+            self._ownerOf(tokenID)
+        }
+
+        fn owner_of(self: @ContractState, tokenID: u256) -> ContractAddress {
             self._ownerOf(tokenID)
         }
 
@@ -250,12 +259,27 @@ mod Beasts {
             self._setApprovalForAll(get_caller_address(), operator, approved)
         }
 
+        fn set_approval_for_all(ref self: ContractState, operator: ContractAddress, approved: bool) {
+            self._setApprovalForAll(get_caller_address(), operator, approved)
+        }
+
         fn getApproved(self: @ContractState, tokenID: u256) -> ContractAddress {
             assert(self._exists(tokenID), 'ERC721: invalid token ID');
             self._tokenApprovals.read(tokenID)
         }
 
+        fn get_approved(self: @ContractState, tokenID: u256) -> ContractAddress {
+            assert(self._exists(tokenID), 'ERC721: invalid token ID');
+            self._tokenApprovals.read(tokenID)
+        }
+
         fn isApprovedForAll(
+            self: @ContractState, owner: ContractAddress, operator: ContractAddress
+        ) -> bool {
+            self._operatorApprovals.read((owner, operator))
+        }
+
+        fn is_approved_for_all(
             self: @ContractState, owner: ContractAddress, operator: ContractAddress
         ) -> bool {
             self._operatorApprovals.read((owner, operator))
@@ -268,7 +292,20 @@ mod Beasts {
             self._transfer(from, to, tokenID);
         }
 
+        fn transfer_from(
+            ref self: ContractState, from: ContractAddress, to: ContractAddress, tokenID: u256
+        ) {
+            assert(self._isApprovedOrOwner(get_caller_address(), tokenID), 'Unauthorized caller');
+            self._transfer(from, to, tokenID);
+        }
+
         fn tokenURI(self: @ContractState, tokenID: u256) -> Array::<felt252> {
+            assert(self._exists(tokenID), 'Invalid token ID');
+            let beast = self._beast.read(tokenID);
+            get_content(beast)
+        }
+
+        fn token_uri(self: @ContractState, tokenID: u256) -> Array::<felt252> {
             assert(self._exists(tokenID), 'Invalid token ID');
             let beast = self._beast.read(tokenID);
             get_content(beast)
@@ -278,7 +315,15 @@ mod Beasts {
             self._supportsInterface(interfaceId)
         }
 
+        fn supports_interface(self: @ContractState, interfaceId: felt252) -> bool {
+            self._supportsInterface(interfaceId)
+        }
+
         fn registerInterface(ref self: ContractState, interface_id: felt252) {
+            self._registerInterface(interface_id);
+        }
+
+        fn register_interface(ref self: ContractState, interface_id: felt252) {
             self._registerInterface(interface_id);
         }
 
@@ -318,6 +363,10 @@ mod Beasts {
 
 
         fn tokenSupply(self: @ContractState) -> u256 {
+            self._tokenIndex.read()
+        }
+
+        fn token_supply(self: @ContractState) -> u256 {
             self._tokenIndex.read()
         }
 
