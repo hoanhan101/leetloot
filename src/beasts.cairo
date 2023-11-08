@@ -52,6 +52,8 @@ mod Beasts {
         _genesis_mint: bool,
     }
 
+    const START_TOKEN_ID: u8 = 1;
+
     #[event]
     #[derive(Drop, starknet::Event)]
     enum Event {
@@ -90,6 +92,7 @@ mod Beasts {
         symbol: felt252
     ) {
         self.initializer(owner, whitelist, name, symbol);
+        self._tokenIndex.write(START_TOKEN_ID.into());
     }
 
     #[generate_trait]
@@ -363,11 +366,11 @@ mod Beasts {
 
 
         fn tokenSupply(self: @ContractState) -> u256 {
-            self._tokenIndex.read()
+            self._tokenIndex.read() - START_TOKEN_ID.into()
         }
 
         fn token_supply(self: @ContractState) -> u256 {
-            self._tokenIndex.read()
+            self._tokenIndex.read() - START_TOKEN_ID.into()
         }
 
         fn mintGenesisBeasts(ref self: ContractState, to: ContractAddress) {
