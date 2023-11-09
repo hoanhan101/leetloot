@@ -1,4 +1,5 @@
 use starknet::ContractAddress;
+use LootSurvivorBeasts::pack::PackableBeast;
 
 // contract interface
 #[starknet::interface]
@@ -36,11 +37,19 @@ trait IBeasts<T> {
     fn register_interface(ref self: T, interface_id: felt252);
 
     // Core functions
-    fn mintGenesisBeasts(ref self: T, to: ContractAddress);
     fn setMinter(ref self: T, to: ContractAddress);
+    fn mintGenesisBeasts(ref self: T, to: ContractAddress);
+    fn airdrop(ref self: T);
     fn getMinter(self: @T) -> ContractAddress;
     fn mint(
-        ref self: T, to: ContractAddress, beast: u8, prefix: u8, suffix: u8, level: u16, health: u16
+        ref self: T,
+        to: ContractAddress,
+        beast_id: u8,
+        prefix: u8,
+        suffix: u8,
+        level: u16,
+        health: u16
     );
-    fn isMinted(self: @T, beast: u8, prefix: u8, suffix: u8) -> bool;
+    fn isMinted(self: @T, beast_id: u8, prefix: u8, suffix: u8) -> bool;
+    fn getBeast(self: @T, token_id: u256) -> PackableBeast;
 }
