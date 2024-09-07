@@ -147,13 +147,13 @@ impl LongStringStorageAccess of starknet::Store<LongString> {
     fn read_at_offset(
         address_domain: u32, base: StorageBaseAddress, offset: u8
     ) -> SyscallResult<LongString> {
-        LongStringStorageAccess::read_at_offset(address_domain, base, offset)
+        Self::read_at_offset(address_domain, base, offset)
     }
 
     fn write_at_offset(
         address_domain: u32, base: StorageBaseAddress, offset: u8, value: LongString
     ) -> SyscallResult<()> {
-        LongStringStorageAccess::write_at_offset(address_domain, base, offset, value)
+        Self::write_at_offset(address_domain, base, offset, value)
     }
 
     fn size() -> u8 {

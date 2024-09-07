@@ -1,5 +1,5 @@
 use starknet::ContractAddress;
-use LootSurvivorBeasts::pack::PackableBeast;
+use beasts::pack::PackableBeast;
 
 // contract interface
 #[starknet::interface]

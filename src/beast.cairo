@@ -3,7 +3,7 @@ use array::{ArrayTrait};
 use core::traits::{Into};
 
 use super::long_string::LongString;
-use LootSurvivorBeasts::pack::{PackableBeast};
+use beasts::pack::{PackableBeast};
 
 // Tiers
 const TIER_1: felt252 = '1';
@@ -3514,7 +3514,7 @@ fn u16_to_felt_string(number: u16) -> felt252 {
 #[cfg(test)]
 mod tests {
     use core::array::ArrayTrait;
-    use LootSurvivorBeasts::beast::{
+    use beasts::beast::{
         get_hash, get_type, get_tier, get_svg, get_name, get_prefix, get_suffix, u16_to_felt_string,
         get_content, TYPE_MAGICAL, TYPE_HUNTER, TYPE_BRUTE, WARLOCK, JUGGERNAUT, PEGASUS, GOBLIN,
         BEAR, FENRIR, WENDIGO, GHOUL, PIXIE, AMMIT, BERSERKER, RAKSHASA, TITAN, GOLEM, MANTICORE,
@@ -3525,7 +3525,7 @@ mod tests {
         WOLF, SPIDER, RAT, COLOSSUS, BALROG, LEVIATHAN, TARRASQUE, NEPHILIM, BEHEMOTH, ONI, JOTUNN,
         ETTIN, CYCLOPS, ENT, TROLL, BIGFOOT, OGRE, ORC, SKELETON
     };
-    use LootSurvivorBeasts::pack::{PackableBeast};
+    use beasts::pack::{PackableBeast};
 
     #[test]
     #[available_gas(2265600000000)]

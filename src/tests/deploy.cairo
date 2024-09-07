@@ -7,12 +7,14 @@ mod tests {
     use traits::{TryInto, Into};
     use option::OptionTrait;
     use result::ResultTrait;
-    use LootSurvivorBeasts::beasts::{LongString, Beasts};
-    use LootSurvivorBeasts::interfaces::{IBeastsDispatcher, IBeastsDispatcherTrait};
+    use beasts::beasts::{LongString, Beasts};
+    use beasts::interfaces::{IBeastsDispatcher, IBeastsDispatcherTrait};
     use starknet::testing::{set_caller_address, set_contract_address};
 
     fn OWNER() -> ContractAddress {
-        contract_address_const::<0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f>()
+        contract_address_const::<
+            0x168893664220f03a74a9bce84228b009df46040c08bb308783dcf130790335f
+        >()
     }
 
     fn deploy() -> IBeastsDispatcher {

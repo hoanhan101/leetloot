@@ -26,7 +26,7 @@ scarb test && scarb build
 
 Declare contract
 ```
-starkli declare --account accounts/account.json --rpc <RPC_URL> --network goerli-1 ./target/dev/LootSurvivorBeasts_Beasts.sierra.json
+starkli declare --account accounts/account.json --rpc <RPC_URL> --network goerli-1 ./target/dev/beasts_Beasts.sierra.json
 ```
 
 Helpful Cairo string conversion
@@ -94,7 +94,7 @@ export STARKNET_NETWORK=alpha-mainnet
 
 Declare contract
 ```
-starknet declare --contract target/dev/LootSurvivorBeasts_Beasts.sierra.json --account pusscode
+starknet declare --contract target/dev/beasts_Beasts.sierra.json --account pusscode
 ```
 
 If compiling error happens, try building with a recent version manually in the home dir
@@ -109,7 +109,7 @@ cargo build --all --release
 Declare again if failed earlier
 ```
 cd /workspaces/leetloot
-starknet declare --contract target/dev/LootSurvivorBeasts_Beasts.sierra.json --account pusscode
+starknet declare --contract target/dev/beasts_Beasts.sierra.json --account pusscode
 ```
 
 Deploy contract
