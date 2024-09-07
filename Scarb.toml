@@ -4,7 +4,7 @@ version = "0.1.0"
 
 [dependencies]
 starknet = "2.7.1"
-openzeppelin_token = { git = "https://github.com/OpenZeppelin/cairo-contracts", rev = "v0.15.1" }
-openzeppelin_introspection = { git = "https://github.com/OpenZeppelin/cairo-contracts", rev = "v0.15.1" }
+openzeppelin_token = { git = "https://github.com/OpenZeppelin/cairo-contracts", tag = "v0.15.1" }
+openzeppelin_introspection = { git = "https://github.com/OpenZeppelin/cairo-contracts", tag = "v0.15.1" }
 [scripts]
 test = "scarb cairo-test"
