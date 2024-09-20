@@ -7,11 +7,11 @@ on:
   pull_request:    
 
 env:
-  SCARB_VERSION: 0.7.0
+  SCARB_VERSION: 2.7.1
 
 jobs:
   build-contracts:
-    name: Build Adventurer
+    name: Build Beasts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
