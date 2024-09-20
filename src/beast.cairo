@@ -3,7 +3,7 @@ use array::{ArrayTrait};
 use core::traits::{Into};
 
 use super::long_string::LongString;
-use beasts::pack::{PackableBeast};
+use pixel_beasts::pack::{PackableBeast};
 
 // Tiers
 const TIER_1: felt252 = '1';

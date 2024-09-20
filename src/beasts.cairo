@@ -28,10 +28,10 @@ mod Beasts {
     use openzeppelin_token::erc721::interface::{IERC721_ID, IERC721_METADATA_ID};
     use openzeppelin_introspection::interface::{ISRC5_ID};
 
-    use beasts::long_string::{LongString};
-    use beasts::interfaces::{IBeasts};
-    use beasts::pack::{mask, pow, PackableBeast};
-    use beasts::beast::{get_hash, get_content};
+    use pixel_beasts::long_string::{LongString};
+    use pixel_beasts::interfaces::{IBeasts};
+    use pixel_beasts::pack::{mask, pow, PackableBeast};
+    use pixel_beasts::beast::{get_hash, get_content};
     use core::starknet::storage::Map;
 
     // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md

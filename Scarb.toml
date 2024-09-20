@@ -1,5 +1,5 @@
 [package]
-name = "beasts"
+name = "pixel_beasts"
 version = "0.1.0"
 
 [dependencies]

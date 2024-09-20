@@ -1,5 +1,5 @@
 use starknet::ContractAddress;
-use beasts::pack::PackableBeast;
+use pixel_beasts::pack::PackableBeast;
 
 // contract interface
 #[starknet::interface]
