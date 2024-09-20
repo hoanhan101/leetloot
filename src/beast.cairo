@@ -4098,7 +4098,6 @@ mod tests {
     }
 
     #[test]
-    #[available_gas(11125360)]
     fn test_get_content() {
         let beast = PackableBeast { id: 1, prefix: 1, suffix: 1, level: 1, health: 1 };
 
@@ -4110,7 +4109,7 @@ mod tests {
             }
             let segment = *content.at(i);
             // Uncomment to view content
-            //segment.print();
+            println!("Segment: {:?}", segment);
             i += 1;
         }
     }

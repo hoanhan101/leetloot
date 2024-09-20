@@ -464,12 +464,14 @@ mod pow {
 
 #[cfg(test)]
 mod tests {
+    use super::{PackableBeast, PackPackable};
+
     #[test]
     #[available_gas(180960)]
     fn test_pack_and_unpack_gas() {
         let beast = PackableBeast { id: 1, prefix: 2, suffix: 3, level: 4, health: 5 };
         let packed = PackPackable::pack(beast);
-        let unpacked = PackPackable::unpack(packed);
+        PackPackable::unpack(packed);
     }
 
     #[test]
